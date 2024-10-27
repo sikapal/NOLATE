@@ -3,6 +3,12 @@ import image from '../assets/image.jpg'
 
 import { Menu, MenuItem, IconButton } from '@mui/material';
 import { ArrowCircleUp, ArrowCircleUpSharp, Call, MoreVert } from '@mui/icons-material';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
 const MemberLarge = () => {
     const [anchorEl, setAnchorEl] = useState(null);

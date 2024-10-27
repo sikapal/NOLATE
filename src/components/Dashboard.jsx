@@ -11,6 +11,7 @@ import MemberLarge from './MemberLarge';
 
 import BreadcrumbsP from './BreadcrumbsP';
 import Tab from './Tab';
+import CountryCode from './CountryCode';
 
 
 const Dashboard = ({ }) => {
@@ -25,7 +26,8 @@ const Dashboard = ({ }) => {
                     <Header setOpen={setOpen} />
                     <div className='p-2 '>
                         CONTENT DASHBOARD
-
+                       
+                       <CountryCode/>
                         <Tab/>
                     
                         <div className='flex-row'>
