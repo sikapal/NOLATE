@@ -4,6 +4,13 @@ import Sidebar from './Sidebar'
 import Dots from './Dots';
 import PublicationsCard from './PublicationsCard';
 import ProfileCard from './ProfileCard';
+import Member from './Member';
+import Coordonnes from './Coordonnes';
+import BilanHoraire from './BilanHoraire';
+import MemberLarge from './MemberLarge';
+
+import BreadcrumbsP from './BreadcrumbsP';
+import Tab from './Tab';
 
 
 const Dashboard = ({ }) => {
@@ -12,18 +19,36 @@ const Dashboard = ({ }) => {
     return (
 
 
-        <div className='flex w-full'> <div className=''><Sidebar open={open} setOpen={setOpen}/></div>
+        <div className='flex w-full'> <div className=''><Sidebar open={open} setOpen={setOpen} /></div>
             <div className='w-full'>
-                <div className='content'><Header setOpen= {setOpen}/>
-                    <div className='p-2'>
-                    CONTENT DASHBOARD
-                        <div className='flex'>
+                <div className='content'>
+                    <Header setOpen={setOpen} />
+                    <div className='p-2 '>
+                        CONTENT DASHBOARD
 
-                            <PublicationsCard/>
-                       <Dots/>
+                        <Tab/>
                     
+                        <div className='flex-row'>
+                        <BreadcrumbsP/>
+                        <div className='flex pl-2 ml-2'>
+                            <MemberLarge/>
+                            <BilanHoraire/>
+                           
+
+
                         </div>
-                        <ProfileCard/>
+                            <div className='flex pl-2 ml-2'>
+                                <Coordonnes />
+                                <PublicationsCard />
+                                <Member />
+
+
+                            </div>
+                        </div>
+
+                        <Dots />
+                        <ProfileCard />
+
                     </div>
                 </div>
             </div>
