@@ -5,41 +5,36 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-
 function handleClick(event) {
-    event.preventDefault();
-    console.info('You clicked a breadcrumb.');
-  }
-const BreadcrumbsP = () => {
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" href="/" onClick={handleClick}>
-          MUI
-        </Link>,
-        <Link
-          underline="hover"
-          key="2"
-          color="inherit"
-          href="/material-ui/getting-started/installation/"
-          onClick={handleClick}
-        >
-          Core
-        </Link>,
-        <Typography key="3" sx={{ color: 'text.primary' }}>
-          Breadcrumb
-        </Typography>,
-      ];
-    
-      return (
-        <Stack spacing={2}>
-          
-          <Breadcrumbs
-            separator={<NavigateNextIcon fontSize="small" />}
-            aria-label="breadcrumb"
-          >
-            {breadcrumbs}
-          </Breadcrumbs>
-        </Stack>
-      );
+  event.preventDefault();
+ 
 }
 
-export default BreadcrumbsP
+const BreadcrumbsP = ({ breadcrumbs }) => {
+  return (
+    <Stack spacing={2}>
+      <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+        {breadcrumbs.map((breadcrumb, index) => (
+          breadcrumb.href ? (
+            <Link
+              key={index}
+              underline="hover"
+              color="black"
+              fontWeight="bold"
+              href={breadcrumb.href}
+              onClick={breadcrumb.onClick || handleClick}
+            >
+              {breadcrumb.label}
+            </Link>
+          ) : (
+            <Typography key={index} color="text.primary ">
+              {breadcrumb.label}
+            </Typography>
+          )
+        ))}
+      </Breadcrumbs>
+    </Stack>
+  );
+};
+
+export default BreadcrumbsP;

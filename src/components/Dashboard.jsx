@@ -12,6 +12,7 @@ import MemberLarge from './MemberLarge';
 import BreadcrumbsP from './BreadcrumbsP';
 import Tab from './Tab';
 import CountryCode from './CountryCode';
+import Table from './Table';
 
 
 const Dashboard = ({ }) => {
@@ -26,12 +27,12 @@ const Dashboard = ({ }) => {
                     <Header setOpen={setOpen} />
                     <div className='p-2 '>
                         CONTENT DASHBOARD
-                       
+                       <Table/>
                        <CountryCode/>
                         <Tab/>
                     
                         <div className='flex-row'>
-                        <BreadcrumbsP/>
+                      hh
                         <div className='flex pl-2 ml-2'>
                             <MemberLarge/>
                             <BilanHoraire/>
@@ -48,7 +49,7 @@ const Dashboard = ({ }) => {
                             </div>
                         </div>
 
-                        <Dots />
+                       
                         <ProfileCard />
 
                     </div>

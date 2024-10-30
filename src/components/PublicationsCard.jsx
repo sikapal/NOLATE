@@ -10,18 +10,27 @@ import HearingOutlinedIcon from '@mui/icons-material/HearingOutlined';
 import WarningOutlinedIcon from '@mui/icons-material/WarningOutlined';
 
 const PublicationsCard = () => {
+
+    const menuItems = [
+        { label: 'Modifier', action: () => console.log('Infos clicked') },
+        { label: 'Signaler', action: () => console.log('Desactiver clicked'), color: 'black' },
+        { label: 'Supprimer', action: () => console.log('Supprimer clicked'), color: 'red' },
+    ];
     return (
-        <div className="border border-gray-300 w-[479px] h-[300px] rounded-lg shadow-lg p-3 my-3 bg-white">
+        <div className="border border-gray-300 w-[375px] h-[250px] rounded-lg shadow-lg p-3 my-3 bg-white">
 
             <div className='flex h-[80%]  '>
 
                 <div className='border border-gray-300 rounded-2xl w-[35%]'>
-                    <img src={image} alt="file" className='h-[85%]' />
-                    <div className='h-[15%] flex justify-center items-center  py-1'><p className='flex items-center text-sm '> <ImageIcon className='w-[20px] h-[20px]' /> 5 photos</p></div>
+                    <img src={image} alt="file" className='h-[80%]' />
+                    <div className='h-[20%] flex justify-center items-center  py-1'><p className='flex items-center text-sm '> <ImageIcon className='w-[20px] h-[20px]' /> 5 photos</p></div>
                 </div>
                 <div className='mx-3 w-[60%] flex flex-col justify-between'>
-                    <div className='flex'>
-                        <h2 className="text-lg font-bold ">Card Title card Titlt card this this this is the </h2>
+                    <div className='flex relative justify-between'>
+                        <h2 className="text-sm font-bold ">Direction des ressources humaines </h2>
+                        <div className='absolute -right-5 -top-1 '>
+                        <Dots menuItems={menuItems} />
+                    </div>
                     </div>
 
                     <div className='flex  items-center'>
@@ -32,7 +41,7 @@ const PublicationsCard = () => {
 
 
                     <div className=''>
-                        <p className='text-black text-sm'>
+                        <p className='text-black text-[11px]'>
                             Lorem ipsum dolor sit amet, incididunt ut labore et dolore magna aliqua. exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                     </div>

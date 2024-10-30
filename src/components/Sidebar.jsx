@@ -37,7 +37,7 @@ const Sidebar = ({ open, setOpen }) => {
       icon: <PeopleAltOutlinedIcon />,
       submenu: true,
       submenuItems: [
-        { title: "Membres" },
+        { title: "Membres"  },
         { title: "Admin et rôles" },
         { title: "Messages" },
       ],

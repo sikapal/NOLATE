@@ -1,0 +1,146 @@
+[
+  {
+    "date": "27/02/2024",
+    "utilisateur": "John Doe",
+    "activite": "Macro Economie / Supptic",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Micheal Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Absent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Sylvie Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Papa Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "John Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Micheal Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "John Doe",
+    "activite": "Enseignant",
+    "horaire": "123-456-7890",
+    "auth": "John Doe",
+    "debut": "johndoe@example.com",
+    "fin": "John Doe",
+    "status": "johndoe@example.com",
+    "checkup": "John Doe",
+    "retourInfo": "johndoe@example.com"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "John Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Micheal Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "John Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  },
+  {
+    "date": "27/02/2024",
+    "utilisateur": "Micheal Doe",
+    "activite": "Enseignant",
+    "horaire": "7:30 - 9:30",
+    "auth": "Empreinte Digitale",
+    "debut": "7:50",
+    "fin": "9:30",
+    "status": "Présent",
+    "checkup": "Validé",
+    "retourInfo": "-"
+   
+  }
+
+]

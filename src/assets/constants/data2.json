@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "ADMINISTRATEUR": "viande Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 2,
+    "ADMINISTRATEUR": "Meat Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 3,
+    "ADMINISTRATEUR": "eru Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "Mchel Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 4,
+    "ADMINISTRATEUR": "Kanda Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 5,
+    "ADMINISTRATEUR": "John Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 6,
+    "ADMINISTRATEUR": "John Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 7,
+    "ADMINISTRATEUR": "John Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 8,
+    "ADMINISTRATEUR": "John Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  },
+  {
+    "id": 9,
+    "ADMINISTRATEUR": "John Doe",
+    "AJOUTER LE": "johndoe@example.com",
+    "RÔLE": "123-456-7890",
+    "NIVEAU D'ACCES": "John Doe",
+    "UNITE DE GESTION": "johndoe@example.com"
+   
+  }
+]
