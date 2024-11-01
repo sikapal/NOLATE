@@ -53,8 +53,8 @@ const Sidebar = ({ open, setOpen }) => {
   };
 
   return (
-    <div className='flex'>
-      <div className={`bg-darkblue h-screen p-5 pt-4 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
+    <div className='flex min-h-full '>
+      <div className={`bg-darkblue  p-5 pt-4 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
         <img
           src={logo}
           alt="logo"
@@ -62,7 +62,7 @@ const Sidebar = ({ open, setOpen }) => {
             open ? 'hidden' : 'block'
           }`}
         />
-        <div className='inline-flex '>
+        <div className='inline-flex'>
           <h2
             className={`text-white origin-left text-2xl duration-30 font-gothic font-bold flex justify-center ${
               !open && 'scale-0'

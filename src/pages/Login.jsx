@@ -23,7 +23,7 @@ const Login = () => {
             <div className="flex items-center justify-center pt-[30px] bg-white">
 
                 {/*Login Card Starts  */}
-                <div className=" bg-white p-[10px] w-[436px] h-[460px] relative overflow-hidden rounded-lg shadow-lg justify-center "   >
+                <div className=" bg-white p-[10px] w-[535px] h-[460px] relative overflow-hidden rounded-lg shadow-lg justify-center "   >
                     <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
 
                     <h2 className='p-t-1 mt-2 text-violet font-gothic font-bold flex justify-center '><span className='text-violet text-[32px]'>N</span> 

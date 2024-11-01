@@ -7,6 +7,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, g
 import { ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
 import mockData from "../../assets/constants/data3.json";
 import Dots from '../../components/Dots';
+import DetailPresence from '../../components/DetailPresence';
 
 
 const columnHelper = createColumnHelper();
@@ -184,8 +185,9 @@ const FichePresence = () => {
 
                     <div className="mt-3 bg-white max-w-full rounded-xl h-[85vh] flex flex-col ">
                         <h1 className="font-bold p-3">Fiche de présence</h1>
-                        
+                       
                         <div className="flex flex-wrap p-3 justify-between ">
+                      
                             <div className="left flex flex-wrap ">
                                 <div className="mb-4 relative">
                                     <input
@@ -209,7 +211,7 @@ const FichePresence = () => {
                                 </button>
                             </div>
                         </div>
-
+                        <DetailPresence/>
                         <div className="flex-wrap py-4 px-4 scrollbar-custom overflow-y-auto">
                             <div className=" bg-white flex-wrap shadow-md rounded-lg">
                                 <table className="min-w-full flex-wrap divide-y divide-gray-200">

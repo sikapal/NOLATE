@@ -13,6 +13,7 @@ import BreadcrumbsP from './BreadcrumbsP';
 import Tab from './Tab';
 import CountryCode from './CountryCode';
 import Table from './Table';
+import Tabs from './Tabs';
 
 
 const Dashboard = ({ }) => {
@@ -27,6 +28,7 @@ const Dashboard = ({ }) => {
                     <Header setOpen={setOpen} />
                     <div className='p-2 '>
                         CONTENT DASHBOARD
+                        <Tabs/>
                        <Table/>
                        <CountryCode/>
                         <Tab/>

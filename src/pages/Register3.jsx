@@ -16,7 +16,7 @@ const Register3 = () => {
 
     <div className="flex items-center justify-center pt-[30px] bg-white">
 
-        <div className=" bg-white p-[10px] w-[436px] h-[356px] relative overflow-hidden rounded-lg shadow-lg justify-center "   >
+        <div className=" bg-white p-[10px] w-[535px] h-[356px] relative overflow-hidden rounded-lg shadow-lg justify-center "   >
             <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
 
             <h2 className='p-t-1 mt-2 text-violet font-gothic font-bold flex justify-center '><span className='text-violet text-[32px]'>N</span>  <span className='text-yellow text-[3px] pt-4'><img src={logo} alt="logo" className="w-[20px] h-[20px]" /></span> <span className='text-violet text-[32px]'>Late</span>  </h2>

@@ -1,38 +1,119 @@
-import React from 'react'
+import React from 'react';
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 
-
 const DetailPresence = () => {
-    
-  const [openModal, setOpenModal] = useState(true);
-  return (
-    <>
-    <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
-    <Modal show={openModal} onClose={() => setOpenModal(false)}>
-      <Modal.Header>Terms of Service</Modal.Header>
-      <Modal.Body>
-        <div className="space-y-6">
-          <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
-            companies around the world are updating their terms of service agreements to comply.
-          </p>
-          <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
-            to ensure a common set of data rights in the European Union. It requires organizations to notify users as
-            soon as possible of high-risk data breaches that could personally affect them.
-          </p>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => setOpenModal(false)}>I accept</Button>
-        <Button color="gray" onClick={() => setOpenModal(false)}>
-          Decline
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>
-  )
-}
+    const [openModal, setOpenModal] = useState(true);
 
-export default DetailPresence
+    return (
+        <>
+            
+            <Modal
+                show={openModal}
+                onClose={() => setOpenModal(false)}
+                className="relative w-[500px] md:max-w-2xl mx-auto" 
+            >
+                <Modal.Header className='text-'>Détails de présence</Modal.Header>
+
+                <Modal.Body>
+                    <div className='flex-row  text-[12px]'>
+
+                        <div className='first px-5 py-3 '>
+                            <div className=''>
+                                <h1 className='font-bold mb-2'>Général</h1>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Utilisateur </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Date </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Activité </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Lieu </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Plage </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Mode </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Pointage début </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Pointage fin </p>
+                                    <p className='capitalize'><span className='mx-1'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Statut </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Temps </p>
+                                    <p className='capitalize'><span className='mx-1'> :</span> George Matoudi</p>
+                                </div>
+                                <div className='justify-between flex mr-5 '>
+                                    <p>Heure supplémentaire </p>
+                                    <p className='capitalize'><span className='mx-1'> :</span> George Matoudi</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div className='second px-5 py-3'>
+                            <div className=''>
+                                <h1 className='font-bold mb-2'>Inspection</h1>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Etat</p>
+                                    <p className='capitalize left-0'><span className='mx-2'> :</span> Validé</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Emission / Réponse </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span>E(08:15)/ R(19:20)</p>
+                                </div>
+                                <div className='justify-between flex mr-5 '>
+                                    <p>Absence Potentielle </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span>15 minutes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='third px-5 py-3'>
+                        <div className=''>
+                                <h1 className='font-bold mb-2'>Pointeuse</h1>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Id de la pointeuse</p>
+                                    <p className='capitalize left-0'><span className='mx-2'> :</span>DC:25:87:86:EF</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Nom de la pointeuse </p>
+                                    <p className='capitalize'><span className='mx-2'> :</span>ADM 5</p>
+                                </div>
+                                <div className='justify-between flex mr-5 mb-1'>
+                                    <p>Batterie de la Pointeuse</p>
+                                    <p className='capitalize'><span className='mx-2'> :</span>15 %</p>
+                                </div>
+                                <div className='justify-between flex mr-5 '>
+                                    <p>Unité de gestion associée</p>
+                                    <p className='capitalize'><span className='mx-2'> :</span>ADM? IPT</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </Modal.Body>
+
+            </Modal>
+        </>
+    );
+};
+
+export default DetailPresence;

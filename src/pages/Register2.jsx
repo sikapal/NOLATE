@@ -28,7 +28,7 @@ const Register2 = () => {
         <div className="flex justify-center pt-[30px] bg-white">
   
           {/*register Card Starts*/}
-          <div className="bg-white p-[10px] w-[436px] h-auto relative overflow-hidden rounded-lg shadow-lg">
+          <div className="bg-white p-[10px] w-[535px] h-auto relative overflow-hidden rounded-lg shadow-lg">
             <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
   
             <h2 className='mt-2 text-violet font-gothic font-bold flex justify-center'>
@@ -157,7 +157,7 @@ const Register2 = () => {
           </p>
   
          <Link to="/register3" className='ml-16'>
-         <button className=" ml-8 p-2 w-[150px] h-[35px] bg-skyblue text-white text-sm font-bold rounded-full">
+         <button className=" ml-16 p-2 w-[150px] h-[35px] bg-skyblue text-white text-sm font-bold rounded-full">
            Créer le compte
           </button>
          </Link>

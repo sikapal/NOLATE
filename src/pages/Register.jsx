@@ -3,6 +3,8 @@ import React from 'react';
 import { useState } from 'react';
 import logo from '../assets/logo.svg';
 import { Link } from 'react-router-dom';
+import CountryCode from '../components/CountryCode';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Register = () => {
 
@@ -22,7 +24,7 @@ const Register = () => {
       <div className="flex justify-center pt-[30px] bg-white">
 
         {/*register Card Starts*/}
-        <div className="bg-white p-[10px] w-[436px] h-auto relative overflow-hidden rounded-lg shadow-lg">
+        <div className="bg-white p-[10px] w-[535px] h-auto relative overflow-hidden rounded-lg shadow-lg">
           <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
 
           <h2 className='mt-2 text-violet font-gothic font-bold flex justify-center'>
@@ -61,24 +63,30 @@ const Register = () => {
               </div>
             </div>
 
-            <div className='px-2 mb-6'>
-              <div className='w-full'>
-                <label htmlFor="genre" className="block text-[16px] font-bold font-arial mb-2">Genre*</label>
+            <div className="px-2 mb-6">
+              <div className="w-full relative">
+                <label htmlFor="genre" className="block text-[16px] font-bold font-arial mb-2">
+                  Genre*
+                </label>
                 <select
                   id="genre"
-                  className='h-[40px] w-full px-2 mb-2 border border-gray-300 rounded-md'
+                  className="h-[40px] w-full px-3 pr-10 mb-2 border border-gray-300 rounded-md appearance-none"
                   value={genre}
                   onChange={handleSetGenre}
                 >
-                  <option value="" className='font-semibold'>
+                  <option value="" className="font-semibold">
                     Sélectionnez votre genre
                   </option>
                   <option value="Féminin">Féminin</option>
                   <option value="Masculin">Masculin</option>
                 </select>
-              </div>
 
+                <div className="absolute top-1/2 right-3 transform -translate-y-1/5 pointer-events-none text-black">
+                  <ExpandMoreIcon />
+                </div>
+              </div>
             </div>
+
 
 
             <div className="flex mb-6">
@@ -94,14 +102,8 @@ const Register = () => {
               </div>
 
               <div className="w-1/2 px-2">
-                <label htmlFor="phone" className="block text-[16px] font-bold font-arial mb-2">Téléphone*</label>
-                <input
-                  type="text"
-                  id="phone"
-                  className="border p-2 border-gray-300 rounded-md h-[40px] w-full text-sm"
-                  placeholder="Entrez votre prénom(s)"
-                  required
-                />
+                <label htmlFor="phone" className="block text-[16px] font-bold mb-2">Téléphone*</label>
+                <CountryCode />
               </div>
             </div>
 
@@ -156,18 +158,18 @@ const Register = () => {
 
       </div>
 
-      
 
-      <div className='flex flex-row justify-between items-center mt-4 '>
+
+      <div className='flex-row flex justify-between items-center mt-4 '>
         <p className="text-[14px] pr-3 text-skyblue font-regular cursor-pointer">
           Vous avez déjà un compte?
         </p>
 
-       <Link to="/register2">
-       <button className=" ml-8 p-2 w-[150px] h-[35px] bg-skyblue text-white text-sm font-bold rounded-full">
-          Suivant
-        </button>
-       </Link>
+        <Link to="/register2">
+          <button className=" ml-16  w-[150px] h-[35px] bg-skyblue text-white text-sm font-bold rounded-full">
+            Suivant
+          </button>
+        </Link>
       </div>
 
 
