@@ -72,7 +72,7 @@ const columns = [
                 menuItems={[
                     { label: "Autorisations", action: () => alert(`Editing ${info.row.original.name}`) },
                     { label: "Voir le profil", action: () => alert(`Deleting ${info.row.original.name}`)},
-                    { label: "Supprimé", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
+                    { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
                 ]}
             />
         ),

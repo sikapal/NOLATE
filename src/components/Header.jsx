@@ -1,14 +1,40 @@
 import React from 'react';
 import { FaBars, FaBell, FaRegBell, FaSearch, FaUserCircle } from 'react-icons/fa';
 import Badge from '@mui/material/Badge';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Add } from '@mui/icons-material';
+
 
 const Header = ({ setOpen }) => {
   return (
     <div className='bg-white px-4 py-3 flex justify-between w-full h-[70px] border-y shadow '>
-      <div className='flex items-center text-xl'>
+      <div className='flex flex-row  items-center justify-between text-xl'>
 
         <FaBars className='text-black me-1 cursor-pointer' onClick={() => setOpen(prev => !prev)} />
+        <div className='relative '>
+          <button className='text-violet group text-[14px]  px-8 mx-4  bg-white rounded-full  '> 
+          <span className='' >
+            <Add style={{width:"16px", height:"16px"}}/>
+          </span>
+          Créer
+          
+          <span className='px-2'>
+            <ExpandMoreIcon/>
+          </span>
+            <div className='z-10 hidden absolute bg-white rounded-lg shadow w-36 group-focus:block top-14 right-0'>
+              <ul className='py-2 text-sm  text-gray-950'>
+                <li className='my-2 '><a href=""> <Add style={{width:"16px", height:"16px",color:"#68089F"}}/> Planning</a></li>
+                <li className='my-2'><a href=""> <Add style={{width:"16px", height:"16px",color:"#68089F"}}/> Activité</a></li>
+                <li className='my-2'><a href=""> <Add style={{width:"16px", height:"16px",color:"#68089F"}}/> Lieu</a></li>
+                <li className='my-2'><a href=""> <Add style={{width:"16px", height:"16px",color:"#68089F"}}/> Publication</a></li>
+                <li className='my-2'><a href=""> <Add style={{width:"16px", height:"16px",color:"#68089F"}}/> Membres</a></li>
+              </ul>
+            </div>
+          
+          </button>
+        </div>
 
+     
       </div>
 
       <div className='flex items-center gap-x-5'>
@@ -24,22 +50,22 @@ const Header = ({ setOpen }) => {
 
 
         <div >
-        <Badge badgeContent={4} color="primary" className='text-violet'
-            sx={{ '& .MuiBadge-badge': {  backgroundColor: '#ff0000', color: 'white',  },  }}
+          <Badge badgeContent={4} color="primary" className='text-violet'
+            sx={{ '& .MuiBadge-badge': { backgroundColor: '#ff0000', color: 'white', }, }}
           >
             <FaRegBell className='w-5 h-5' />
           </Badge>
         </div>
         <div >
           <Badge badgeContent={4} color="primary" className='text-violet'
-            sx={{ '& .MuiBadge-badge': {  backgroundColor: '#ff0000', color: 'white',  },  }}
+            sx={{ '& .MuiBadge-badge': { backgroundColor: '#ff0000', color: 'white', }, }}
           >
             <FaRegBell className='w-5 h-5' />
           </Badge>
         </div>
         <div >
-        <Badge badgeContent={4} color="primary" className='text-violet'
-            sx={{ '& .MuiBadge-badge': {  backgroundColor: '#ff0000', color: 'white',  },  }}
+          <Badge badgeContent={4} color="primary" className='text-violet'
+            sx={{ '& .MuiBadge-badge': { backgroundColor: '#ff0000', color: 'white', }, }}
           >
             <FaRegBell className='w-5 h-5' />
           </Badge>

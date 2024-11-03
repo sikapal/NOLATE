@@ -23,12 +23,11 @@ const MemberLarge = () => {
         setAnchorEl(null);
     };
     return (
-        <div className='flex-row bg-white  w-[380px] h-[500px] border border-slate-100 rounded-2xl shadow-md '>
+        <div className='flex-row bg-white  w-[330px] h-[490px] border border-slate-100 rounded-2xl shadow-md '>
 
             <div className='w-full h-1/5 rounded-t-md relative mb-8 '>
                 <img src={image} alt="profile" className='w-full h-[120px] rounded-t-md  ' />
-                <p className='absolute text-white top-0 w-full bg-sky-400 rounded-t-md opacity-1 text-[10px] p-4  items-center text-center justify-center font-bold'>Ecole Nationale superieure des Postes et Télecommunications et TIC</p>
-
+                
                 <div className='px-4 justify-between'>
                     <img src={image} alt="profile" className='rounded-full w-[100px] h-[100px] border-4 border-white absolute top-16 ' />
 
@@ -82,49 +81,49 @@ const MemberLarge = () => {
                 </div>
 
                 <div>
-                    <p className='text-slate-600 justify-center text-center ml-12 '><span className='md:'>  User ID :</span> <span className='text-black'>4187690287</span></p>
+                    <p className='text-slate-600 justify-center text-center ml-12  text-[14px]'><span className='md:'>  User ID :</span> <span className='text-black'>4187690287</span></p>
                 </div>
 
             </div>
 
             <div className='pt-8 px-4 '>
-                <h1 className='font-bold mb-1 text-xl'>Pr. George Matoudi</h1>
+                <h1 className='font-bold mb-1 mt-3 text-xl'>Pr. George Matoudi</h1>
                 <p className='text-slate-500 mb-2'>Chef service de scolarité</p>
                 <div className='flex items-center mb-4'>
-                    <div className='flex items-center  text-violet justify-center p-2 bg-white border  border-slate-300 rounded-full w-8 h-8'>
-                        <Call className='text-red-500 text-xs' />
+                    <div className='flex items-center  text-violet justify-center p-2 bg-white border  border-slate-300 rounded-full w-7 h-7'>
+                        <Call style={{width:"15px" , height:"15px"}} className='text-red-500 text-xs' />
                     </div>
                     <p className='ml-4 text-[#636578]'>(+2376)xxx-xxx-xxx</p>
                 </div>
                 <div className='flex items-center mb-4'>
-                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-8 h-8'>
-                        <Call className='text-red-500  justify-center item-center ' />
+                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
+                        <EmailOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>(+2376)xxx-xxx-xxx</p>
+                    <p className='ml-4  text-[#636578]'>test@gmail.com</p>
                 </div>
                 <div className='flex items-center mb-4'>
-                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-8 h-8'>
-                        <Call className='text-red-500  justify-center item-center ' />
+                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
+                        <SchemaOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>(+2376)xxx-xxx-xxx</p>
+                    <p className='ml-4  text-[#636578]'>Dircection des Affaires Générales</p>
                 </div>
                 <div className='flex items-center mb-4'>
-                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-8 h-8'>
-                        <Call className='text-red-500  justify-center item-center ' />
+                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
+                        <PersonAddAltOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>(+2376)xxx-xxx-xxx</p>
+                    <p className='ml-4  text-[#636578]'>Ajouté le <span className='text-violet'>01 Janvier 2024</span></p>
                 </div>
                 <div className='flex items-center mb-4'>
-                    <div className=' flex text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-8 h-8'>
-                        <Call className='text-red-500  justify-center item-center ' />
+                    <div className=' flex text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
+                        < BusinessCenterOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>(+2376)xxx-xxx-xxx</p>
+                    <p className='ml-4  text-[#636578]'>Hors Servvice</p>
                 </div>
             </div>
 
             <div className='justify-center text-center cursor-pointer'>
 
-                <ArrowCircleUpSharp />
+                <ArrowCircleUpSharp/>
             </div>
         </div>
     )

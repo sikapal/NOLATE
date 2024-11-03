@@ -46,17 +46,7 @@ const About = () => {
                     <div className='flex flex-row justify-between mt-3 gap-4'>
                         <div className='w-[75%] rounded-md shadow-2xl'>
 
-                            <div className="top h-[20%] flex flex-col shadow-lg mb-4">
-
-                                <div className="bg-white flex ">
-
-                                    <img src={image} alt="cover" className="h-[80px] w-full object-cover" />
-                                </div>
-                                <div className="bg-white flex flex-col  justify-center">
-                                    <p className='mx-20 font-bold'>Ecole Nationale Supérieure des Postes, des Télécommunications et des Technologies de l'Information et la Communication (SUP'PTIC)</p>
-                                    <p className='mx-20 font-medium'> Créé le 24/04/2024</p>
-                                </div>
-                            </div>
+      
 
                             <div className='pt-auto'>
                                 <Tabs aria-label="Tabs with underline" variant="underline" className="w-full text-[14px] pt-4 gap-x-8 justify-center">

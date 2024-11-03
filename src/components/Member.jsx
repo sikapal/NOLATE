@@ -3,6 +3,7 @@ import image from '../assets/image.jpg'
 import { FaEye, FaRegBell } from 'react-icons/fa'
 import Dots from './Dots'
 import { Badge } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 const Member = () => {
     const menuItems = [
@@ -33,7 +34,9 @@ const Member = () => {
                         <button className=' bg-slate-100 text-[14px] hover:bg-slate-200 hover:text-violet hover:text-[16px]  w-[140px] h-[40px] rounded-xl justify-center text-black  items-center flex'>
                             <div className='flex mr-2 justify-center items-center'>
                                 <span> <FaEye className='justify-center items-center mx-2' /></span>
-                                <p>Voir le profil</p>
+                              <Link to="/user-profile" >
+                              <p>Voir le profil</p>
+                              </Link>
                             </div>
                         </button>
                     </div>

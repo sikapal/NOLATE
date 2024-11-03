@@ -18,12 +18,12 @@ const Parametres = () => {
     ];
 
     return (
-        <div className="flex flex-row h-screen w-full overflow-y-auto bg-gray-100">
+        <div className="flex flex-row w-full h-auto bg-gray-100">
 
 
-            <div className='left  bg-darkblue'>
-                <div className='flex '>
-                    <Sidebar open={open} setOpen={setOpen} />
+            <div className='left bg-darkblue'>
+                <div className='flex'>
+                <Sidebar open={open} setOpen={setOpen} />
                 </div>
             </div>
 
@@ -31,8 +31,8 @@ const Parametres = () => {
                 <Header setOpen={setOpen} />
 
 
-                <div className="p-3 flex flex-row ">
-                    <div className=' left w-[70%]'>
+                <div className="p-3 flex flex-row overflow-y-scroll scrollbar-custom ">
+                    <div className=' left w-[70%] '>
                         <BreadcrumbsP breadcrumbs={breadcrumbs} />
 
                         <div className='bg-white rounded-2xl shadow-lg h-[290px] mt-3 '>
@@ -48,7 +48,7 @@ const Parametres = () => {
                                 </div>
                             </div>
 
-                            <div className='flex flex-row relative  justify-between'>
+                            <div className='flex flex-row relative  justify-between '>
                                 <div className='w-full mt-5 -ml-1'>
                                     <Tabs />
                                 </div>
@@ -64,10 +64,7 @@ const Parametres = () => {
                                     />
                                 </div>
 
-                                <div className='py-1'>
-
-
-                                </div>
+                            
                             </div>
 
                         </div>

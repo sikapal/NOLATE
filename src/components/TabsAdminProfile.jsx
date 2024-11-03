@@ -9,8 +9,9 @@ import ParamOrgani from './ParamOrgani';
 import ParamSecu from './ParamSecu';
 import ParamNotif from './ParamNotif';
 import ParamPointeuse from './ParamPointeuse';
+import { Image } from '@mui/icons-material';
 
-const Tabs = () => {
+const TabsAdminProfile = () => {
 
     const [activeTab, setActiveTab]= useState(0);
     const tabs = [
@@ -18,7 +19,7 @@ const Tabs = () => {
             title: "A PROPOS", icon: <InfoOutlinedIcon/>
         },
         {
-            title: "ORGANIGRAMME", icon: <AccountTreeOutlinedIcon/>
+            title: "AUTORISATION", icon: <AccountTreeOutlinedIcon/>
         },
         {
             title: "SECURITE", icon: <LockOutlinedIcon/>
@@ -27,7 +28,7 @@ const Tabs = () => {
             title: "NOTIFICATIONS", icon: <NotificationsNoneOutlinedIcon/>
         },
         {
-            title: "POINTEUSE", icon: <PhonelinkSetupOutlinedIcon className='rotate-180'/>
+            title: "MEDIAS", icon: <Image className='rotate-180'/>
         },
 
 
@@ -47,7 +48,7 @@ const Tabs = () => {
                     <button
                         onClick={() => setActiveTab(index)}
                         key={`tab_${index}`}
-                        className={`px-2 flex-1 text-[14px]  text-[#707070] font-bold border-b-3 ${
+                        className={`px-2 flex-1 text-[14px] text-[#707070] font-bold border-b-3 ${
                             activeTab === index ? 'border-b-4 border-lightblue text-lightblue' : ''
                         } py-3`}
                     >
@@ -81,4 +82,4 @@ const Tabs = () => {
     );
 }
 
-export default Tabs
+export default TabsAdminProfile

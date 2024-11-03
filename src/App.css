@@ -6,11 +6,11 @@
 
 body{
   font-family: "Inter", sans-serif;
-  background: white;
+  background: #F6F6F6;
 }
 
 .scrollbar-custom::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {

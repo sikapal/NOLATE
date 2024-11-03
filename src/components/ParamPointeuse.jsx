@@ -2,54 +2,53 @@ import React, { useState } from 'react';
 import { Add } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
-import mockData from "../assets/constants/data4.json";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search,  } from "lucide-react";
+import mockData from "../assets/constants/data6.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const columnHelper = createColumnHelper();
 
 const columns = [
-  columnHelper.accessor("select", {
-    header: () => (
-      <input type="checkbox" className='cursor-pointer' />
-    ),
-    cell: () => (
-      <input type="checkbox" className='cursor-pointer' />
-    ),
-  }),
-
-
-  columnHelper.accessor("unite", {
+ 
+  columnHelper.accessor("appareil", {
     cell: (info) => info.getValue(),
     header: () => (
       <span className="flex items-center ">
-        UNITE DE GESTION
+       APPAREIL
       </span>
     ),
   }),
-  columnHelper.accessor("niveau", {
+  columnHelper.accessor("emplacement", {
     cell: (info) => (
       <span className="italic text-blue-600">{info.getValue()}</span>
     ),
     header: (info) => (
       <span className="flex items-center">
-        NIVEAU
+       EMPLACEMENT
       </span>
     ),
   }),
-  columnHelper.accessor("effectif", {
+  columnHelper.accessor("utilisateur", {
     header: (info) => (
       <span className="flex items-center">
-        EFFECTIF
+       UTILISATEUR
       </span>
     ),
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("responsable", {
+  columnHelper.accessor("connexion", {
     header: (info) => (
       <span className="flex items-center">
-        RESPONSABLE
+        CONNEXION RECENTE
+      </span>
+    ),
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("status", {
+    header: (info) => (
+      <span className="flex items-center">
+        STATUS
       </span>
     ),
     cell: (info) => info.getValue(),
@@ -60,8 +59,8 @@ const columns = [
     cell: (info) => (
       <Dots
         menuItems={[
-
-          { label: "Modifier", action: () => alert(`Deleting ${info.row.original.name}`) },
+            { label: "Infos", action: () => alert(`Deleting ${info.row.original.name}`) },
+          { label: "Désactiver", action: () => alert(`Deleting ${info.row.original.name}`) },
           { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
         ]}
       />
@@ -69,7 +68,7 @@ const columns = [
   }),
 ];
 
-const ParamOrgani = () => {
+const ParamPointeuse = () => {
 
   const [data] = useState(() => [...mockData]);
   const [sorting, setSorting] = useState([]);
@@ -103,8 +102,8 @@ const ParamOrgani = () => {
     setFilter(event.target.value);
   };
   return (
-    <div className=" bg-white w-full rounded-xl h-auto pt-4 pb-2  flex flex-col">
-      <h1 className="font-bold p-3">Organigramme de la structure</h1>
+    <div className=" bg-white w-full rounded-xl h-auto pt-4 pb-2 -mx-1 flex flex-col">
+      <h1 className="font-bold p-3">Pointeuses et Appareils</h1>
 
       <div className="flex flex-wrap  p-3 justify-between">
         <div className="left">
@@ -132,10 +131,10 @@ const ParamOrgani = () => {
               onChange={handleSetFilter}
             >
               <option value="" className="font-semibold ">
-                Sélectionner
+                Trier par
               </option>
-              <option value="Féminin">Effectif</option>
-              <option value="Masculin">Responsable</option>
+              <option value="Féminin">à définir</option>
+              <option value="Masculin">à définir</option>
             </select>
             <div className="absolute top-1  right-3 transform translate-y-1 pointer-events-none text-black">
               <ExpandMoreIcon />
@@ -144,7 +143,7 @@ const ParamOrgani = () => {
           <button className=' bg-lightblue text-[14px] hover:text-[14px]  w-[230px] h-[40px] rounded-xl justify-center text-white  items-center flex'>
             <div className='flex mr-1 justify-center items-center'>
               <span> <Add className='justify-center items-center mx-1' /></span>
-              <p className='mr-1'>Ajouter une unité de gestion</p>
+              <p className='mr-1'>Ajouter nouvelle pointeuse</p>
             </div>
           </button>
         </div>
@@ -271,4 +270,4 @@ const ParamOrgani = () => {
   )
 }
 
-export default ParamOrgani
+export default ParamPointeuse

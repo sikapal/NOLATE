@@ -10,7 +10,7 @@ import BilanHoraire from './BilanHoraire';
 import MemberLarge from './MemberLarge';
 
 import BreadcrumbsP from './BreadcrumbsP';
-import Tab from './Tab';
+
 import CountryCode from './CountryCode';
 import Table from './Table';
 import Tabs from './Tabs';
@@ -31,7 +31,7 @@ const Dashboard = ({ }) => {
                         <Tabs/>
                        <Table/>
                        <CountryCode/>
-                        <Tab/>
+        
                     
                         <div className='flex-row'>
                       hh

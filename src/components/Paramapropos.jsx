@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Apropos = () => {
+const Paramapropos = () => {
     return (
-        <div className='bg-white w-full p-4 rounded-2xl -mx-2'>
+        <div className='bg-white w-full h-full p-4 rounded-2xl '>
 
             <h1 className="font-bold text-lg mb-1">Présentation Générale</h1>
             <form action=" ">
@@ -75,12 +75,10 @@ const Apropos = () => {
                     <label htmlFor="nom" className="block font-semibold mb-2 text-gray-700">
                         Secteur
                     </label>
-                    <input
-                        type="text"
-                        id="nom"
-                        placeholder="Entrez le nom de l'entreprise"
-                        className="w-full border border-gray-300 rounded px-3 py-2"
-                    />
+                     
+                     <div >
+
+                     </div>
                 </div>
 
 
@@ -89,4 +87,4 @@ const Apropos = () => {
     )
 }
 
-export default Apropos
+export default Paramapropos

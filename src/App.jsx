@@ -14,6 +14,8 @@ import Barbillard from './pages/activites/Barbillard';
 import FichePresence from './pages/activites/FichePresence';
 import About from './pages/parametres/About';
 import Parametres from './pages/parametres/parametres';
+import UserProfile from './pages/parametres/UserProfile';
+import AdminProfile from './pages/utilisateurs/AdminProfile';
 
 const MyContext = createContext();
 
@@ -44,6 +46,9 @@ function App() {
             <Route path="/fichepresence" element={<FichePresence/>} />
             <Route path="/about" element={<About/>} />
             <Route path="/parametres" element={<Parametres/>} />
+            <Route path="/user-profile" element={<UserProfile/>} />
+            <Route path="/admin-profile" element={<AdminProfile/>} />
+            
           </Routes>
         </MyContext.Provider>
       </BrowserRouter>

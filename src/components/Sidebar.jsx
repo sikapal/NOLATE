@@ -29,7 +29,7 @@ const Sidebar = ({ open, setOpen }) => {
       submenuItems: [
         { title: "Emploi de temps" },
         { title: "Fiche de présence" },
-        { title: "Barbillard" },
+        { title: "Babillard" },
       ],
     },
     {
@@ -72,7 +72,7 @@ const Sidebar = ({ open, setOpen }) => {
             <span className='text-yellow text-[3px] pt-2'>
               <img src={logo} alt="logo" className='w-[20px] h-[20px]' />
             </span>{' '}
-            <span className='text-white text-[32px]'>Late</span>{' '}
+            <span className='text-white text-[32px]'>late</span>{' '}
           </h2>
         </div>
 
