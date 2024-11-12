@@ -32,7 +32,7 @@ const Register = () => {
             <span className='text-[3px] pt-4'>
               <img src={logo} alt="logo" className="w-[20px] h-[20px]" />
             </span>
-            <span className='text-violet text-[32px]'>Late</span>
+            <span className='text-violet text-[32px]'>late</span>
           </h2>
 
           <p className="font-bold text-europa text-[18px] text-center justify-center">Informations sur l'administrateur du compte</p>
@@ -161,8 +161,11 @@ const Register = () => {
 
 
       <div className='flex-row flex justify-between items-center mt-4 '>
-        <p className="text-[14px] pr-3 text-skyblue font-regular cursor-pointer">
-          Vous avez déjà un compte?
+        <p className="text-[14px] pr-3 text-skyblue font-regular ">
+          Vous avez déjà un compte? 
+          <Link to="/login">
+          <span className='ml-2 text-titre cursor-pointer'>Connectez-vous</span></Link>
+         
         </p>
 
         <Link to="/register2">

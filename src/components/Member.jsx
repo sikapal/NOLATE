@@ -1,6 +1,6 @@
 import React from 'react'
 import image from '../assets/image.jpg'
-import { FaEye, FaRegBell } from 'react-icons/fa'
+import { FaEye, FaRegBell, FaRegEnvelope } from 'react-icons/fa'
 import Dots from './Dots'
 import { Badge } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
@@ -48,7 +48,7 @@ const Member = () => {
                         </div>
 
                         <div className='border bg-slate-50 w-10 h-10 rounded-xl  cursor-pointer  ml-4 text-violet'>
-                            <FaRegBell className='w-5 h-5 text-center justify-center m-2.5 items-center ' />
+                            <FaRegEnvelope className='w-5 h-5 text-center justify-center m-2.5 items-center ' />
                         </div>
                     </div>
                 </div>

@@ -4,151 +4,99 @@ import Sidebar from '../../components/Sidebar';
 import BreadcrumbsP from '../../components/BreadcrumbsP';
 import { Add } from '@mui/icons-material';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
+import { ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search } from "lucide-react";
 import mockData from "../../assets/constants/data3.json";
 import Dots from '../../components/Dots';
 import DetailPresence from '../../components/DetailPresence';
 
-
 const columnHelper = createColumnHelper();
 
-
-
-const columns = [
-    columnHelper.accessor("select", {
-        header: () => (
-            <input type="checkbox" className='cursor-pointer' />
-        ),
-        cell: () => (
-            <input type="checkbox" className='cursor-pointer' />
-        ),
-    }),
-   
-
-    columnHelper.accessor("date", {
-        cell: (info) => info.getValue(),
-        header: () => (
-            <span className="flex items-center">
-                Date
-            </span>
-        ),
-    }),
-    columnHelper.accessor("utilisateur", {
-        cell: (info) => (
-            <span className="italic text-blue-600">{info.getValue()}</span>
-        ),
-        header: () => (
-            <span className="flex items-center">
-               UTILISATEUR
-            </span>
-        ),
-    }),
-    columnHelper.accessor("activite", {
-        header: (info) => (
-            <span className="flex items-center">
-                Actvité / Lieu
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("horaire", {
-        header: (info) => (
-            <span className="flex items-center">
-         Plage Horaire
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("auth", {
-        header: (info) => (
-            <span className="flex items-center">
-                 Mode d'AUTH
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("debut", {
-        header: (info) => (
-            <span className="flex items-center">
-                Pointage debut
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("fin", {
-        header: (info) => (
-            <span className="flex items-center">
-            pointage Fin
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("status", {
-        header: (info) => (
-            <span className="flex items-center">
-                Status
-            </span>
-        ),
-        cell: (info) => {
-            const status = info.getValue();
-           
-            const statusClass = status === "Présent" ? "text-green" : "text-red";
-            return (
-                <span className={statusClass}>
-                    {status}
-                </span>
-            );
-        },
-    }),
-    
-    columnHelper.accessor("checkup", {
-        header: (info) => (
-            <span className="flex items-center">
-                 Check Up
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("retourInfo", {
-        header: (info) => (
-            <span className="flex items-center">
-              Retour d'INFO
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("ACTION", {
-        header: "Actions",
-        cell: (info) => (
-            <Dots
-                menuItems={[
-                    { label: "Modifier", action: () => alert(`Editing ${info.row.original.name}`) },
-                    { 
-                        label: "Détail", 
-                        action: () => {
-                            setModalContent(`Details for ${info.row.original.name}`); 
-                            setIsModalOpen(true); 
-                        }
-                    },
-                    { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
-                ]}
-            />
-        ),
-    }),
-];
-
-
 const FichePresence = () => {
-
     const [data] = useState(() => [...mockData]);
     const [sorting, setSorting] = useState([]);
     const [globalFilter, setGlobalFilter] = useState("");
     const [open, setOpen] = useState(true);
-    
+    const [detailData, setDetailData] = useState(null);
 
     const breadcrumbs = [
         { label: 'Activités' },
         { label: 'Fiche de présence', href: '/fichepresence' },
+    ];
+
+    const columns = [
+        columnHelper.accessor("select", {
+            header: () => (
+                <input type="checkbox" className='cursor-pointer' />
+            ),
+            cell: () => (
+                <input type="checkbox" className='cursor-pointer' />
+            ),
+        }),
+        columnHelper.accessor("date", {
+            cell: (info) => info.getValue(),
+            header: "Date",
+        }),
+        columnHelper.accessor("utilisateur", {
+            cell: (info) => (
+                <span className="italic text-blue-600">{info.getValue()}</span>
+            ),
+            header: "UTILISATEUR",
+        }),
+        columnHelper.accessor("activite", {
+            header: "Actvité / Lieu",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("horaire", {
+            header: "Plage Horaire",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("auth", {
+            header: "Mode d'AUTH",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("debut", {
+            header: "Pointage debut",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("fin", {
+            header: "pointage Fin",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("status", {
+            header: "Status",
+            cell: (info) => {
+                const status = info.getValue();
+                const statusClass = status === "Présent" ? "text-green" : "text-red";
+                return <span className={statusClass}>{status}</span>;
+            },
+        }),
+        columnHelper.accessor("checkup", {
+            header: "Check Up",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("retourInfo", {
+            header: "Retour d'INFO",
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("ACTION", {
+            header: "Actions",
+            cell: (info) => (
+                <Dots
+                    menuItems={[
+                        { label: "Modifier", action: () => alert(`Editing ${info.row.original.utilisateur}`) },
+                        { 
+                            label: "Détail", 
+                       
+                            action: () => {
+
+                                setDetailData(null);
+                                setTimeout(() => setDetailData(info.row.original), 0);
+                            } },
+                        { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.utilisateur}`), color: "red" },
+                    ]}
+                />
+            ),
+        }),
     ];
 
     const table = useReactTable({
@@ -170,25 +118,17 @@ const FichePresence = () => {
         getFilteredRowModel: getFilteredRowModel(),
     });
 
-
-
     return (
-        <div className="flex max-w-full h-screen  bg-gray-100">
-            
+        <div className="flex max-w-full h-screen bg-gray-100">
             <Sidebar open={open} setOpen={setOpen} />
-
             <div className="w-full">
                 <Header setOpen={setOpen} />
-
                 <div className="p-3">
                     <BreadcrumbsP breadcrumbs={breadcrumbs} />
-
-                    <div className="mt-3 bg-white max-w-full rounded-xl h-[85vh] flex flex-col ">
+                    <div className="mt-3 bg-white max-w-full rounded-xl h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3">Fiche de présence</h1>
-                       
-                        <div className="flex flex-wrap p-3 justify-between ">
-                      
-                            <div className="left flex flex-wrap ">
+                        <div className="flex flex-wrap p-3 justify-between">
+                            <div className="left flex flex-wrap">
                                 <div className="mb-4 relative">
                                     <input
                                         value={globalFilter ?? ""}
@@ -196,33 +136,23 @@ const FichePresence = () => {
                                         placeholder="Rechercher..."
                                         className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                                     />
-                                    <Search
-                                        className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                                        size={20}
-                                    />
+                                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                                 </div>
                             </div>
                             <div className="right">
-                                <button className=' bg-lightblue text-[16px] hover:text-[16px] m-auto  w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
-                                    <div className='flex mr-2 justify-center items-center'>
-                                        <span> <Add className='justify-center items-center mx-2' /></span>
-                                        <p>Ajouter un administrateur</p>
-                                    </div>
+                                <button className='bg-lightblue text-[16px] m-auto w-auto h-[40px] rounded-xl text-white flex items-center'>
+                                    <Add className='mx-2' /> Ajouter un administrateur
                                 </button>
                             </div>
                         </div>
-                        <DetailPresence/>
-                        <div className="flex-wrap py-4 px-4 scrollbar-custom overflow-y-auto">
-                            <div className=" bg-white flex-wrap shadow-md rounded-lg">
-                                <table className="min-w-full flex-wrap divide-y divide-gray-200">
-                                    <thead className="bg-[#E5F4FF] -mx-[10px] text-[12px] ">
+                        <div className="flex-wrap py-4 px-4 overflow-y-auto">
+                            <div className="bg-white shadow-md rounded-lg">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#E5F4FF] text-[12px]">
                                         {table.getHeaderGroups().map((headerGroup) => (
                                             <tr key={headerGroup.id}>
                                                 {headerGroup.headers.map((header) => (
-                                                    <th
-                                                        key={header.id}
-                                                        className="px-1 py-2 text-left text-[10px] w-1 font-bold text-black uppercase "
-                                                    >
+                                                    <th key={header.id} className="px-1 py-2 text-left text-[10px] font-bold text-black uppercase">
                                                         <div
                                                             {...{
                                                                 className: header.column.getCanSort()
@@ -231,10 +161,7 @@ const FichePresence = () => {
                                                                 onClick: header.column.getToggleSortingHandler(),
                                                             }}
                                                         >
-                                                            {flexRender(
-                                                                header.column.columnDef.header,
-                                                                header.getContext()
-                                                            )}
+                                                            {flexRender(header.column.columnDef.header, header.getContext())}
                                                             <ArrowUpDown className="ml-2" size={14} />
                                                         </div>
                                                     </th>
@@ -246,10 +173,7 @@ const FichePresence = () => {
                                         {table.getRowModel().rows.slice(0, table.getState().pagination.pageSize).map((row) => (
                                             <tr key={row.id} className="hover:bg-gray-100">
                                                 {row.getVisibleCells().map((cell) => (
-                                                    <td
-                                                        key={cell.id}
-                                                        className="px-1 py-2  whitespace-nowrap text-[12px] text-gray-500"
-                                                    >
+                                                    <td key={cell.id} className="px-1 py-2 text-[12px] text-gray-500">
                                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                     </td>
                                                 ))}
@@ -258,8 +182,9 @@ const FichePresence = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-700">
-        <div className="flex items-center mb-4 sm:mb-0">
+                        </div>
+                          <div className='flex flex-row justify-between mx-4'>
+                          <div className="flex items-center mb-4 sm:mb-0">
           <span className="mr-2">Afficher</span>
           <select
             className="border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
@@ -324,13 +249,16 @@ const FichePresence = () => {
             <ChevronsRight size={20} />
           </button>
         </div>
-      </div>
-
-
-                        </div>
-          
+                          </div>
                     </div>
+                    {detailData && (
+                        <DetailPresence data={detailData} onClose={() => setDetailData(null)} />
+                    )}
+
+
                 </div>
+
+                
             </div>
         </div>
     );

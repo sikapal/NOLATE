@@ -35,7 +35,7 @@ const Barbillard = () => {
                                 />
                             </div>
                             <div className="right">
-                            <button className=' bg-lightblue text-[16px] hover:text-[16px]  w-[220px] h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                            <button className=' bg-lightblue text-[12px] hover:text-[14px]  w-[220px] h-[40px] rounded-xl justify-center text-white  items-center flex'>
                             <div className='flex mr-2 justify-center items-center'>
                                 <span> <Add className='justify-center items-center mx-2' /></span>
                                 <p>Ajouter une publication</p>

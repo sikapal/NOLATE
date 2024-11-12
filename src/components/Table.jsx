@@ -71,8 +71,8 @@ const columns = [
     cell: (info) => (
       <Dots
         menuItems={[
-          { label: "Edit", action: () => alert(`Editing ${info.row.original.name}`), color: "blue" },
-          { label: "Delete", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
+          { label: "Modifier", action: () => alert(`Editing ${info.row.original.name}`), color: "blue" },
+          { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
         ]}
       />
     ),

@@ -16,12 +16,17 @@ import About from './pages/parametres/About';
 import Parametres from './pages/parametres/parametres';
 import UserProfile from './pages/parametres/UserProfile';
 import AdminProfile from './pages/utilisateurs/AdminProfile';
+import Test from './components/test';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import EmploiTemps from './pages/activites/EmploiTemps';
+
 
 const MyContext = createContext();
 
 function App() {
 
-  const values = {}; // Make sure `values` is defined
+  const values = {}; 
 
   return (
     <>
@@ -37,6 +42,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/register2" element={<Register2 />} />
             <Route path="/register3" element={<Register3 />} />
+            <Route path="/mot-de-passe-oublié" element={<ForgotPassword />} />
+            <Route path="/nouveau-mot-de-passe" element={<ResetPassword />} />
             <Route path="/sidebar" element={<Sidebar />} />
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/members" element={<Membres/>} />
@@ -46,8 +53,10 @@ function App() {
             <Route path="/fichepresence" element={<FichePresence/>} />
             <Route path="/about" element={<About/>} />
             <Route path="/parametres" element={<Parametres/>} />
+            <Route path="/emploi-de-temps" element={<EmploiTemps/>}/>
             <Route path="/user-profile" element={<UserProfile/>} />
             <Route path="/admin-profile" element={<AdminProfile/>} />
+         
             
           </Routes>
         </MyContext.Provider>

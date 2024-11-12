@@ -1,25 +1,23 @@
 import React, { useState } from 'react'
-import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import PhonelinkSetupOutlinedIcon from '@mui/icons-material/PhonelinkSetupOutlined';
-import Paramapropos from './Paramapropos';
-import ParamOrgani from './ParamOrgani';
-import ParamSecu from './ParamSecu';
 import ParamNotif from './ParamNotif';
 import ParamPointeuse from './ParamPointeuse';
-import { Image } from '@mui/icons-material';
+import { CollectionsOutlined,  PersonOutline, TrendingUpRounded } from '@mui/icons-material';
+import UserActivite from '../pages/utilisateurs/UserActivite';
+import UserApropos from '../pages/utilisateurs/UserApropos';
+import UserSecu from '../pages/utilisateurs/UserSecu';
+import UserNotif from '../pages/utilisateurs/UserNotif';
 
 const TabsUserProfile = () => {
 
     const [activeTab, setActiveTab]= useState(0);
     const tabs = [
         {
-            title: "ACTIVITE", icon: <InfoOutlinedIcon/>
+            title: "ACTIVITES", icon: <TrendingUpRounded/>
         },
         {
-            title: "A PROPOS", icon: <AccountTreeOutlinedIcon/>
+            title: "A PROPOS", icon: <PersonOutline/>
         },
         {
             title: "SECURITE", icon: <LockOutlinedIcon/>
@@ -28,27 +26,27 @@ const TabsUserProfile = () => {
             title: "NOTIFICATIONS", icon: <NotificationsNoneOutlinedIcon/>
         },
         {
-            title: "MEDIA", icon: <Image className='rotate-180'/>
+            title: "MEDIA", icon: <CollectionsOutlined className='rotate-180'/>
         },
 
 
     ];
     const contents = [
-        <Paramapropos/>,
-        <ParamOrgani/>,
-        <ParamSecu/>,
-        <ParamNotif/>,
-        <ParamPointeuse/>,
+        <UserActivite/>,
+        <UserApropos/>,
+        <UserSecu/>,
+        <UserNotif/>,
+        
     ]
 
     return (
-        <div className='w-full '>
-            <div className='flex justify-between items-center'>
+        <div className='w-full   '>
+            <div className='flex flex-wrap justify-between items-center'>
                 {tabs.map((tab, index) => (
                     <button
                         onClick={() => setActiveTab(index)}
                         key={`tab_${index}`}
-                        className={`px-2 flex-1 text-[14px] text-[#707070] font-bold border-b-3 ${
+                        className={`px-2 flex-1  text-[14px] text-[#707070] font-bold border-b-3 ${
                             activeTab === index ? 'border-b-4 border-lightblue text-lightblue' : ''
                         } py-3`}
                     >

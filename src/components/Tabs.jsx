@@ -47,7 +47,7 @@ const Tabs = () => {
                     <button
                         onClick={() => setActiveTab(index)}
                         key={`tab_${index}`}
-                        className={`px-2 flex-1 text-[14px]  text-[#707070] font-bold border-b-3 ${
+                        className={`px-2 flex-1 text-[12px]  text-[#707070] font-bold border-b-3 ${
                             activeTab === index ? 'border-b-4 border-lightblue text-lightblue' : ''
                         } py-3`}
                     >

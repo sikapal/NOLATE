@@ -3,6 +3,7 @@ import { useState } from 'react';
 import React from 'react'
 import logo from '../assets/logo.svg'
 import Checkbox from '@mui/material/Checkbox';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -26,9 +27,9 @@ const Login = () => {
                 <div className=" bg-white p-[10px] w-[535px] h-[460px] relative overflow-hidden rounded-lg shadow-lg justify-center "   >
                     <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
 
-                    <h2 className='p-t-1 mt-2 text-violet font-gothic font-bold flex justify-center '><span className='text-violet text-[32px]'>N</span> 
-                     <span className='text-yellow text-[3px] pt-4'><img src={logo} alt="logo" className="w-[20px] h-[20px]" />
-                     </span> <span className='text-violet text-[32px]'>Late</span>  </h2>
+                    <h2 className='p-t-1 mt-2 text-violet font-gothic font-bold flex justify-center '><span className='text-violet text-[32px]'>N</span>
+                        <span className='text-yellow text-[3px] pt-4'><img src={logo} alt="logo" className="w-[20px] h-[20px]" />
+                        </span> <span className='text-violet text-[32px]'>Late</span>  </h2>
 
                     <div className="mt-[30px] p-auto justify-items-start px-[25px]">
                         <label htmlFor="email" className="block text-[16px] font-bold font-arial">Address e-mail ou ID</label>
@@ -48,29 +49,33 @@ const Login = () => {
                             className="mt-2 block  p-2 border border-gray-300 rounded-md h-[48px] w-full" placeholder="Entrez votre mot de passe"
                             required
                         />
-                      
+
 
                         <div className="flex items-center mt-4">
-                        <Checkbox
-                            checked={checked}
-                            onChange={handleChange}
-                            inputProps={{ 'aria-label': 'controlled' }}
-                            className="mr-5 w-[22px] h-[22px]"
-                        />
-                             <label htmlFor="rememberMe" className="text-[16px] font-regular ml-2">Se souvenir de moi</label>
+                            <Checkbox
+                                checked={checked}
+                                onChange={handleChange}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                                className="mr-5 w-[22px] h-[22px]"
+                            />
+                            <label htmlFor="rememberMe" className="text-[16px] font-regular ml-2">Se souvenir de moi</label>
                         </div>
 
                     </div>
                     <div className='items-center justify-center px-[25px]'>
+                        <Link to="/dashboard">
+                            <button className="mt-6  p-2 w-full h-[48px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3] text-white font-bold rounded-md justify-center items-center">
+                                Se Connecter
+                            </button>
+                        </Link>
 
-                        <button className="mt-6  p-2 w-full h-[48px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3] text-white font-bold rounded-md justify-center items-center">
-                            Se Connecter
-                        </button>
 
+                        <Link to="/mot-de-passe-oublié">
+                            <p className="mt-4 text-center text-[16px] text-blue2  font-regular cursor-pointer">
+                                Mot de passe oublié?
+                            </p>
+                        </Link>
 
-                        <p className="mt-4 text-center text-[16px] text-blue2  font-regular cursor-pointer">
-                            Mot de passe oublié?
-                        </p>
                     </div>
 
                 </div>
@@ -84,9 +89,12 @@ const Login = () => {
                 <hr className="border-t border-gray-300 w-[40px]" />
             </div>
 
-            <button className="mt-6  p-2 w-[250px] h-[40px] bg-green text-white font-bold rounded-md justify-center items-center">
-                Créer un compte
-            </button>
+            <Link to="/register">
+                <button className="mt-6  p-2 w-[250px] h-[40px] bg-green text-white font-bold rounded-md justify-center items-center">
+                    Créer un compte
+                </button>
+            </Link>
+
 
             <div className="flex justify-center items-center mt-6">
                 <div className='w-[436px] h-[47px] flex flex-wrap flex-row justify-center items-center  leading-[16px] text-center mt-2 mx-3'>

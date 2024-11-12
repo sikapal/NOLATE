@@ -3,13 +3,12 @@ import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import PhonelinkSetupOutlinedIcon from '@mui/icons-material/PhonelinkSetupOutlined';
-import Paramapropos from './Paramapropos';
 import ParamOrgani from './ParamOrgani';
-import ParamSecu from './ParamSecu';
 import ParamNotif from './ParamNotif';
 import ParamPointeuse from './ParamPointeuse';
 import { Image } from '@mui/icons-material';
+import AdminApropos from './AdminApropos';
+import AdminSecu from './AdminSecu';
 
 const TabsAdminProfile = () => {
 
@@ -34,9 +33,9 @@ const TabsAdminProfile = () => {
 
     ];
     const contents = [
-        <Paramapropos/>,
+        <AdminApropos/>,
         <ParamOrgani/>,
-        <ParamSecu/>,
+        <AdminSecu/>,
         <ParamNotif/>,
         <ParamPointeuse/>,
     ]

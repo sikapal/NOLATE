@@ -1,19 +1,6 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Sidebar from './Sidebar'
-import Dots from './Dots';
-import PublicationsCard from './PublicationsCard';
-import ProfileCard from './ProfileCard';
-import Member from './Member';
-import Coordonnes from './Coordonnes';
-import BilanHoraire from './BilanHoraire';
-import MemberLarge from './MemberLarge';
-
-import BreadcrumbsP from './BreadcrumbsP';
-
-import CountryCode from './CountryCode';
-import Table from './Table';
-import Tabs from './Tabs';
 
 
 const Dashboard = ({ }) => {
@@ -28,31 +15,7 @@ const Dashboard = ({ }) => {
                     <Header setOpen={setOpen} />
                     <div className='p-2 '>
                         CONTENT DASHBOARD
-                        <Tabs/>
-                       <Table/>
-                       <CountryCode/>
-        
-                    
-                        <div className='flex-row'>
-                      hh
-                        <div className='flex pl-2 ml-2'>
-                            <MemberLarge/>
-                            <BilanHoraire/>
-                           
-
-
-                        </div>
-                            <div className='flex pl-2 ml-2'>
-                                <Coordonnes />
-                                <PublicationsCard />
-                                <Member />
-
-
-                            </div>
-                        </div>
-
-                       
-                        <ProfileCard />
+                     
 
                     </div>
                 </div>

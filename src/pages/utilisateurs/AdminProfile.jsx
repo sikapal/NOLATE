@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import BreadcrumbsP from '../../components/BreadcrumbsP';
-import Member from '../../components/Member';
-import { Add } from '@mui/icons-material';
 import MemberLarge from '../../components/MemberLarge';
-import BilanHoraire from '../../components/BilanHoraire';
 import TabsAdminProfile from '../../components/TabsAdminProfile';
 import Dots from '../../components/Dots';
 
@@ -27,23 +24,20 @@ const AdminProfile = () => {
                 <div className="p-3">
                     <BreadcrumbsP breadcrumbs={breadcrumbs} />
 
-                    <div className="mt-3 w-full rounded-xl flex flex-rows h-screen overflow-auto  ">
+                    <div className="mt-3 w-full rounded-xl flex flex-rows h-screen overflow-y-auto  ">
 
-                        <div className='w-[30%] flex flex-col py-1'>
+                        <div className='w-[30%] flex flex-col py-2'>
                             <MemberLarge />
-                            <div className='pt-4'>
-                                <BilanHoraire />
-                            </div>
                         </div>
 
-                        <div className='w-full ml-2 my-1'>
+                        <div className='w-full ml-2 '>
 
                         <div className='flex flex-row relative  justify-between '>
-                                <div className='w-full mt-5 -ml-1'>
+                                <div className='w-full -ml-1'>
                                 <TabsAdminProfile/>
                                 </div>
 
-                                <div className='rotate-90 absolute top-7 right-0 '>
+                                <div className='rotate-90 absolute top-2 right-0 '>
                                     <Dots
 
                                         menuItems={[

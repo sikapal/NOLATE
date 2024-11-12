@@ -18,7 +18,7 @@ const UserProfile = () => {
         { label: 'Georges Matoudi', href: '' },
     ];
     return (
-        <div className="flex w-full h-auto overflow-y-auto scrollbar-custom bg-gray-100">
+        <div className="flex w-full h-auto   bg-gray-100">
             <Sidebar open={open} setOpen={setOpen} />
 
             <div className="w-full">
@@ -27,7 +27,7 @@ const UserProfile = () => {
                 <div className="p-3">
                     <BreadcrumbsP breadcrumbs={breadcrumbs} />
 
-                    <div className="mt-3 w-full rounded-xl flex flex-rows h-screen overflow-auto  ">
+                    <div className="mt-3 w-full rounded-xl flex overflow-x-hidden flex-rows h-screen overflow-y-auto no-scrollbar  ">
 
                         <div className='w-[30%] flex flex-col py-1'>
                             <MemberLarge />
