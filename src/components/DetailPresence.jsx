@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal } from "flowbite-react";
+import {  Modal } from "flowbite-react";
 import { useState } from "react";
 
 const DetailPresence = () => {
@@ -11,7 +11,7 @@ const DetailPresence = () => {
             <Modal
                 show={openModal}
                 onClose={() => setOpenModal(false)}
-                className="relative w-[500px] md:max-w-2xl mx-auto" 
+                className="relative w-[400px] md:max-w-2xl mx-auto bg-inherit " 
             >
                 <Modal.Header className='text-'>Détails de présence</Modal.Header>
 

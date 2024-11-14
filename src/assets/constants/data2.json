@@ -2,82 +2,82 @@
   {
     "id": 1,
     "ADMINISTRATEUR": "viande Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Administrateur",
+    "NIVEAU D'ACCES": "Complet (100%)",
+    "UNITE DE GESTION": "Tous les membres"
    
   },
   {
     "id": 2,
     "ADMINISTRATEUR": "Meat Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Complet (100%)",
+    "UNITE DE GESTION": "5 unités"
    
   },
   {
     "id": 3,
     "ADMINISTRATEUR": "eru Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "Mchel Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "5 unités"
    
   },
   {
     "id": 4,
     "ADMINISTRATEUR": "Kanda Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "Tous les membres"
    
   },
   {
     "id": 5,
     "ADMINISTRATEUR": "John Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "Tous les membres"
    
   },
   {
     "id": 6,
     "ADMINISTRATEUR": "John Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Administrateur",
+    "NIVEAU D'ACCES": "PartiPartiel (50%)",
+    "UNITE DE GESTION": "3 unités"
    
   },
   {
     "id": 7,
     "ADMINISTRATEUR": "John Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "3 unités"
    
   },
   {
     "id": 8,
     "ADMINISTRATEUR": "John Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "2 unités"
    
   },
   {
     "id": 9,
     "ADMINISTRATEUR": "John Doe",
-    "AJOUTER LE": "johndoe@example.com",
-    "RÔLE": "123-456-7890",
-    "NIVEAU D'ACCES": "John Doe",
-    "UNITE DE GESTION": "johndoe@example.com"
+    "AJOUTER LE": "09/02/2024",
+    "RÔLE": "Gestionnaire",
+    "NIVEAU D'ACCES": "Partiel (50%)",
+    "UNITE DE GESTION": "1 unité"
    
   }
 ]
