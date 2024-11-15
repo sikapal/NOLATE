@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import image from '../assets/image.jpg'
 
 import { Menu, MenuItem, IconButton } from '@mui/material';
-import { ArrowCircleUp, ArrowCircleUpSharp, Call, MoreVert } from '@mui/icons-material';
+import { Call, ExpandCircleDown, MoreVert } from '@mui/icons-material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+
 
 const MemberLarge = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isExpanded, setIsExpanded] = useState(true);
 
     const open = Boolean(anchorEl);
 
@@ -22,12 +22,18 @@ const MemberLarge = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const toggleHeight = () => {
+        setIsExpanded((prev) => !prev);
+    };
     return (
-        <div className='flex-row bg-white  w-[330px] h-[490px] border border-slate-100 rounded-2xl shadow-md '>
+        <div className='flex-row bg-white  w-[310px] h-[490px] border border-slate-100 rounded-2xl shadow-md '
+            style={{ height: isExpanded ? '490px' : '270px', transition: 'height 0.1s ease' }}
+        >
 
             <div className='w-full h-1/5 rounded-t-md relative mb-8 '>
                 <img src={image} alt="profile" className='w-full h-[120px] rounded-t-md  ' />
-                
+
                 <div className='px-4 justify-between'>
                     <img src={image} alt="profile" className='rounded-full w-[100px] h-[100px] border-4 border-white absolute top-16 ' />
 
@@ -81,49 +87,62 @@ const MemberLarge = () => {
                 </div>
 
                 <div>
-                    <p className='text-slate-600 justify-center text-center ml-12  text-[14px]'><span className='md:'>  User ID :</span> <span className='text-black'>4187690287</span></p>
+                    <p className='text-slate-600 justify-center text-center ml-12 mt-1 text-[12px]'><span className='md:'>  User ID :</span> <span className='text-black'>4187690287</span></p>
                 </div>
 
             </div>
 
-            <div className='pt-8 px-4 '>
-                <h1 className='font-bold mb-1 mt-3 text-xl'>Pr. George Matoudi</h1>
+            <div className='pt-8 px-4' style={{ display: isExpanded ? 'block' : '' }}>
+
+                <h1 className='font-bold mb-1 mt-3 text-xl ' style={{ marginTop: isExpanded ? '12px' : '55px' }}>Pr. George Matoudi</h1>
                 <p className='text-slate-500 mb-2'>Chef service de scolarité</p>
-                <div className='flex items-center mb-4'>
-                    <div className='flex items-center  text-violet justify-center p-2 bg-white border  border-slate-300 rounded-full w-7 h-7'>
-                        <Call style={{width:"15px" , height:"15px"}} className='text-red-500 text-xs' />
+                {isExpanded && (
+
+                    <div className='flex items-center mb-4  text-[12px]'>
+                        <div className='flex items-center  text-violet justify-center p-2 bg-white border  border-slate-300 rounded-full w-7 h-7'>
+                            <Call style={{ width: "15px", height: "15px" }} className='text-red-500 text-xs' />
+                        </div>
+                        <p className='ml-4 text-[#636578]'>(+2376)xxx-xxx-xxx</p>
                     </div>
-                    <p className='ml-4 text-[#636578]'>(+2376)xxx-xxx-xxx</p>
-                </div>
-                <div className='flex items-center mb-4'>
-                    <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
-                        <EmailOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
+                )}
+                {isExpanded && (
+                    <div className='flex items-center mb-4  text-[12px]'>
+                        <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
+                            <EmailOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
+                        </div>
+                        <p className='ml-4  text-[#636578]'>test@gmail.com</p>
                     </div>
-                    <p className='ml-4  text-[#636578]'>test@gmail.com</p>
-                </div>
-                <div className='flex items-center mb-4'>
+
+                )}
+                {isExpanded && (<div className='flex items-center mb-4 text-[12px]'>
                     <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
-                        <SchemaOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
+                        <SchemaOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>Dircection des Affaires Générales</p>
+                    <p className='ml-4  text-[#636578]'>Direction des Affaires Générales</p>
                 </div>
-                <div className='flex items-center mb-4'>
+                )}
+                {isExpanded && (<div className='flex items-center mb-4 text-[12px]'>
                     <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
-                        <PersonAddAltOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
+                        <PersonAddAltOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
                     <p className='ml-4  text-[#636578]'>Ajouté le <span className='text-violet'>01 Janvier 2024</span></p>
-                </div>
-                <div className='flex items-center mb-4'>
+                </div>)}
+                {isExpanded && (<div className='flex items-center mb-4 text-[12px]'>
                     <div className=' flex text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
-                        < BusinessCenterOutlinedIcon  style={{width:"15px" , height:"15px"}} className='text-red-500  justify-center item-center ' />
+                        < BusinessCenterOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>Hors Servvice</p>
+                    <p className='ml-4  text-[#636578]'>Hors Service</p>
                 </div>
+                )}
+
             </div>
 
-            <div className='justify-center text-center cursor-pointer'>
-
-                <ArrowCircleUpSharp/>
+            <div className='justify-center text-center cursor-pointer text-titre'>
+                {isExpanded ? (
+                    <div className='rotate-180'>   <ExpandCircleDown onClick={toggleHeight} style={{ width: '20px', height: '20px' }} /></div>
+                ) : (
+                    <ExpandCircleDown onClick={toggleHeight} style={{ width: '20px', height: '20px' }} />
+                )}
             </div>
         </div>
     )

@@ -1,0 +1,35 @@
+[
+  {
+    "notifications": "Pointage de Début",
+    "securite": "Très élévé",
+    "fiabilite": "Très élévé",
+    "efficacite": "90%",
+    "statut": "Autoriser"
+   
+  },
+  {
+    "notifications": "Pointage de Fin",
+    "securite": "Moyen",
+    "fiabilite": "Moyen",
+    "efficacite": "75%",
+    "statut": "Autoriser"
+   
+  },
+  {
+    "notifications": "L'activité du compte",
+    "securite": "Indisponible",
+    "fiabilite": "Indisponible",
+    "efficacite": "Indisponible",
+    "statut": "-"
+   
+  },
+  {
+    "notifications": "Notification de sécurité",
+    "securite": "Indisponible",
+    "fiabilite": "Indisponible",
+    "efficacite": "Indisponible",
+    "statut": "-"
+   
+  }
+ 
+]

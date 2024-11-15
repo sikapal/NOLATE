@@ -36,10 +36,10 @@ const UserProfile = () => {
                             </div>
                         </div>
 
-                        <div className='w-full ml-2 my-1'>
+                        <div className='w-full ml-2 '>
 
                         <div className='flex flex-row relative  justify-between '>
-                                <div className='w-full mt-5 -ml-1'>
+                                <div className='w-full -ml-1'>
                                 <TabsUserProfile/>
                                 </div>
 

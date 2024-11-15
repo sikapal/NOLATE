@@ -58,9 +58,16 @@ const EmploiTemps = () => {
             ),
         }),
         columnHelper.accessor("activite", {
-            cell: (info) => (
-                <span className="italic text-blue-600">{info.getValue()}</span>
-            ),
+            cell: (info) => {
+                const activite = info.getValue();
+                const lieu = info.row.original.lieu;
+                return (
+                    <span className=''>
+                        {activite}
+                        {lieu && <><br />{lieu}</>}
+                    </span>
+                );
+            },
             header: (info) => (
                 <span className="flex items-center">
                     ACTIVITE/ <br />LIEU
@@ -119,7 +126,15 @@ const EmploiTemps = () => {
                     MODE DE <br /> POINTAGE
                 </span>
             ),
-            cell: (info) => info.getValue(),
+            cell: (info) => {
+                const [start, end] = info.getValue().split(" ");
+                return (
+                    <div>
+                        <div>{start}</div>
+                        <div>{end}</div>
+                    </div>
+                );
+            },
         }),
     
         columnHelper.accessor("info", {

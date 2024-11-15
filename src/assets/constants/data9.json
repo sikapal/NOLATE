@@ -1,0 +1,27 @@
+[
+  {
+    "type": "Code QR",
+    "securite": "Très élévé",
+    "fiabilite": "Très élévé",
+    "efficacite": "90%",
+    "statut": "Autoriser"
+   
+  },
+  {
+    "type": "Signature numérique",
+    "securite": "Moyen",
+    "fiabilite": "Moyen",
+    "efficacite": "75%",
+    "statut": "Autoriser"
+   
+  },
+  {
+    "type": "Analyse faciale",
+    "securite": "Indisponible",
+    "fiabilite": "Indisponible",
+    "efficacite": "Indisponible",
+    "statut": "-"
+   
+  }
+ 
+]

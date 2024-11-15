@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
-import { AddCircleOutline, ArrowDropDown, FileUpload } from '@mui/icons-material';
-import { Divider } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import mockData from "../../assets/constants/data7.json";
+import { AddCircleOutline, ArrowDropDown, ChatBubbleOutline, DeleteForeverOutlined, FileUpload } from '@mui/icons-material';
+import { Divider } from '@mui/material';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search, } from "lucide-react";
-import mockData from "../../assets/constants/data7.json";
 import Dots from '../../components/Dots';
-
-
+import SlidePlanning from '../activites/SlidePlanning';
+import user from "../../assets/user.jpg"
 
 const columnHelper = createColumnHelper();
 
+const getProfileImage = (assignee) => {
+    switch (assignee) {
+        default:
+            return user;
+    }
+};
+
+
+const UserActivite = () => {
+
+    
+    
 const columns = [
 
     columnHelper.accessor("date", {
@@ -22,9 +34,16 @@ const columns = [
         ),
     }),
     columnHelper.accessor("activite", {
-        cell: (info) => (
-            <span className="italic text-blue-600">{info.getValue()}</span>
-        ),
+        cell: (info) => {
+            const activite = info.getValue();
+            const lieu = info.row.original.lieu;
+            return (
+                <span className=''>
+                    {activite}
+                    {lieu && <> <br/> {lieu}</>}
+                </span>
+            );
+        },
         header: (info) => (
             <span className="flex items-center">
                 ACTIVITE/ <br />LIEU
@@ -57,12 +76,24 @@ const columns = [
     }),
 
     columnHelper.accessor("assigne", {
-        header: (info) => (
+        header: () => (
             <span className="flex items-center">
-                ASSIGNEE A
+                ASSIGNÉE A
             </span>
         ),
-        cell: (info) => info.getValue(),
+        cell: (info) => (
+            <div className="flex items-center">
+                {getProfileImage(info.getValue()) && (
+                    <img
+                        src={getProfileImage(info.getValue())}
+                        alt={`${info.getValue()} profile`}
+                        className="m-2 w-8 h-8 rounded-full"
+                    />
+                )}
+                {info.getValue()}
+
+            </div>
+        ),
     }),
 
     columnHelper.accessor("pointage", {
@@ -71,35 +102,62 @@ const columns = [
                 MODE DE <br /> POINTAGE
             </span>
         ),
-        cell: (info) => info.getValue(),
+        cell: (info) => {
+            const [start, end] = info.getValue().split(" ");
+            return (
+                <div>
+                    <div>{start}</div>
+                    <div>{end}</div>
+                </div>
+            );
+        },
     }),
 
     columnHelper.accessor("info", {
         header: (info) => (
-            <span className="flex items-center">
+            <span className="flex items-center ">
                 NOTE <br /> D'INFO
             </span>
         ),
-        cell: (info) => info.getValue(),
-    }),
+        cell: (info) => (
+            <div className="flex items-center text-center justify-center">
+                <ChatBubbleOutline className="mr-2 text-blue-500" style={{
+                    width: "20px", height: "20px", color: "blue"
 
+                }} />
+
+            </div>
+        ),
+    }),
     columnHelper.accessor("ACTION", {
         header: "Actions",
         cell: (info) => (
             <Dots
-                menuItems={[
-                    { label: "Modifier", action: () => alert(`Updating ${info.row.original.name}`) },
-                    { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
-                ]}
+            menuItems={[
+                {
+                    label: "Modifier", action: () => {
+                        setShowModalNewPlanning(true);
+                    }
+                },
+              
+                { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+            ]}
             />
         ),
     }),
 ];
 
 
-const UserActivite = () => {
-
     const [presence, setPresence] = useState('');
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const [showModalNewPlanning, setShowModalNewPlanning] = useState(false);
+    const closeModalDelete = () => setShowModalDelete(false);
+
+    const handleDelete = () => {
+
+        console.log('Item deleted');
+        closeModalDelete();
+    };
 
     const handleSetPresence = (event) => {
         setPresence(event.target.value);
@@ -109,6 +167,7 @@ const UserActivite = () => {
     const [sorting, setSorting] = useState([]);
     const [globalFilter, setGlobalFilter] = useState("");
     const [open, setOpen] = useState(true);
+   
 
 
     const table = useReactTable({
@@ -136,6 +195,7 @@ const UserActivite = () => {
     const handleSetFilter = (event) => {
         setFilter(event.target.value);
     };
+
 
 
     return (
@@ -296,7 +356,11 @@ const UserActivite = () => {
                                 <button className=' bg-lightblue text-[12px] hover:text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
-                                        <p className='mr-1'>Ajouter un planning</p>
+                                        <p className='mr-1' onClick={() => {
+
+                                            setShowModalNewPlanning(true);
+
+                                        }}>Ajouter un planning</p>
                                     </div>
                                 </button>
                             </div>
@@ -338,7 +402,7 @@ const UserActivite = () => {
                                                 {row.getVisibleCells().map((cell) => (
                                                     <td
                                                         key={cell.id}
-                                                        className="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                                        className="px-4 py-4 whitespace-nowrap text-[10px] text-gray-500"
                                                     >
                                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                     </td>
@@ -426,7 +490,34 @@ const UserActivite = () => {
 
 
 
+                {showModalDelete && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
+                        <h2 className="text-lg font-semibold mb-2">Suppression</h2>
+                        <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
 
+                        <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
+                            Cette action est irréversible</p>
+                        <div className="flex justify-center gap-4">
+                            <button
+                                onClick={() => { handleDelete }}
+                                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
+
+                            >
+                                Supprimer
+                            </button>
+                            <button
+                                onClick={closeModalDelete}
+                                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
+                            >
+                                Annuler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
+           
 
             </div>
 
