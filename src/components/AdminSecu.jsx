@@ -3,66 +3,125 @@ import { Add, Key } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
-import mockData from "../assets/constants/data5.json";
+import mockData from "../assets/constants/data8.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from '@mui/material/Checkbox';
+import user from "../assets/user.jpg"
 
 const columnHelper = createColumnHelper();
 
-const columns = [
 
-    columnHelper.accessor("utilisateur", {
-        cell: (info) => info.getValue(),
-        header: () => (
-            <span className="flex items-center ">
-                UTILISATEUR
-            </span>
-        ),
-    }),
-    columnHelper.accessor("appareils", {
-        cell: (info) => (
-            <span className="italic text-blue-600">{info.getValue()}</span>
-        ),
-        header: (info) => (
-            <span className="flex items-center">
-                APPAREILS
-            </span>
-        ),
-    }),
-    columnHelper.accessor("connexion", {
-        header: (info) => (
-            <span className="flex items-center">
-                CONNEXION
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("status", {
-        header: (info) => (
-            <span className="flex items-center">
-                STATUS
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
+const getphoneImage = (appareil) => {
+    switch (appareil) {
 
-    columnHelper.accessor("ACTION", {
-        header: "Actions",
-        cell: (info) => (
-            <Dots
-                menuItems={[
-
-                    { label: "Déconnecter", action: () => alert(`Deleting ${info.row.original.name}`) },
-                    { label: "Bloquer l'appareil", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
-                ]}
-            />
-        ),
-    }),
-];
-
+        default:
+            return user;
+    }
+};
 
 const AdminSecu = () => {
+
+    const columns = [
+
+
+        columnHelper.accessor("appareil", {
+            cell: (info) => {
+                const appareil = info.getValue();
+                const mac = info.row.original.mac;
+                return (
+                    <div className="flex items-center">
+                        {getphoneImage(appareil) && (
+                            <img
+                                src={getphoneImage(info.getValue())}
+                                alt={`${info.getValue()} profile`}
+                                className="m-2 w-8 h-8 rounded-full"
+                            />
+
+                        )}
+                        <span className=''>
+                            {appareil}
+                            {mac && <><br />{mac}</>}
+                        </span>
+
+                    </div>
+                );
+            },
+            header: (info) => (
+                <span className="flex items-center">
+                    APPAREILS autorisés
+                </span>
+            ),
+        }),
+
+
+        columnHelper.accessor("ville", {
+            cell: (info) => {
+                const ville = info.getValue();
+                const pays = info.row.original.pays;
+                const lieu = info.row.original.lieu;
+                return (
+                    <span className=''>
+                        {ville},{pays}
+                        {lieu && <><br />{lieu}</>}
+                    </span>
+                );
+            },
+            header: (info) => (
+                <span className="flex items-center">
+                    EMPLACEMENT
+                </span>
+            ),
+        }),
+        columnHelper.accessor("utilisateur", {
+            header: (info) => (
+                <span className="flex items-center">
+                    UTILISATEUR
+                </span>
+            ),
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("connexion", {
+            header: (info) => (
+                <span className="flex items-center">
+                    Connexion recente
+                </span>
+            ),
+            cell: (info) => {
+                const connexion = info.getValue();
+                const heure = info.row.original.heure;
+                const etat = info.row.original.etat;
+                return (
+                    <span className=''>
+                        {connexion},{heure}
+                        {etat && <><br />{etat}</>}
+                    </span>
+                );
+            },
+        }),
+
+        columnHelper.accessor("ACTION", {
+            header: "Actions",
+            cell: (info) => (
+                <Dots
+                    menuItems={[
+                        {
+                            label: "Déconnecter", action: () => {
+
+                            }
+                        },
+                        {
+                            label: "Bloquer", action: () => {
+
+                            }
+                        },
+
+                        { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+                    ]}
+                />
+            ),
+        }),
+    ];
 
     const [data] = useState(() => [...mockData]);
     const [sorting, setSorting] = useState([]);
@@ -105,64 +164,56 @@ const AdminSecu = () => {
     return (
         <div className='pb-2 '>
 
-            <div className=" bg-white w-full rounded-xl h-auto  pb-2  shadow-lg  flex flex-col">
-                <h1 className="font-bold py-2 pl-3 border-b-2">Appareils connectés</h1>
-                <div className="flex flex-wrap  px-3 pt-3 items-center  justify-between">
-                    <div className="left flex flex-row  ">
-                        <div className='pt-1'>
-                            Trier par
-                        </div>
-                        <div className='mr-3 relative mx-2'>
+            <div className=" bg-white w-full rounded-xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
+                <h1 className="font-bold py-2 px-4 border-b-2">Appareils connectés</h1>
+                <div className="flex flex-wrap  px-3 pt-3  justify-between">
+                    <div className="left flex flex-row ">
+                        <div className='text-titre pt-2 px-2 justify-center'>   Trier Par </div>
+                        <div className='mr-3 relative'>
 
                             <select
-                                id="filter"
-                                className="h-[35px] w-full  cursor-pointer px-2  text-sm pr-10 mb-3 border border-gray-300 rounded-xl appearance-none "
-                                value={filter}
-                                onChange={handleSetFilter}
+                                id=""
+                                className="h-[40px] w-[200px]  cursor-pointer px-3  text-sm pr-10 mb-2 border border-gray-300 rounded-xl appearance-none"
+                                value=""
+                                onChange=""
                             >
-                                <option value="" className="font-semibold ">
-                                    Appareils Autorisés
+                                <option value="autorise" className="font-semibold ">
+                                    Appareil autorisé
                                 </option>
-                                <option value=" Appareils autorisés"> Appareils autorisés</option>
-                                <option value=" Appareils bloqués"> Appareils bloqués</option>
+                                <option value="bloque"> Appareil bloqué</option>
+
                             </select>
-                            <div className="absolute top-0  right-1 transform translate-y-1 pointer-events-none text-black">
-                                <ExpandMoreIcon
-                                    style={{ width: "20px", height: "20px" }}
-                                />
+                            <div className="absolute top-1  right-3 transform translate-y-1 pointer-events-none text-black">
+                                <ExpandMoreIcon />
                             </div>
                         </div>
 
                     </div>
-                    <div className="right flex flex-row  ">
-                        <div className='pt-1'>
-                            Nombre d'appareils autorisés
-                        </div>
-                        <div className='mr-3 relative mx-2'>
+                    <div className="right  flex flex-row ">
+                        <div className='text-titre pt-2 px-2 justify-center'> Nombre d'appareils autorisés</div>
+                        <div className='mr-3 relative'>
 
                             <select
-                                id="filter"
-                                className="h-[35px] w-[70px]  cursor-pointer px-5  text-sm pr-10 mb-3 border border-gray-300 rounded-xl appearance-none "
-                                value={filter}
-                                onChange={handleSetFilter}
+                                id=""
+                                className="h-[40px] w-[70px]  cursor-pointer px-3  text-sm pr-10 mb-2 border border-gray-300 rounded-xl appearance-none"
+                                value=""
+                                onChange=""
                             >
-                                <option value="" className="font-semibold ">
-                                    1
+                                <option value="2" className="font-semibold ">
+                                    2
                                 </option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="3"> 3</option>
+
                             </select>
-                            <div className="absolute top-0  right-1/4 transform translate-y-1 pointer-events-none text-black">
-                                <ExpandMoreIcon
-                                    style={{ width: "20px", height: "20px" }}
-                                />
+                            <div className="absolute top-1  right-3 transform translate-y-1 pointer-events-none text-black">
+                                <ExpandMoreIcon />
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div className="flex-grow  px-2 ">
+                <div className="flex-grow  px-2 mb-2">
                     <div className=" bg-white shadow-md rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-[#EEEEEE]">
@@ -208,73 +259,6 @@ const AdminSecu = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-700">
-                        <div className="flex items-center mb-4 sm:mb-0">
-                            <span className="mr-2">Afficher</span>
-                            <select
-                                className="border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
-                                value={table.getState().pagination.pageSize}
-                                onChange={(e) => {
-                                    table.setPageSize(Number(e.target.value));
-                                }}
-                            >
-                                {[5, 10, 20, 30].map((pageSize) => (
-                                    <option key={pageSize} value={pageSize}>
-                                        {pageSize}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="flex items-center space-x-2">
-                            <button
-                                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                onClick={() => table.setPageIndex(0)}
-                                disabled={!table.getCanPreviousPage()}
-                            >
-                                <ChevronsLeft size={20} />
-                            </button>
-
-                            <button
-                                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                onClick={() => table.previousPage()}
-                                disabled={!table.getCanPreviousPage()}
-                            >
-                                <ChevronLeft size={20} />
-                            </button>
-
-                            <span className="flex items-center">
-                                <input
-                                    min={1}
-                                    max={table.getPageCount()}
-                                    type="number"
-                                    value={table.getState().pagination.pageIndex + 1}
-                                    onChange={(e) => {
-                                        const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                                        table.setPageIndex(page);
-                                    }}
-                                    className="w-16 p-2 rounded-md border border-gray-300 text-center"
-                                />
-                                <span className="ml-1">of {table.getPageCount()}</span>
-                            </span>
-
-                            <button
-                                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                onClick={() => table.nextPage()}
-                                disabled={!table.getCanNextPage()}
-                            >
-                                <ChevronRight size={20} />
-                            </button>
-
-                            <button
-                                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                                disabled={!table.getCanNextPage()}
-                            >
-                                <ChevronsRight size={20} />
-                            </button>
-                        </div>
-                    </div>
 
 
                 </div>
@@ -295,21 +279,21 @@ const AdminSecu = () => {
                             id="jour"
                             placeholder="Entrez le mot de passe actuel"
                             className=" w-[32%] border border-gray-300 rounded-xl text-black text-[14px] px-3 py-2"
-                            
+
                         />
                         <input
                             type="password"
                             id="jour"
                             placeholder="Définir le nouveau mot de passe"
                             className=" w-[32%] border border-gray-300 rounded-xl text-black text-[14px] px-3 py-2"
-                            
+
                         />
                         <input
                             type="password"
                             id="jour"
                             placeholder="Confirmer le nouveau mot de passe"
                             className=" w-[32%] border border-gray-300 rounded-xl text-black text-[14px] px-3 py-2"
-                            
+
                         />
                     </div>
 
@@ -320,15 +304,15 @@ const AdminSecu = () => {
             <div className=" bg-white w-full rounded-xl h-auto pt-4  mt-4 pb-4 flex flex-col shadow-2xl">
                 <div className='flex flex-row justify-between mx-3 '>
                     <h1 className="font-bold  ">Authentification à double facteurs</h1>
-                    <button className='bg-lightblue mx-3 py-1 px-3 text-[12px] text-white rounded  '> <span> 
+                    <button className='bg-lightblue mx-3 py-1 px-3 text-[12px] text-white rounded  '> <span>
                         <Key
-                        style={{width:"14px",  height:"14px" , marginRight:"5px"}}
-                    /> </span> ACTIVER</button>
+                            style={{ width: "14px", height: "14px", marginRight: "5px" }}
+                        /> </span> ACTIVER</button>
 
                 </div>
                 <div className="flex mx-3 flex-col mt-3">
-                <p className='text-gray-500 text-[12px] '>L'authentification à double facteurs n'est pas encore activé</p>
-                  
+                    <p className='text-gray-500 text-[12px] '>L'authentification à double facteurs n'est pas encore activé</p>
+
 
                     <p className='mt-3 text-[12px] mr-4'>L'authentification à double facteurs ajoute une couche de sécurité supplémentaire à votre compte en exigeant plus qu'un simple mot de passe pour vous connecter <span className='text-lightblue'>En savoir plus</span></p>
                 </div>

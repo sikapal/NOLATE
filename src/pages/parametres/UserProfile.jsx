@@ -43,7 +43,7 @@ const UserProfile = () => {
                                 <TabsUserProfile/>
                                 </div>
 
-                                <div className='rotate-90 absolute top-7 right-0 '>
+                                <div className='rotate-90 absolute top-2 right-0 '>
                                     <Dots
 
                                         menuItems={[

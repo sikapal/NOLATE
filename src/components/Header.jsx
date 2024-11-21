@@ -8,13 +8,12 @@ import SlideActivite from '../pages/activites/SlideActivite';
 import SlideLieu from '../pages/activites/SlideLieu';
 import SlidePublication from '../pages/activites/SlidePublication';
 import SlideMembre from '../pages/activites/SlideMembre';
-import { AdminPanelSettings, ArrowDropDown, DeleteForeverOutlined, EmailOutlined, Help, Logout, LogoutOutlined, ManageAccounts, PersonAddAlt1Outlined, Search, Settings, SettingsOutlined } from '@mui/icons-material';
+import { ArrowDropDown, DeleteForeverOutlined, EmailOutlined, Help, Logout, LogoutOutlined, ManageAccounts, PersonAddAlt1Outlined, Search, Settings, SettingsOutlined } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import user from '../assets/user.jpg'
 import Dots from './Dots'
 import { Link } from 'react-router-dom';
 import SlideDemandeAdhesion from '../pages/activites/SlideDemandeAdhesion';
-import { Delete } from 'lucide-react';
 
 const Header = ({ setOpen, menuItems }) => {
 
@@ -35,8 +34,15 @@ const Header = ({ setOpen, menuItems }) => {
 
   const [showModalDelete, setShowModalDelete] = useState(false);
 
+
   const openModalDelete = () => setShowModalDelete(true);
   const closeModalDelete = () => setShowModalDelete(false);
+
+  const [currentTab, setCurrentTab] = useState('recue');
+
+  const handleTabSwitch = (tab) => {
+    setCurrentTab(tab);
+  };
 
   const handleDelete = () => {
 
@@ -232,10 +238,18 @@ const Header = ({ setOpen, menuItems }) => {
             <div className='py-2 px-4 '>
               <div className='flex flex-row  font-bold justify-between'>
                 <p className='text-sm  text-titre'>Invitations <span className='text-black'> : 4</span></p>
-                <div className='bg-gray-100 w-auto -mt-1 py-1 px-3 flex gap-x-2 justify-between rounded-full text-xs text-gray-600 font-light'>
-                  <p className='' >Reçue(s)</p>
-                  <div className=''><ArrowDropDown style={{ width: "14px", height: "14px" }} /></div>
+                <div className="bg-gray-100 w-auto -mt-1 py-1 px-3 flex items-center justify-between rounded-full text-xs text-gray-600 font-light cursor-pointer">
+                  <p
+                    className={`text-blue-600 font-bold`}
+                    onClick={() => handleTabSwitch(currentTab === 'recue' ? 'envoye' : 'recue')}
+                  >
+                    {currentTab === 'recue' ? 'Reçue(s)' : 'Envoyé(s)'}
+                  </p>
+                  <div className="pointer-events-none">
+                    <ArrowDropDown style={{ width: "14px", height: "14px" }} />
+                  </div>
                 </div>
+
               </div>
             </div>
 
@@ -255,115 +269,73 @@ const Header = ({ setOpen, menuItems }) => {
               </div>
             </div>
 
-            <ul className='pb-2 text-sm text-gray-950'>
-              <li className='my-2 mx-4 cursor-pointer pb-1' onClick={() => {
-
-                showInvitations(false)
-              }}>
-                <div className='flex justify-between'>
-                  <div className='flex flex-col'>
-                    <div className='  flex flex-row'>
-                      <img src={user} alt="" className='rounded-full w-8 h-8' />
-
-                      <div className='flex flex-col w-full text-sm text-[12px]'>
-                        <p className='pl-2'><span className='font-bold'>Georges Matoudi</span>
-                          <span className='text-gray-500 '> souhaite </span></p>
-
-                        <p className=' pl-2 -mt-1 text-gray-500'>rejoindre votre registre de présence</p>
-                      </div>
-
-                    </div>
-                    <p className='text-gray-500 text-xs pl-10 pt-1'>à l'instant</p>
-
-                    <div className='buttons pl-10 pt-1 flex flex-wrap justify-between'>
-
-                      <button className='bg-lightblue text-[14px]  w-auto h-[30px] rounded-xl px-6 py-1 text-white flex items-center'
-                        onClick={() => {
-
-                          setShowModalDemandeAdhesion(true);
-                          setShowInvitations(false);
-                        }}
-                      >
-                        Examiner
-                      </button>
-                      <Link >
-                        <button onClick={openModalDelete} className='bg-white text-[14px] border border-gray-300 w-auto h-[30px] rounded-xl px-6 py-1 text-gray-600 flex items-center'>
-                          Décliner
-                        </button>
-                      </Link>
-
-                      {showModalDelete && (
-                        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                          <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
-                            <h2 className="text-lg font-semibold mb-2">Suppression</h2>
-                            <div className='text-red mb-2'> <DeleteForeverOutlined/></div>
-                           
-                            <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br /> 
-                            Cette action est irréversible</p>
-                            <div className="flex justify-center gap-4">
-                              <button
-                                onClick={()=> {handleDelete ,setShowInvitations(false)}}
-                                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
-                                
-                              >
-                               Supprimer 
-                              </button>
-                              <button
-                                onClick={closeModalDelete}
-                                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
-                              >
-                               Annuler
-                              </button>
-                            </div>
+            <ul className="pb-2 text-sm text-gray-950">
+              {currentTab === 'recue' ? (
+                <>
+                  {/* Received Invitations */}
+                  <li className="recue my-2 mx-4 cursor-pointer pb-1">
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        <div className="flex flex-row">
+                          <img src={user} alt="User" className="rounded-full w-8 h-8" />
+                          <div className="flex flex-col w-full text-sm text-[12px]">
+                            <p className="pl-2">
+                              <span className="font-bold">Georges Matoudi</span>
+                              <span className="text-gray-500"> souhaite </span>
+                            </p>
+                            <p className="pl-2 -mt-1 text-gray-500">
+                              rejoindre votre registre de présence
+                            </p>
                           </div>
                         </div>
-                      )}
-
-                    </div>
-                  </div>
-                </div>
-
-              </li>
-
-              <li className='my-2 mx-4 cursor-pointer ' onClick={() => {
-
-                showInvitations(false)
-              }}>
-                <div className='flex justify-between'>
-                  <div className='flex flex-col'>
-                    <div className='  flex flex-row'>
-                      <img src={user} alt="" className='rounded-full w-8 h-8' />
-
-                      <div className='flex flex-col w-full text-sm text-[12px]'>
-                        <p className='pl-2'><span className='font-bold'>Moleng Cédric</span>
-                          <span className='text-gray-500 '> souhaite </span></p>
-
-                        <p className=' pl-2 -mt-1 text-gray-500'>rejoindre votre registre de présence</p>
+                        <p className="text-gray-500 text-xs pl-10 pt-1">à l'instant</p>
+                        <div className="buttons pl-10 pt-1 flex flex-wrap justify-between">
+                          <button
+                            className="bg-lightblue text-[14px] w-auto h-[30px] rounded-xl px-6 py-1 text-white flex items-center"
+                            onClick={() => setShowInvitations(false)}
+                          >
+                            Examiner
+                          </button>
+                          <button className="bg-white text-[14px] border border-gray-300 w-auto h-[30px] rounded-xl px-6 py-1 text-gray-600 flex items-center">
+                            Décliner
+                          </button>
+                        </div>
                       </div>
-
                     </div>
-                    <p className='text-gray-500 text-xs pl-10 pt-1'>à l'instant</p>
-
-                    <div className='buttons pl-10 pt-1 flex flex-wrap justify-between'>
-
-                      <button className='bg-lightblue text-[14px]  w-auto h-[30px] rounded-xl px-6 py-1 text-white flex items-center'
-                        onClick={() => {
-
-                          setShowModalDemandeAdhesion(true);
-                          setShowInvitations(false);
-                        }}>
-                        Examiner
-                      </button>
-                      <button className='bg-white text-[14px] border border-gray-300 w-auto h-[30px] rounded-xl px-6 py-1 text-gray-600 flex items-center'>
-                        Décliner
-                      </button>
-
+                  </li>
+                </>
+              ) : (
+                <>
+                  {/* Sent Invitations */}
+                  <li className="envoye my-2 mx-4 cursor-pointer pb-1">
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        <div className="flex flex-row">
+                          <img src={user} alt="User" className="rounded-full w-8 h-8" />
+                          <div className="flex flex-col w-full -mt-0.5 text-sm text-[12px]">
+                            <p className="pl-2 -mt-0">
+                              <span className="font-bold  text-black text-[13px]">Moleng Cédric</span>
+                              
+                            </p>
+                            <p className="pl-2 -mt-1 text-[12px] text-gray-500">
+                              Data Analyst
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-gray-500 text-xs pl-10 pt-1">à l'instant</p>
+                       
+                      </div>
+                      
                     </div>
-                  </div>
-                </div>
-
-              </li>
-
+                    <div className="buttons pl-10 pt-1 flex flex-wrap justify-between">
+                         
+                         <button className="bg-white text-[14px] border border-gray-300 w-[80%] h-[30px]  justify-center rounded-xl px-6 py-1 text-gray-600 flex items-center">
+                          Annuler l'Invitation
+                         </button>
+                       </div>
+                  </li>
+                </>
+              )}
             </ul>
 
             <p className='text-center underline text-sm pb-1 text-violet'>Tout voir</p>
@@ -391,7 +363,7 @@ const Header = ({ setOpen, menuItems }) => {
 
                 <div className='flex flex-row justify-between mt-4 mx-4'>
                   <img src={user} alt="user" className='relative w-10 h-10 rounded-full' />
-                  <div className='absolute bg-[#72E128] border-[3px] border-white rounded-full w-3 h-3 top-11 left-12'> </div>
+                  <div className='absolute bg-[#52a85a] border-[3px] border-white rounded-full w-3 h-3 top-11 left-12'> </div>
                   <div className='flex flex-col '>
                     <p className='font-bold text-titre'> Ngnintedem Boris</p>
                     <div className='text-xs w-24 px-2 rounded-md py-1 bg-[#e9d0fe] '> <p className='text-violet opacity-[80%]'>Gestionnaire</p></div>
@@ -431,14 +403,11 @@ const Header = ({ setOpen, menuItems }) => {
         </div>
       </div>
 
-
-
       {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
       {showModalNewActivite && <SlideActivite setShowModalNewActivite={setShowModalNewActivite} />}
       {showModalNewLieu && <SlideLieu setShowModalNewLieu={setShowModalNewLieu} />}
       {showModalNewPublication && <SlidePublication setShowModalNewPublication={setShowModalNewPublication} />}
       {showModalNewMember && <SlideMembre setShowModalNewMember={setShowModalNewMember} />}
-
       {showModalDemandeAdhesion && <SlideDemandeAdhesion setShowModalDemandeAdhesion={setShowModalDemandeAdhesion} />}
     </div>
   );

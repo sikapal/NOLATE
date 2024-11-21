@@ -49,6 +49,15 @@ const EmploiTemps = () => {
 
     const columns = [
 
+        columnHelper.accessor("select", {
+            header: () => (
+                <input type="checkbox" className='cursor-pointer' />
+            ),
+            cell: () => (
+                <input type="checkbox" className='cursor-pointer' />
+            ),
+        }),
+
         columnHelper.accessor("date", {
             cell: (info) => info.getValue(),
             header: () => (
@@ -314,7 +323,7 @@ const EmploiTemps = () => {
 
 
 
-                                            <button className=' bg-lightblue text-[12px] hover:text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                            <button className=' bg-lightblue text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                                 <div className='flex mr-1 justify-center items-center'>
                                                     <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                                     <p className='mr-1' onClick={() => {

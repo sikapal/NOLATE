@@ -12,6 +12,7 @@ import DetailPresence from '../../components/DetailPresence';
 import SlidePlanning from '../activites/SlidePlanning';
 import user from "../../assets/user.jpg"
 import { ChatBubbleOutline } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const columnHelper = createColumnHelper();
 
@@ -23,13 +24,13 @@ const FichePresence = () => {
     const [detailData, setDetailData] = useState(null);
     const [showModalDelete, setShowModalDelete] = useState(false);
 
-  
+
     const closeModalDelete = () => setShowModalDelete(false);
 
     const handleDelete = () => {
-  
-      console.log('Item deleted');
-      closeModalDelete();
+
+        console.log('Item deleted');
+        closeModalDelete();
     };
 
     const [showModalNewPlanning, setShowModalNewPlanning] = useState(false);
@@ -75,7 +76,10 @@ const FichePresence = () => {
                 const poste = info.row.original.poste;
 
                 return (
-                    <div className="flex items-center">
+                    <div
+                        className="flex items-center cursor-pointer"
+                        onClick={() => navigate(`/user-profile`)}
+                    >
                         {getProfileImage(utilisateur) && (
                             <img
                                 src={getProfileImage(utilisateur)}
@@ -270,7 +274,7 @@ const FichePresence = () => {
 
 
     const [filter, setFilter] = useState('');
-
+    const navigate = useNavigate();
     const handleSetFilter = (event) => {
         setFilter(event.target.value);
     };
@@ -345,7 +349,7 @@ const FichePresence = () => {
 
 
 
-                                <button className=' bg-lightblue text-[12px] hover:text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                <button className=' bg-lightblue text-[14px]  mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                         <p className='mr-1' onClick={() => {
@@ -365,7 +369,7 @@ const FichePresence = () => {
                                         {table.getHeaderGroups().map((headerGroup) => (
                                             <tr key={headerGroup.id}>
                                                 {headerGroup.headers.map((header) => (
-                                                    <th key={header.id} className="px-1 py-2 text-left text-[12px] font-bold text-black uppercase">
+                                                    <th key={header.id} className="px-1 py-2 text-left text-[12px] font-bold text-titre uppercase">
                                                         <div
                                                             {...{
                                                                 className: header.column.getCanSort()

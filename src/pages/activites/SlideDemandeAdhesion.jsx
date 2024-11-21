@@ -8,7 +8,7 @@ const SlideDemandeAdhesion = ({ setShowModalDemandeAdhesion }) => {
 
     return (
         <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end overflow-y-auto">
-            <div className="bg-white overflow-y-auto scrollbar-custom w-full sm:w-96 h-screen mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
+            <div className="bg-white w-full sm:w-96 h-fit mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
                 <div className='flex flex-row justify-between items-center'>
                     <h2 className="text-xl font-semibold mb-6 text-violet">Demande d'adhesion</h2>
                     <button onClick={() => setShowModalDemandeAdhesion(false)} className="text-black font-bold text-2xl mb-6">

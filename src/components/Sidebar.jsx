@@ -16,7 +16,7 @@ const Sidebar = ({ open, setOpen }) => {
   const Menu = [
     {
       title: "Tableau de bord",
-      icon: <WidgetsOutlinedIcon />,
+      icon: <WidgetsOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}}/>,
 
       submenu: true,
       submenuItems: [
@@ -26,7 +26,7 @@ const Sidebar = ({ open, setOpen }) => {
     },
     {
       title: "Activités",
-      icon: <AutoStoriesOutlinedIcon />,
+      icon: <AutoStoriesOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} />,
       submenu: true,
       submenuItems: [
         { title: "Emploi de temps", to:"/emploi-de-temps" },
@@ -36,7 +36,7 @@ const Sidebar = ({ open, setOpen }) => {
     },
     {
       title: "Utilisateurs",
-      icon: <PeopleAltOutlinedIcon />,
+      icon: <PeopleAltOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} />,
       submenu: true,
       submenuItems: [
         { title: "Membres", to: "/members", },
@@ -44,7 +44,7 @@ const Sidebar = ({ open, setOpen }) => {
         { title: "Messages" },
       ],
     },
-    { title: "Paramètres de la page", to: "/parametres", icon: <SettingsOutlinedIcon /> },
+    { title: "Paramètres de la page", to: "/parametres", icon: <SettingsOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} /> },
   ];
 
 
@@ -83,13 +83,13 @@ const Sidebar = ({ open, setOpen }) => {
               <Link to={menu.to}>
                 <li
                   onClick={() => handleMenuClick(index)}
-                  className={`text-lightgreen text-[18px] font-bold w-full flex items-center justify-center  cursor-pointer p-2  ${!open ? ' mb-12' : 'gap-x-4'} rounded-md ${selectedMenuIndex === index ? 'bg-blue text-white' : 'hover:bg-lightblue hover:text-white'
+                  className={`text-lightgreen  font-bold w-full flex items-center justify-center  cursor-pointer px-2  ${!open ? ' mb-12' : 'gap-x-4'} rounded-md ${selectedMenuIndex === index ? 'bg-blue text-white' : 'hover:bg-lightblue hover:text-white'
                     }`}
                 >
                   <span className='text-2xl hover:text-white block float-left'>{menu.icon || <BsKeyboard />}</span>
-                  <span className={`text-base  hover:text-white font-bold flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
+                  <span className={`text-[14px] hover:text-white font-bold flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
                   {menu.submenu && open && (
-                    <BsChevronDown
+                    <BsChevronDown style={{width:"12px", height:"12px"}}
                       className={`${submenuOpen[index] ? 'rotate-180' : ''}`}
                     />
                   )}
@@ -100,9 +100,9 @@ const Sidebar = ({ open, setOpen }) => {
 
               {/* Submenu items */}
               {menu.submenu && open && submenuOpen[index] && (
-                <ul className='relative' >
+                <ul className='relative ml-6' >
                   {menu.submenuItems.map((submenuItem, subIndex) => (
-                    <Link to={submenuItem.to} key={subIndex}>
+                    <Link to={submenuItem.to} key={subIndex} >
                       <li
                         key={subIndex}
                         className='text-white  text-[14px] hover:text-white w-[100%] flex items-center justify-items-stretch gap-x-4 cursor-pointer p-2 hover:bg-lightblue rounded-md px-5'

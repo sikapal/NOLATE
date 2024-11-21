@@ -37,7 +37,7 @@ const Membres = () => {
                     <div className="mt-3 bg-white w-full rounded-xl h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3">Membres (25)</h1>
 
-                        <Divider/>
+                    
                         <div className="flex flex-wrap  px-3 py-4 justify-between">
                             <div className="left">
                                 <input
@@ -67,7 +67,7 @@ const Membres = () => {
                                     </div>
                                 </div>
 
-                                <button className=' bg-lightblue text-[12px] hover:text-[14px] ml-2 mr-1 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                <button className=' bg-lightblue text-[14px] ml-2 mr-1 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                         <p className='mr-1' onClick={() => {

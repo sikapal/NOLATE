@@ -1,74 +1,149 @@
 import React, { useState } from 'react';
-import { Add } from '@mui/icons-material';
+import { Add, DeleteForeverOutlined } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search,  } from "lucide-react";
-import mockData from "../assets/constants/data6.json";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search, } from "lucide-react";
+import mockData from "../assets/constants/data12.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import user from "../assets/user.jpg"
+import SlidePointeuse from '../pages/parametres/SlidePointeuse';
 
 const columnHelper = createColumnHelper();
 
-const columns = [
- 
-  columnHelper.accessor("appareil", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center ">
-       APPAREIL
-      </span>
-    ),
-  }),
-  columnHelper.accessor("emplacement", {
-    cell: (info) => (
-      <span className="italic text-blue-600">{info.getValue()}</span>
-    ),
-    header: (info) => (
-      <span className="flex items-center">
-       EMPLACEMENT
-      </span>
-    ),
-  }),
-  columnHelper.accessor("utilisateur", {
-    header: (info) => (
-      <span className="flex items-center">
-       UTILISATEUR
-      </span>
-    ),
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("connexion", {
-    header: (info) => (
-      <span className="flex items-center">
-        CONNEXION RECENTE
-      </span>
-    ),
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("status", {
-    header: (info) => (
-      <span className="flex items-center">
-        STATUS
-      </span>
-    ),
-    cell: (info) => info.getValue(),
-  }),
+const getphoneImage = (utilisateur) => {
+  switch (utilisateur) {
 
-  columnHelper.accessor("ACTION", {
-    header: "Actions",
-    cell: (info) => (
-      <Dots
-        menuItems={[
-            { label: "Infos", action: () => alert(`Deleting ${info.row.original.name}`) },
-          { label: "Désactiver", action: () => alert(`Deleting ${info.row.original.name}`) },
-          { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
-        ]}
-      />
-    ),
-  }),
-];
+    default:
+      return user;
+  }
+};
+
+
 
 const ParamPointeuse = () => {
+
+  const columns = [
+
+
+    columnHelper.accessor("appareil", {
+      cell: (info) => {
+        const appareil = info.getValue();
+        const mac = info.row.original.mac;
+        return (
+          <div className="flex items-center">
+            {getphoneImage(appareil) && (
+              <img
+                src={getphoneImage(info.getValue())}
+                alt={`${info.getValue()} profile`}
+                className="m-2 w-8 h-8 rounded-full"
+              />
+
+            )}
+            <span className=''>
+              {appareil}
+              {mac && <><br />ID {mac}</>}
+            </span>
+
+          </div>
+        );
+      },
+      header: (info) => (
+        <span className="flex items-center">
+          APPAREILS
+        </span>
+      ),
+    }),
+
+
+    columnHelper.accessor("ville", {
+      cell: (info) => {
+        const ville = info.getValue();
+        const pays = info.row.original.pays;
+        const lieu = info.row.original.lieu;
+        return (
+          <span className=''>
+            {ville},{pays}
+            {lieu && <><br />{lieu}</>}
+          </span>
+        );
+      },
+      header: (info) => (
+        <span className="flex items-center">
+          EMPLACEMENT
+        </span>
+      ),
+    }),
+    columnHelper.accessor("utilisateur", {
+      header: (info) => (
+        <span className="flex items-center">
+          UTILISATEUR
+        </span>
+      ),
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("connexion", {
+      header: (info) => (
+        <span className="flex items-center">
+          Connexion
+        </span>
+      ),
+      cell: (info) => {
+        const connexion = info.getValue();
+        const heure = info.row.original.heure;
+        const etat = info.row.original.etat;
+        return (
+          <span className=''>
+            {connexion},{heure}
+            {etat && <><br />{etat}</>}
+          </span>
+        );
+      },
+    }),
+
+    columnHelper.accessor("statut", {
+      header: (info) => (
+        <span className="flex items-center">
+          STATUT
+        </span>
+      ),
+      cell: (info) => info.getValue(),
+    }),
+
+    columnHelper.accessor("ACTION", {
+      header: "Actions",
+      cell: (info) => (
+        <Dots
+          menuItems={[
+
+            {
+              label: "Info", action: () => {
+                setShowModalNewPointeuse(true);
+              }
+            },
+            {
+              label: "Désactiver", action: () => {
+
+              }
+            },
+
+
+            { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },]}
+        />
+      ),
+    }),
+  ];
+
+  const [showModalNewPointeuse, setShowModalNewPointeuse] = useState(false);
+
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const closeModalDelete = () => setShowModalDelete(false);
+
+  const handleDelete = () => {
+
+    console.log('Item deleted');
+    closeModalDelete();
+  };
 
   const [data] = useState(() => [...mockData]);
   const [sorting, setSorting] = useState([]);
@@ -121,7 +196,7 @@ const ParamPointeuse = () => {
           </div>
         </div>
         <div className="right flex flex-row ">
-          <FilterAltIcon className='mt-2'/>
+          <FilterAltIcon className='mt-2' />
           <div className='mr-3 relative'>
 
             <select
@@ -143,7 +218,12 @@ const ParamPointeuse = () => {
           <button className=' bg-lightblue text-[14px] hover:text-[14px]  w-[230px] h-[40px] rounded-xl justify-center text-white  items-center flex'>
             <div className='flex mr-1 justify-center items-center'>
               <span> <Add className='justify-center items-center mx-1' /></span>
-              <p className='mr-1'>Ajouter nouvelle pointeuse</p>
+
+              <p className='mr-1' onClick={() => {
+
+                setShowModalNewPointeuse(true);
+
+              }}>Ajouter une unité de gestion</p>
             </div>
           </button>
         </div>
@@ -265,6 +345,34 @@ const ParamPointeuse = () => {
 
 
       </div>
+
+      {showModalDelete && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
+            <h2 className="text-lg font-semibold mb-2">Suppression</h2>
+            <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
+
+            <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
+              Cette action est irréversible</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => { handleDelete }}
+                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
+
+              >
+                Supprimer
+              </button>
+              <button
+                onClick={closeModalDelete}
+                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
+              >
+                Annuler
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showModalNewPointeuse && <SlidePointeuse setShowModalNewPointeuse={setShowModalNewPointeuse} />}
 
     </div>
   )

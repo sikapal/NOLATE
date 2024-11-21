@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.svg';
-import { Link } from 'react-router-dom';
 import CountryCode from '../components/CountryCode';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -14,7 +13,12 @@ const RegisterAdmin = () => {
   return (
     <div className="flex fixed right-96 justify-center items-center h-screen">
       {/* Register Card Starts */}
-      <div className="bg-white p-[10px] w-[535px] h-auto relative overflow-hidden rounded-lg shadow-lg">
+      <div
+        className="bg-white p-[10px] w-[535px] h-auto relative overflow-hidden rounded-lg"
+        style={{
+          boxShadow: '0 50px 50px 50px rgba(0, 0, 0, 0.5)', 
+        }}
+      >
         <div className='absolute top-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3]'></div>
 
         <h2 className='mt-2 text-violet font-gothic font-bold flex justify-center'>

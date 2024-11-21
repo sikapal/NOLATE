@@ -12,6 +12,7 @@ import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlin
 const MemberLarge = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [isExpanded, setIsExpanded] = useState(true);
+    const [userRole, setUserRole] = useState('admin');
 
     const open = Boolean(anchorEl);
 
@@ -95,22 +96,32 @@ const MemberLarge = () => {
             <div className='pt-8 px-4' style={{ display: isExpanded ? 'block' : '' }}>
 
                 <h1 className='font-bold mb-1 mt-3 text-xl ' style={{ marginTop: isExpanded ? '12px' : '55px' }}>Pr. George Matoudi</h1>
-                <p className='text-slate-500 mb-2'>Chef service de scolarité</p>
+
+
+                <p
+                    className={`mb-2 ${userRole === 'admin'
+                            ? 'bg-[#f4d5fe] inline-block px-2 py-1 text-violet rounded-md text-[12px]'
+                            : 'text-slate-500'
+                        }`}
+                >
+                    {userRole === 'admin' ? 'Gestionnaire' : 'Chef service de scolarité'}
+                </p>
+
                 {isExpanded && (
 
                     <div className='flex items-center mb-4  text-[12px]'>
                         <div className='flex items-center  text-violet justify-center p-2 bg-white border  border-slate-300 rounded-full w-7 h-7'>
-                            <Call style={{ width: "15px", height: "15px" }} className='text-red-500 text-xs' />
+                            <Call style={{ width: "15px", height: "15px" }} />
                         </div>
-                        <p className='ml-4 text-[#636578]'>(+2376)xxx-xxx-xxx</p>
+                        <p className='ml-4 text-[15px] text-[#636578]'>(+2376)xxx-xxx-xxx</p>
                     </div>
                 )}
                 {isExpanded && (
                     <div className='flex items-center mb-4  text-[12px]'>
                         <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
-                            <EmailOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
+                            <EmailOutlinedIcon style={{ width: "15px", height: "15px" }} />
                         </div>
-                        <p className='ml-4  text-[#636578]'>test@gmail.com</p>
+                        <p className='ml-4 text-[15px]  text-[#636578]'>test@gmail.com</p>
                     </div>
 
                 )}
@@ -118,20 +129,20 @@ const MemberLarge = () => {
                     <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
                         <SchemaOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>Direction des Affaires Générales</p>
+                    <p className='ml-4  text-[15px]  text-[#636578]'>Direction des Affaires Générales</p>
                 </div>
                 )}
                 {isExpanded && (<div className='flex items-center mb-4 text-[12px]'>
                     <div className='flex  text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
                         <PersonAddAltOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>Ajouté le <span className='text-violet'>01 Janvier 2024</span></p>
+                    <p className='ml-4 text-[15px] text-[#636578]'>Ajouté le <span className='text-violet'>01 Janvier 2024</span></p>
                 </div>)}
                 {isExpanded && (<div className='flex items-center mb-4 text-[12px]'>
                     <div className=' flex text-violet text-sm  items-center justify-center p-2 bg-white border border-slate-300 rounded-full w-7 h-7'>
                         < BusinessCenterOutlinedIcon style={{ width: "15px", height: "15px" }} className='text-red-500  justify-center item-center ' />
                     </div>
-                    <p className='ml-4  text-[#636578]'>Hors Service</p>
+                    <p className='ml-4 text-[15px] text-[#636578]'>Hors Service</p>
                 </div>
                 )}
 

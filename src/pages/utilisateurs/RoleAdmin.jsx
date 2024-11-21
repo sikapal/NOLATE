@@ -1,14 +1,13 @@
-import React, { useState,useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import BreadcrumbsP from '../../components/BreadcrumbsP';
-import { AddCircleOutline, ArrowDropDown } from '@mui/icons-material';
+import { AddCircleOutline, ArrowDropDown, DeleteForeverOutlined } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search } from "lucide-react";
 import mockData from "../../assets/constants/data2.json";
 import Dots from '../../components/Dots';
-import { Divider } from '@mui/material';
 import user from "../../assets/user.jpg"
 import RegisterAdmin from '../RegisterAdmin';
 import { useNavigate } from 'react-router-dom';
@@ -19,14 +18,23 @@ const RoleAdmin = () => {
 
     const getProfileImage = (assignee) => {
         switch (assignee) {
-    
+
             default:
                 return user;
         }
     };
-    
+
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const closeModalDelete = () => setShowModalDelete(false);
+
+    const handleDelete = () => {
+
+        console.log('Item deleted');
+        closeModalDelete();
+    };
+
     const columnHelper = createColumnHelper();
-    
+
     const columns = [
         columnHelper.accessor("select", {
             header: () => (
@@ -36,24 +44,24 @@ const RoleAdmin = () => {
                 <input type="checkbox" className='cursor-pointer' />
             ),
         }),
-    
-    
+
+
         columnHelper.accessor("ADMINISTRATEUR", {
             cell: (info) => (
                 <div
-                  className="flex items-center cursor-pointer"
-                  onClick={() => navigate(`/admin-profile`)} 
+                    className="flex items-center cursor-pointer"
+                    onClick={() => navigate(`/admin-profile`)}
                 >
-                  {getProfileImage(info.getValue()) && (
-                    <img
-                      src={getProfileImage(info.getValue())}
-                      alt={`${info.getValue()} profile`}
-                      className="m-2 w-8 h-8 rounded-full"
-                    />
-                  )}
-                  {info.getValue()}
+                    {getProfileImage(info.getValue()) && (
+                        <img
+                            src={getProfileImage(info.getValue())}
+                            alt={`${info.getValue()} profile`}
+                            className="m-2 w-8 h-8 rounded-full"
+                        />
+                    )}
+                    {info.getValue()}
                 </div>
-              ),
+            ),
             header: () => (
                 <span className="flex items-center">
                     ADMINISTRATEUR
@@ -78,11 +86,11 @@ const RoleAdmin = () => {
             ),
             cell: (info) => {
                 const role = info.getValue();
-    
-    
+
+
                 const backgroundColor = role === "Administrateur" ? "bg-[#89f299]" : role === "Gestionnaire" ? " bg-[#e9d0fe] " : "";
                 const textClass = role === "Gestionnaire" ? "text-violet opacity-[80%]" : "text-green";
-    
+
                 return (
                     <span className={`px-2 py-1 rounded-xl ${backgroundColor} ${textClass}`}>
                         {role}
@@ -90,7 +98,7 @@ const RoleAdmin = () => {
                 );
             },
         }),
-    
+
         columnHelper.accessor("NIVEAU D'ACCES", {
             header: (info) => (
                 <span className="flex items-center">
@@ -112,23 +120,32 @@ const RoleAdmin = () => {
             cell: (info) => (
                 <Dots
                     menuItems={[
-                        { label: "Autorisations", action: () => alert(`Editing ${info.row.original.name}`) },
-                        { label: "Voir le profil", action: () => alert(`Deleting ${info.row.original.name}`) },
-                        { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
+                        {
+                            label: "Autorisations",
+                            action: () => navigate('/admin-profile', { state: { tabIndex: 1 } })
+                        },
+                        {
+                            label: "Voir le profil",
+                            action: () => navigate('/admin-profile', { state: { tabIndex: 0 } })
+                        },
+                        { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
                     ]}
                 />
             ),
         }),
     ];
-    
+
+
 
     const [data] = useState(() => [...mockData]);
     const [sorting, setSorting] = useState([]);
     const [globalFilter, setGlobalFilter] = useState("");
     const [open, setOpen] = useState(true);
     const [showModalRegisterAdmin, setShowModalRegisterAdmin] = useState(false);
-    const modalRef = useRef(null); 
+    const modalRef = useRef(null);
     const navigate = useNavigate();
+
+
 
     const breadcrumbs = [
         { label: 'Utilisateurs' },
@@ -172,7 +189,7 @@ const RoleAdmin = () => {
     }, []);
 
 
-    
+
 
     return (
         <div className="flex max-w-full h-screen bg-gray-100">
@@ -188,7 +205,7 @@ const RoleAdmin = () => {
                     <div className="mt-3 bg-white w-full rounded-xl h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3">Rôle des administrateurs</h1>
 
-                        <Divider />
+                        {/* <Divider /> */}
 
                         <div className="flex flex-wrap  px-3 pt-4 justify-between">
                             <div className="left">
@@ -226,7 +243,7 @@ const RoleAdmin = () => {
                                     </div>
                                 </div>
 
-                                <button className=' bg-lightblue text-[12px] hover:text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                <button className=' bg-lightblue text-[14px]  mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                         <p className='mr-1' onClick={() => {
@@ -360,6 +377,33 @@ const RoleAdmin = () => {
             {showModalRegisterAdmin && (
                 <div ref={modalRef}>
                     <RegisterAdmin setShowModalRegisterAdmin={setShowModalRegisterAdmin} />
+                </div>
+            )}
+
+            {showModalDelete && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
+                        <h2 className="text-lg font-semibold mb-2">Suppression</h2>
+                        <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
+
+                        <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
+                            Cette action est irréversible</p>
+                        <div className="flex justify-center gap-4">
+                            <button
+                                onClick={() => { handleDelete }}
+                                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
+
+                            >
+                                Supprimer
+                            </button>
+                            <button
+                                onClick={closeModalDelete}
+                                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
+                            >
+                                Annuler
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

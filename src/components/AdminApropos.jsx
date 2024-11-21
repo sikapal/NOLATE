@@ -10,7 +10,7 @@ const AdminApropos = () => {
         <>
             <div className='bg-white w-full h-auto p-4 rounded-2xl '>
 
-                <h1 className="font-bold text-lg mb-1">Informations Générales</h1>
+                <h1 className="font-bold text-lg mb-3">Informations Générales</h1>
                 <div>
                     <form action=" " className='mb-4 '>
 
@@ -25,7 +25,7 @@ const AdminApropos = () => {
                                     id="nom"
                                     placeholder="NGN"
                                     className="w-full border border-gray-300 rounded text-black px-3 py-2"
-                                    readOnly
+                                  
                                 />
                             </div>
 
@@ -39,7 +39,7 @@ const AdminApropos = () => {
                                     id="prenom"
                                     placeholder="Boris"
                                     className="w-full border border-gray-300 text-black rounded px-3 py-2"
-                                    readOnly
+                                  
                                 />
                             </div>
                         </div>
@@ -56,21 +56,21 @@ const AdminApropos = () => {
                                         id="jour"
                                         placeholder="15"
                                         className=" w-[32%] border border-gray-300 rounded text-black px-3 py-2"
-                                        readOnly
+                                      
                                     />
                                     <input
                                         type="text"
                                         id="mois"
                                         placeholder="Novembre"
                                         className=" w-[32%] border border-gray-300 rounded text-black px-3 py-2"
-                                        readOnly
+                                      
                                     />
                                     <input
                                         type="text"
                                         id="année"
                                         placeholder="1990"
                                         className=" w-[32%] border border-gray-300 rounded text-black  px-3 py-2"
-                                        readOnly
+                                      
                                     />
                                 </div>
                             </div>
@@ -78,19 +78,32 @@ const AdminApropos = () => {
 
                         </div>
 
-                        <div className='flex flex-wrap mt-4'>
-                            <div className="mb-1  w-full ">
-                                <label htmlFor="jour" className="block mb-2 text-titre text-[14px]">
-                                    Genre
-                                </label>
+                        <div className='mt-4 flex-row flex '>
+                        <label className='block text-sm'>Genre</label>
+                        <div className='flex items-center space-x-4 ml-8'>
+                            <label className='flex items-center'>
+                                <input
+                                    type='radio'
+                                    name='gender'
+                                    value='male'
+                                    className='mr-2 accent-lightblue'
+                                   
+                                />
+                                Homme
+                            </label>
+                            <label className='flex items-center'>
+                                <input
+                                    type='radio'
+                                    name='gender'
+                                    value='female'
 
-                                <div className=' flex flex-wrap justify-between w-1/2'>
-
-                                </div>
-
-                            </div>
-
+                                    className='mr-2 accent-lightblue'
+                                  
+                                />
+                                Femme
+                            </label>
                         </div>
+                    </div>
 
                     </form>
                 </div>
@@ -102,8 +115,8 @@ const AdminApropos = () => {
                 <form action=" ">
 
                     {/* email */}
-                    <div className='flex flex-wrap '>
-                        <div className="mb-1  w-1/2">
+                    <div className='flex flex-wrap  relative '>
+                        <div className="mb-1  w-1/2 ">
                             <label htmlFor="email" className="block mb-2 text-[14px] text-titre">
                                Email
                             </label>
@@ -112,8 +125,12 @@ const AdminApropos = () => {
                                 id="email"
                                 placeholder="email@gmail.com"
                                 className="w-full border border-gray-300 rounded text-black px-3 py-2"
-                                readOnly
+                              
                             />
+                        </div>
+
+                        <div className='absolute bg-[#eaa8a8] mr-4 top-1/2 right-1/2 py-1 px-2 text-[10px] rounded-md'>
+                                <p className='text-red'> verifié maintenant</p>
                         </div>
 
                         {/* telephone*/}
@@ -128,6 +145,10 @@ const AdminApropos = () => {
                           inputStyle={{ width: '100%', height: '40px'}}
                           />
                         </div>
+
+                        <div className='absolute bg-[#a8eab1] mr-4 top-1/2 right-0 py-1 px-2 text-[10px] rounded-md'>
+                                <p className='text-green'> verifié </p>
+                        </div>
                     </div>
 
                     <div className='flex flex-wrap '>
@@ -140,7 +161,7 @@ const AdminApropos = () => {
                                     id="pay"
                                     placeholder="Cameroun"
                                     className="w-full border border-gray-300 rounded text-black px-3 py-2"
-                                    readOnly
+                                  
                                 />
                             </div>
 
@@ -154,7 +175,7 @@ const AdminApropos = () => {
                                     id="ville"
                                     placeholder="Yaoundé"
                                     className="w-full border border-gray-300 text-black rounded px-3 py-2"
-                                    readOnly
+                                  
                                 />
                             </div>
                         </div>

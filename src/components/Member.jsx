@@ -36,7 +36,7 @@ const Member = () => {
                 </div>
                 <div className='flex px-5 py-4 justify-between'>
                     <div className='flex '>
-                        <button className=' bg-[#EEEEEE] text-[14px] hover:bg-[#EEEEEE] hover:text-violet hover:text-[16px]  w-[140px] h-[40px] rounded-xl justify-center text-black  items-center flex'>
+                        <button className=' bg-[#EEEEEE] text-[16px] hover:bg-[#EEEEEE] hover:text-violet  w-[140px] h-[40px] rounded-xl justify-center text-black  items-center flex'>
                             <div className='flex mr-2 justify-center items-center text-titre'>
                                 <span> <FaEye className='justify-center items-center mx-2' /></span>
                                 <Link to="/user-profile" >

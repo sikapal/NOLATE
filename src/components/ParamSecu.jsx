@@ -1,29 +1,73 @@
 import React, { useState } from 'react';
-import { Add } from '@mui/icons-material';
+import { Accessibility, Add, DirectionsRun, Timer, TouchAppSharp } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
-import mockData from "../assets/constants/data5.json";
+import mockData from "../assets/constants/data11.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from '@mui/material/Checkbox';
+import user from "../assets/user.jpg"
+
 
 const columnHelper = createColumnHelper();
 
+
+
+const getphoneImage = (utilisateur) => {
+    switch (utilisateur) {
+
+        default:
+            return user;
+    }
+};
+
 const columns = [
 
+
     columnHelper.accessor("utilisateur", {
-        cell: (info) => info.getValue(),
-        header: () => (
-            <span className="flex items-center ">
-                UTILISATEUR
+        cell: (info) => {
+            const utilisateur = info.getValue();
+          
+            const role = info.row.original.role;
+            return (
+                <div className="flex items-center">
+                    {getphoneImage(utilisateur) && (
+                        <img
+                            src={getphoneImage(info.getValue())}
+                            alt={`${info.getValue()} profile`}
+                            className="m-2 w-8 h-8 rounded-full"
+                        />
+
+                    )}
+                    <span className=''>
+                        {utilisateur}
+                        {role && <><br />{role}</>}
+                    </span>
+
+                </div>
+            );
+        },
+        header: (info) => (
+            <span className="flex items-center">
+                APPAREILS autorisés
             </span>
         ),
     }),
-    columnHelper.accessor("appareils", {
-        cell: (info) => (
-            <span className="italic text-blue-600">{info.getValue()}</span>
-        ),
+
+
+    columnHelper.accessor("appareil", {
+        cell: (info) => {
+            const appareil = info.getValue();
+            const pays = info.row.original.pays;
+            const ville = info.row.original.ville;
+            return (
+                <span className=''>
+                    {appareil}
+                    {ville && <><br />{ville} {pays}</>}
+                </span>
+            );
+        },
         header: (info) => (
             <span className="flex items-center">
                 APPAREILS
@@ -36,25 +80,62 @@ const columns = [
                 CONNEXION
             </span>
         ),
-        cell: (info) => info.getValue(),
+        cell: (info) => {
+            const connexion = info.getValue();
+            const heureD = info.row.original.heureD;
+            const heureF = info.row.original.heureF;
+            return (
+                <span className=''>
+                    {connexion}
+                    {heureD && <><br />{heureD} à {heureF}</>}
+                </span>
+            );
+        },
     }),
-    columnHelper.accessor("status", {
+    columnHelper.accessor("statut", {
         header: (info) => (
             <span className="flex items-center">
-                STATUS
+                STATUT
             </span>
         ),
         cell: (info) => info.getValue(),
     }),
+    // columnHelper.accessor("connexion", {
+    //     header: (info) => (
+    //         <span className="flex items-center">
+    //             Connexion recente
+    //         </span>
+    //     ),
+    //     cell: (info) => {
+    //         const connexion = info.getValue();
+    //         const heure = info.row.original.heure;
+    //         const etat = info.row.original.etat;
+    //         return (
+    //             <span className=''>
+    //                 {connexion},{heure}
+    //                 {etat && <><br />{etat}</>}
+    //             </span>
+    //         );
+    //     },
+    // }),
 
     columnHelper.accessor("ACTION", {
         header: "Actions",
         cell: (info) => (
             <Dots
                 menuItems={[
+                    {
+                        label: "Déconnecter", action: () => {
 
-                    { label: "Déconnecter", action: () => alert(`Deleting ${info.row.original.name}`) },
-                    { label: "Bloquer l'appareil", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
+                        }
+                    },
+                    {
+                        label: "Bloquer", action: () => {
+
+                        }
+                    },
+
+                    { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
                 ]}
             />
         ),
@@ -113,28 +194,72 @@ const ParamSecu = () => {
                     <p>Exigences</p>
                     <p>Tolerance</p>
                 </div>
-                <div className='bg-xhite items-center justify-between flex my-3 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
-                    <p>Exigences</p>
-                    <p>Tolerance</p>
+                <div className='bg-white items-center justify-between flex -my-1 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                    <div className='flex my-2 text-black flex-row space-x-2 '>
+                        <DirectionsRun style={{ width: "20px", height: "20px" }} />
+                        <p>Retard accordé pour effectuer le pointage de début</p>
+
+                    </div>
+                    <select className='bg-white  rounded px-2 py-1 text-[#727c8e] font-semibold'>
+                        <option value="15">15 Minutes</option>
+                        <option value="20">20 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                    </select>
                 </div>
-                <div className='bg-xhite items-center justify-between flex mx-1  my-3 px-2  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
-                    <p>Exigences</p>
-                    <p>Tolerance</p>
+
+                <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                    <div className='flex text-black my-2 flex-row space-x-2 '>
+                        <div className='-rotate-0'> <DirectionsRun style={{ width: "20px", height: "20px" }} /></div>
+                        <p>Retard accordé pour effectuer le pointage de fin</p>
+
+                    </div>
+                    <select className='bg-white  rounded px-2 py-1 text-[#727c8e] font-semibold'>
+                        <option value="15">Indéterminé</option>
+                        <option value="20">20 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                    </select>
                 </div>
-                <div className='bg-xhite items-center justify-between flex mx-1 my-3 px-2  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
-                    <p>Exigences</p>
-                    <p>Tolerance</p>
+
+                <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                    <div className='flex text-black my-2 flex-row space-x-2 '>
+                        <div className=''> <Timer style={{ width: "20px", height: "20px" }} /></div>
+                        <p>Temps minimum à effectuer pour être qualifié de présent</p>
+
+                    </div>
+                    <select className='bg-white  rounded px-2 py-1 text-[#727c8e] font-semibold'>
+                        <option value="25">25%</option>
+                        <option value="40">40%</option>
+                        <option value="60">60%</option>
+                    </select>
                 </div>
-                <div className='bg-xhite items-center justify-between flex mx-1 my-3 px-2  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
-                    <p>Exigences</p>
-                    <p>Tolerance</p>
+
+                <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                    <div className='flex text-black my-2 flex-row space-x-2 '>
+                        <div className=''> <TouchAppSharp style={{ width: "20px", height: "20px" }} /></div>
+                        <p>Limite hebdomadaire des pointage manuels par les administrateurs pour chaque membre</p>
+
+                    </div>
+                    <select className='bg-white  rounded px-2 py-1 text-[#727c8e] font-semibold'>
+                        <option value="2">2 fois</option>
+                        <option value="4">4 fois</option>
+                        <option value="6">6 fois</option>
+                    </select>
                 </div>
-                <div className='bg-xhite items-center justify-between flex mx-1 my-3 px-2  font-bold text-sm text-[#727c8e] '>
-                    <p>Exigences</p>
-                    <p>Tolerance</p>
+                <div className='bg-white items-center justify-between flex mt-2  -my-1 px-2 mx-1  mb-2 font-bold text-sm text-[#727c8e]  border-[#D9D9D9]'>
+                    <div className='flex text-black my-2 flex-row space-x-2 '>
+                        <div className=''> <Accessibility style={{ width: "20px", height: "20px" }} /></div>
+                        <p>Inspection automatique de présence (une par activité planifiée)</p>
+
+                    </div>
+                    <select className='bg-white  rounded px-2 py-1 text-[#727c8e] font-semibold'>
+                        <option value="active">Activé</option>
+                        <option value="desactive">Désactivé</option>
+                    </select>
                 </div>
 
             </div>
+
+
 
             {/* <div className='p-2 w-full h-auto bg-white rounded-xl mt-3   flex flex-col shadow-xl  '>
 
@@ -309,7 +434,7 @@ const ParamSecu = () => {
                         className="mr-5  w-[22px] h-[22px]"
                     />
                     <label htmlFor="autorise" className="text-[14px] font-regular ml-2"><span className='font-bold'>Autoriser les membres à trouver la structure dans les résultats de Recherche </span><br />
-                     Cette option facilite des nouveaux membres au sein de la structure et acroit également la visibilité de la <br />structure. Vous garderez toujours le contrôle sur l'approbation des nouveaux membres
+                        Cette option facilite des nouveaux membres au sein de la structure et acroit également la visibilité de la <br />structure. Vous garderez toujours le contrôle sur l'approbation des nouveaux membres
                     </label>
                 </div>
             </div>

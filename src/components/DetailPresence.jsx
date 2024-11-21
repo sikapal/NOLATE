@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Modal } from "flowbite-react";
+import { Modal } from "flowbite-react";
 import { useState } from "react";
 
 const DetailPresence = () => {
@@ -7,11 +7,14 @@ const DetailPresence = () => {
 
     return (
         <>
-            
+
             <Modal
                 show={openModal}
                 onClose={() => setOpenModal(false)}
-                className="relative w-[400px] md:max-w-2xl mx-auto bg-inherit " 
+                className="relative w-[500px] md:max-w-2xl mx-auto pb-12 my-2 bg-transparent "
+                style={{
+                    boxShadow: '0 50px 50px 50px rgba(0, 0, 0, 0.75)',
+                }}
             >
                 <Modal.Header className='text-'>Détails de présence</Modal.Header>
 
@@ -87,7 +90,7 @@ const DetailPresence = () => {
                             </div>
                         </div>
                         <div className='third px-5 py-3'>
-                        <div className=''>
+                            <div className=''>
                                 <h1 className='font-bold mb-2'>Pointeuse</h1>
                                 <div className='justify-between flex mr-5 mb-1'>
                                     <p>Id de la pointeuse</p>

@@ -1,75 +1,116 @@
 import React, { useState } from 'react';
-import { Add } from '@mui/icons-material';
+import { Add, DeleteForeverOutlined } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
 import mockData from "../assets/constants/data4.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import user from "../assets/user.jpg"
+import SlideOrganigramme from '../pages/parametres/SlideOrganigramme';
 
 const columnHelper = createColumnHelper();
 
-const columns = [
-  columnHelper.accessor("select", {
-    header: () => (
-      <input type="checkbox" className='cursor-pointer' />
-    ),
-    cell: () => (
-      <input type="checkbox" className='cursor-pointer' />
-    ),
-  }),
-
-
-  columnHelper.accessor("unite", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center ">
-        UNITE DE GESTION
-      </span>
-    ),
-  }),
-  columnHelper.accessor("niveau", {
-    cell: (info) => (
-      <span className="italic text-blue-600">{info.getValue()}</span>
-    ),
-    header: (info) => (
-      <span className="flex items-center">
-        NIVEAU
-      </span>
-    ),
-  }),
-  columnHelper.accessor("effectif", {
-    header: (info) => (
-      <span className="flex items-center">
-        EFFECTIF
-      </span>
-    ),
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("responsable", {
-    header: (info) => (
-      <span className="flex items-center">
-        RESPONSABLE
-      </span>
-    ),
-    cell: (info) => info.getValue(),
-  }),
-
-  columnHelper.accessor("ACTION", {
-    header: "Actions",
-    cell: (info) => (
-      <Dots
-        menuItems={[
-
-          { label: "Modifier", action: () => alert(`Deleting ${info.row.original.name}`) },
-          { label: "Supprimer", action: () => alert(`Deleting ${info.row.original.name}`), color: "red" },
-        ]}
-      />
-    ),
-  }),
-];
-
 const ParamOrgani = () => {
+
+  const [showModalNewOrganigramme, setShowModalNewOrganigramme] = useState(false);
+
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const closeModalDelete = () => setShowModalDelete(false);
+
+  const handleDelete = () => {
+
+    console.log('Item deleted');
+    closeModalDelete();
+  };
+
+  const getProfileImage = (assignee) => {
+    switch (assignee) {
+
+      default:
+        return user;
+    }
+  };
+
+  const columns = [
+    columnHelper.accessor("select", {
+      header: () => (
+        <input type="checkbox" className='cursor-pointer' />
+      ),
+      cell: () => (
+        <input type="checkbox" className='cursor-pointer' />
+      ),
+    }),
+
+
+    columnHelper.accessor("unite", {
+      cell: (info) => info.getValue(),
+      header: () => (
+        <span className="flex items-center ">
+          UNITE DE GESTION
+        </span>
+      ),
+    }),
+    columnHelper.accessor("niveau", {
+      cell: (info) => (
+        <span className="italic text-blue-600">{info.getValue()}</span>
+      ),
+      header: (info) => (
+        <span className="flex items-center">
+          NIVEAU
+        </span>
+      ),
+    }),
+    columnHelper.accessor("effectif", {
+      header: (info) => (
+        <span className="flex items-center">
+          EFFECTIF
+        </span>
+      ),
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("responsable", {
+      header: (info) => (
+        <span className="flex items-center">
+          RESPONSABLE
+        </span>
+      ),
+      cell: (info) => (
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={() => navigate(`/admin-profile`)}
+        >
+          {getProfileImage(info.getValue()) && (
+            <img
+              src={getProfileImage(info.getValue())}
+              alt={`${info.getValue()} profile`}
+              className="m-2 w-8 h-8 rounded-full"
+            />
+          )}
+          {info.getValue()}
+        </div>
+      ),
+    }),
+
+    columnHelper.accessor("ACTION", {
+      header: "Actions",
+      cell: (info) => (
+        <Dots
+          menuItems={[
+
+            {
+              label: "Modifier", action: () => {
+                setShowModalNewOrganigramme(true);
+              }
+            },
+
+            { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+          ]}
+        />
+      ),
+    }),
+  ];
+
 
   const [data] = useState(() => [...mockData]);
   const [sorting, setSorting] = useState([]);
@@ -102,6 +143,9 @@ const ParamOrgani = () => {
   const handleSetFilter = (event) => {
     setFilter(event.target.value);
   };
+
+
+
   return (
     <div className=" bg-white w-full rounded-xl h-auto pt-4 pb-2  flex flex-col">
       <h1 className="font-bold p-3">Organigramme de la structure</h1>
@@ -122,7 +166,7 @@ const ParamOrgani = () => {
           </div>
         </div>
         <div className="right flex flex-row ">
-          <FilterAltIcon className='mt-2'/>
+          <FilterAltIcon className='mt-2' />
           <div className='mr-3 relative'>
 
             <select
@@ -144,7 +188,13 @@ const ParamOrgani = () => {
           <button className=' bg-lightblue text-[14px] hover:text-[14px]  w-[230px] h-[40px] rounded-xl justify-center text-white  items-center flex'>
             <div className='flex mr-1 justify-center items-center'>
               <span> <Add className='justify-center items-center mx-1' /></span>
-              <p className='mr-1'>Ajouter une unité de gestion</p>
+
+
+              <p className='mr-1' onClick={() => {
+
+                setShowModalNewOrganigramme(true);
+
+              }}>Ajouter une unité de gestion</p>
             </div>
           </button>
         </div>
@@ -153,7 +203,7 @@ const ParamOrgani = () => {
       <div className="flex-grow  p-4 ">
         <div className=" bg-white shadow-md rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-[#EEEEEE]">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
@@ -267,6 +317,36 @@ const ParamOrgani = () => {
 
       </div>
 
+
+
+      {showModalDelete && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
+                        <h2 className="text-lg font-semibold mb-2">Suppression</h2>
+                        <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
+
+                        <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
+                            Cette action est irréversible</p>
+                        <div className="flex justify-center gap-4">
+                            <button
+                                onClick={() => { handleDelete }}
+                                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
+
+                            >
+                                Supprimer
+                            </button>
+                            <button
+                                onClick={closeModalDelete}
+                                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
+                            >
+                                Annuler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {showModalNewOrganigramme && <SlideOrganigramme setShowModalNewOrganigramme={setShowModalNewOrganigramme} />}
+           
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Dots from './Dots'
-import img from '../assets/logo.svg'
 import image from '../assets/image.jpg'
 import ImageIcon from '@mui/icons-material/Image';
 import { Add, DeleteForeverOutlined } from '@mui/icons-material';
@@ -23,19 +22,19 @@ const PublicationsCard = ({ publication }) => {
 
     return (
         <div className="border border-gray-300 w-[375px] h-[250px] rounded-lg shadow-lg p-3 my-3 bg-white">
-            {/* Use publication title and author */}
+     
             <div className="flex h-[80%]">
                 <div className="border border-gray-300 rounded-2xl w-[35%]">
                     <img src={image} alt="file" className="h-[80%]" />
                     <div className="h-[20%] flex justify-center items-center py-1">
-                        <p className="flex items-center text-[10px]">
+                        <p className="flex items-center text-[10px] cursor-pointer">
                             <ImageIcon style={{ width: "15px", height: "15px" }} /> 5 photos
                         </p>
                     </div>
                 </div>
                 <div className="mx-3 w-[60%] flex flex-col justify-between">
                     <div className="flex relative justify-between">
-                        <h2 className="text-sm font-bold">Titre</h2>
+                        <h2 className="text-sm font-bold">Direction des Ressources Humaines</h2>
                         <div className="absolute -right-5 -top-1">
                             <Dots menuItems={[
                                 { label: "Modifier", action: () => setShowModalNewPublication(true) },
@@ -44,14 +43,15 @@ const PublicationsCard = ({ publication }) => {
                             ]} />
                         </div>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center -mt-3">
                         <img src={image} alt="profile" className="rounded-full w-[20px] h-[20px]" />
                         <h2 className="text-[#707070] font-bold pl-2 items-center justify-center text-[12px]">Auteur</h2>
                         <p className="text-[10px] pl-2 items-center justify-center">à l'instant</p>
                     </div>
-                    <div>
+                    <div className='-mt-4'>
                         <p className="text-black text-[11px]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
+                            Lorem ipsum dolor sit amet, 
                         </p>
                     </div>
                     <div className="flex items-center justify-end">
@@ -61,10 +61,10 @@ const PublicationsCard = ({ publication }) => {
                     </div>
                 </div>
             </div>
-            {/* Rest of the card code, including modal handling */}
+           
 
             <div className='flex pt-6  justify-between items-center'>
-                {/* Left aligned div with three icons */}
+               
                 <div className='flex space-x-4'>
                     <div className='flex flex-row'>
                         <div className='flex flex-row justify-center items-center text-violet  bg-gray-200 rounded-full w-6 h-6'>
@@ -92,7 +92,7 @@ const PublicationsCard = ({ publication }) => {
                     </div>
                 </div>
 
-                {/* Right aligned div with one icon */}
+        
                 <div className='flex justify-center items-center bg-gray-200 text-red rounded-full w-6 h-6'>
                     < WarningOutlinedIcon className='text-red-500' style={{ width: "15px", height: "15px" }} />
                 </div>

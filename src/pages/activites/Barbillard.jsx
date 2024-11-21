@@ -50,10 +50,10 @@ const Barbillard = () => {
                     <BreadcrumbsP breadcrumbs={breadcrumbs} />
 
                     <div className="mt-3 bg-white w-full rounded h-[85vh] flex flex-col">
-                        <h1 className="font-bold p-3">Publications ({filteredPublications.length})</h1>
+                        <h1 className="font-bold p-3 mt-2">Publications ({filteredPublications.length})</h1>
 
-                        <Divider/>
-                        <div className="flex flex-wrap mt-2 p-3 justify-between">
+                       
+                        <div className="flex flex-wrap  p-3 justify-between">
                             <div className="left">
                                 <input
                                     type="text"
@@ -84,7 +84,7 @@ const Barbillard = () => {
                                     </div>
                                 </div>
 
-                                <button className=' bg-lightblue text-[12px] hover:text-[14px] ml-2 mr-1 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                <button className=' bg-lightblue text-[14px] ml-2 mr-1 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                         <p className='mr-1' onClick={() => {

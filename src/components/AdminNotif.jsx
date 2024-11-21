@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Checkbox from '@mui/material/Checkbox';
-import { CalendarMonth, CheckBox } from '@mui/icons-material';
 
 
-const ParamNotif = () => {
+const AdminNotif = () => {
 
 
   const [checked, setChecked] = useState(true);
@@ -134,4 +132,4 @@ const ParamNotif = () => {
   )
 }
 
-export default ParamNotif
+export default AdminNotif

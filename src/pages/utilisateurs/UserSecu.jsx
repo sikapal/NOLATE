@@ -244,7 +244,7 @@ const UserSecu = () => {
         <div className='pb-2 '>
 
             <div className=" bg-white w-full rounded-xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
-                <h1 className="font-bold py-2 px-4 border-b-2">Historique de connexion</h1>
+                <h1 className="font-bold py-2 px-4 border-b-2">Appareils connectés</h1>
                 <div className="flex flex-wrap  px-3 pt-3  justify-between">
                     <div className="left flex flex-row ">
                         <div className='text-titre pt-2 px-2 justify-center'>   Trier Par </div>

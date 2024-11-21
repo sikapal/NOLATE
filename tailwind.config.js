@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+
+      boxShadow: {
+        '3xl': '0 20px 50px rgba(0, 0, 0, 0.5)',
+      },
       
       fontFamily: {
         gothic: ["'Century Gothic'", "sans-serif"], 
