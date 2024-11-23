@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Dots from './Dots'
 import image from '../assets/image.jpg'
 import ImageIcon from '@mui/icons-material/Image';
@@ -20,9 +20,42 @@ const PublicationsCard = ({ publication }) => {
         closeModalDelete();
     };
 
+    //audio parameters  
+    const [isRecording, setIsRecording] = useState(false);
+    const [audioURL, setAudioURL] = useState(null);
+    const mediaRecorderRef = useRef(null);
+
+    const handleStartRecording = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            const mediaRecorder = new MediaRecorder(stream);
+            mediaRecorderRef.current = mediaRecorder;
+
+            mediaRecorder.ondataavailable = (event) => {
+                const audioBlob = new Blob([event.data], { type: "audio/webm" });
+                const url = URL.createObjectURL(audioBlob);
+                setAudioURL(url);
+            };
+
+            mediaRecorder.start();
+            setIsRecording(true);
+        } catch (error) {
+            console.error("Microphone access denied:", error);
+            alert("Unable to access the microphone. Please grant permissions.");
+        }
+    };
+
+    const handleStopRecording = () => {
+        if (mediaRecorderRef.current) {
+            mediaRecorderRef.current.stop();
+            setIsRecording(false);
+        }
+    };
+
+
     return (
         <div className="border border-gray-300 w-[375px] h-[250px] rounded-lg shadow-lg p-3 my-3 bg-white">
-     
+
             <div className="flex h-[80%]">
                 <div className="border border-gray-300 rounded-2xl w-[35%]">
                     <img src={image} alt="file" className="h-[80%]" />
@@ -51,20 +84,32 @@ const PublicationsCard = ({ publication }) => {
                     <div className='-mt-4'>
                         <p className="text-black text-[11px]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
-                            Lorem ipsum dolor sit amet, 
+                            Lorem ipsum dolor sit amet,
                         </p>
                     </div>
                     <div className="flex items-center justify-end">
-                        <button className="w-64 h-7 rounded-3xl bg-slate-100 text-sm justify-center items-center text-skyblue">
-                            <Add className="w-2 h-2" /> ajouter l'audio
-                        </button>
+                        {audioURL ? (
+                            <div className="w-64 h-7 border rounded-lg bg-white flex items-center justify-center">
+                                <audio controls src={audioURL} className="w-full h-7">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        ) : (
+                            <button
+                                className={`w-64 h-7 rounded-lg bg-slate-100 text-sm justify-center items-center ${isRecording ? "bg-slate-100" : "bg-slate-100"} text-skyblue`}
+                                onClick={isRecording ? handleStopRecording : handleStartRecording}
+                            >
+                                <Add className="w-2 h-2" /> {isRecording ? "arrêter l'audio" : "ajouter l'audio"}
+                            </button>
+                        )}
                     </div>
+
                 </div>
             </div>
-           
+
 
             <div className='flex pt-6  justify-between items-center'>
-               
+
                 <div className='flex space-x-4'>
                     <div className='flex flex-row'>
                         <div className='flex flex-row justify-center items-center text-violet  bg-gray-200 rounded-full w-6 h-6'>
@@ -92,7 +137,7 @@ const PublicationsCard = ({ publication }) => {
                     </div>
                 </div>
 
-        
+
                 <div className='flex justify-center items-center bg-gray-200 text-red rounded-full w-6 h-6'>
                     < WarningOutlinedIcon className='text-red-500' style={{ width: "15px", height: "15px" }} />
                 </div>
@@ -124,7 +169,7 @@ const PublicationsCard = ({ publication }) => {
                 </div>
             )}
             {showModalNewPublication && <SlidePublication setShowModalNewPublication={setShowModalNewPublication} />}
-        
+
         </div>
     );
 };

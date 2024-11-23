@@ -129,13 +129,8 @@ const columns = [
 
                         }
                     },
-                    {
-                        label: "Bloquer", action: () => {
-
-                        }
-                    },
-
-                    { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+                   
+                    { label: "Bloquer l'appareil", action: () => {""} , color: "red" },
                 ]}
             />
         ),
@@ -148,7 +143,7 @@ const ParamSecu = () => {
     const [data] = useState(() => [...mockData]);
     const [sorting, setSorting] = useState([]);
     const [globalFilter, setGlobalFilter] = useState("");
-    const [open, setOpen] = useState(true);
+
 
 
     const table = useReactTable({
@@ -188,7 +183,7 @@ const ParamSecu = () => {
             <div className=' w-full h-auto bg-white rounded-xl  pt-4 flex flex-col shadow-xl '>
 
                 <h1 className="font-bold py-2 pl-3">Exigences Fonctionnelles</h1>
-                <p className='text-gray-500  text-sm pl-3'>Définissez le niveau d'exigences liées au processus de pointage de tous les membres.</p>
+                <p className='text-gray-500  py-2 text-sm pl-3'>Définissez le niveau d'exigences liées au processus de pointage de tous les membres.</p>
 
                 <div className='bg-[#EEEEEE] items-center justify-between flex mx-1 my-3 px-2 py-2 font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
                     <p>Exigences</p>

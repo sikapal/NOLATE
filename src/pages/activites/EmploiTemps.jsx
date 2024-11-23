@@ -11,6 +11,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, g
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search, } from "lucide-react";
 import mockData from "../../assets/constants/data7.json";
 import user from "../../assets/user.jpg"
+import { useNavigate } from 'react-router-dom';
 
 const columnHelper = createColumnHelper();
 
@@ -27,7 +28,7 @@ const getProfileImage = (assignee) => {
 
 const EmploiTemps = () => {
     const [open, setOpen] = useState(true);
-
+    const navigate = useNavigate();
     const [date, setDate] = useState('');
     const [showModalDelete, setShowModalDelete] = useState(false);
     const closeModalDelete = () => setShowModalDelete(false);
@@ -115,7 +116,7 @@ const EmploiTemps = () => {
                 </span>
             ),
             cell: (info) => (
-                <div className="flex items-center">
+                <div className="flex items-center cursor-pointer"  onClick={() => navigate(`/user-profile`)}>
                     {getProfileImage(info.getValue()) && (
                         <img
                             src={getProfileImage(info.getValue())}

@@ -39,7 +39,7 @@ const Register3 = () => {
 
                         <button className="mt-6  p-2 w-full h-[48px] bg-gradient-to-r from-[#2699FB] to-[#EB09E3] text-white font-bold rounded-md justify-center items-center">
                             
-                            Vérifier
+                          <Link to="/parametres">  Vérifier</Link>
                         </button>
 
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 const BilanHoraire = () => {
     return (
-        <div className='flex-row w-[310px] h-[165px] bg-gradient-to-b rounded-md p-4 from-[#4A26A0] to-[#7B1FA2]'>
+        <div className='flex-row w-[310px] h-[165px] bg-gradient-to-b rounded-2xl p-4 from-[#4A26A0] to-[#7B1FA2]'>
             <h2 className='text-white font-bold mb-3'>Bilan Horaire</h2>
 
             <div className='w-9 h-1 bg-white rounded-md mb-3'></div>

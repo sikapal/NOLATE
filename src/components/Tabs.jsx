@@ -10,9 +10,10 @@ import ParamSecu from './ParamSecu';
 import ParamNotif from './ParamNotif';
 import ParamPointeuse from './ParamPointeuse';
 
-const Tabs = () => {
+const Tabs = ({ activeTab, setActiveTab })=> {
 
-    const [activeTab, setActiveTab]= useState(0);
+   
+    
     const tabs = [
         {
             title: "A PROPOS", icon: <InfoOutlinedIcon/>

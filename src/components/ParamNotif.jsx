@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Checkbox from '@mui/material/Checkbox';
-import { CalendarMonth, CheckBox } from '@mui/icons-material';
+
 
 
 const ParamNotif = () => {
@@ -15,10 +14,18 @@ const ParamNotif = () => {
     <>
       <div className=' w-full bg-white rounded-2xl h-fit  pt-4 flex flex-col  shadow-xl  '>
 
+        <div className='flex flex-row justify-between'>
+          <h1 className="font-bold py-2 pl-3">Notifications</h1>
+          <button
+            className="bg-lightblue text-white py-1 mx-3  px-2 rounded-lg  top-0"
+            type="button"
+          >
+            Enregistrer
+          </button>
+        </div>
 
 
-        <h1 className="font-bold py-2 pl-3">Notifications</h1>
-        <p className='text-gray-500  text-sm pl-3'>Choisissez le type de notifications que vous désirez recevoir sur votre compte..</p>
+        <p className='text-gray-500  text-sm pl-3 mb-2'>Choisissez le type de notifications que vous désirez recevoir sur votre compte..</p>
 
         <div className='bg-[#EEEEEE] items-center justify-between  flex mx-1 my-3 px-2 py-2 font-bold text-[12px] text-[#727c8e] border-b-2 border-[#D9D9D9]'>
           <p className='w-3/6'>NOTIFICATION</p>
@@ -127,7 +134,7 @@ const ParamNotif = () => {
           </div>
         </div>
 
-         
+
       </div>
       <p className='mt-2 text-[12px] text-titre'>Nous avons besoin de l'autorisation de votre navigateur pour afficher les notifications. <span className='text-lightblue'> Demander la permission</span></p>
     </>

@@ -1,31 +1,44 @@
 import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AttachFile, CloudUpload, Mic } from '@mui/icons-material';
+import { AttachFile, CloudUpload, Mic, Close } from '@mui/icons-material';
 
 const SlidePublication = ({ setShowModalNewPublication }) => {
     const [destinataire, setDest] = useState('');
-    const handleSetDest = (event) => {
-        setDest(event.target.value);
+    const [category, setCategory] = useState('');
+    const [images, setImages] = useState([]);
+
+    const handleImageUpload = (event) => {
+        const selectedFiles = Array.from(event.target.files);
+        const fileURLs = selectedFiles.map(file => ({
+            id: Math.random().toString(36).substr(2, 9),
+            url: URL.createObjectURL(file),
+        }));
+        setImages((prevImages) => [...prevImages, ...fileURLs]);
     };
 
-    const [category, setCategory] = useState('');
-    const handleSetCategory = (event) => {
-        setCategory(event.target.value);
+    const handleRemoveImage = (id) => {
+        setImages((prevImages) => prevImages.filter((image) => image.id !== id));
     };
+
+    const handleSetDest = (event) => setDest(event.target.value);
+    const handleSetCategory = (event) => setCategory(event.target.value);
 
     return (
         <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end">
-            <div className="bg-white w-full sm:w-96 h-screen mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out flex flex-col">
+            <div className="bg-white w-full sm:w-96 h-screen mt-[50px] p-4 transform translate-x-0 transition-transform duration-300 ease-out flex flex-col">
                 <div>
-                    <div className='flex flex-row justify-between items-center'>
+                    <div className="flex flex-row justify-between items-center">
                         <h2 className="text-xl font-semibold mb-6 text-violet">Nouvelle publication</h2>
-                        <button onClick={() => setShowModalNewPublication(false)} className="text-black font-bold text-2xl mb-6">
+                        <button
+                            onClick={() => setShowModalNewPublication(false)}
+                            className="text-black font-bold text-2xl mb-6"
+                        >
                             x
                         </button>
                     </div>
 
                     <form>
-                        <div className='space-y-2'>
+                        <div className="space-y-2">
                             <div>
                                 <div className="w-full relative">
                                     <label htmlFor="dest" className="block text-[14px] text-titre font-arial mb-2">Portée</label>
@@ -35,7 +48,7 @@ const SlidePublication = ({ setShowModalNewPublication }) => {
                                         value={destinataire}
                                         onChange={handleSetDest}
                                     >
-                                        <option value="" className="font-semibold">Sélectionnez les destinataires</option>
+                                        <option value="">Sélectionnez les destinataires</option>
                                         <option value="destinataire 1">destinataire 1</option>
                                         <option value="destinataire 2">destinataire 2</option>
                                     </select>
@@ -52,7 +65,7 @@ const SlidePublication = ({ setShowModalNewPublication }) => {
                                         value={category}
                                         onChange={handleSetCategory}
                                     >
-                                        <option value="" className="font-semibold">Sélectionnez une catégorie</option>
+                                        <option value="">Sélectionnez une catégorie</option>
                                         <option value="categorie1">categorie 1</option>
                                         <option value="categorie2">categorie 2</option>
                                     </select>
@@ -61,20 +74,47 @@ const SlidePublication = ({ setShowModalNewPublication }) => {
                             </div>
                         </div>
 
-                        <div
-                            className='bg-[#F6F6F6] border-4 border-dashed border-[#0996FF] w-full cursor-pointer h-48 rounded-xl mt-4 flex items-center justify-center mb-4'
-                            onClick={() => console.log("Image upload section clicked!")}
-                        >
-                            <div className='flex flex-col items-center text-[#0996FF]'>
+                      
+                        <div className={`bg-[#F6F6F6] border-4 border-dashed border-[#0996FF] h-48 w-full rounded-xl mt-4 flex flex-wrap items-center justify-start relative p-2`}>
+                            {/* File Input for Uploading Images */}
+                            <label
+                                className={`cursor-pointer flex flex-col items-center justify-center w-2 min-w-[40px] h-1 text-[#0996FF] rounded-md ${
+                                    images.length > 0 ? "mr-4" : "w-full h-full"
+                                }`}
+                            >
                                 <CloudUpload />
-                                <p>Ajouter des images</p>
-                                <p className='text-[#707070] text-xs'>Formats JPG, JPEG et PNG pris en charge.</p>
-                            </div>
+                                <p className="text-xs">Ajouter des images</p>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/jpeg,image/png,image/jpg"
+                                    className="hidden"
+                                    onChange={handleImageUpload}
+                                />
+                            </label>
+
+                           
+                            {images.map((image) => (
+                                <div key={image.id} className="relative w-30 h-40 m-2">
+                                    <img
+                                        src={image.url}
+                                        alt="uploaded"
+                                        className="w-full h-full object-cover rounded-md"
+                                    />
+                                    
+                                    <button
+                                        onClick={() => handleRemoveImage(image.id)}
+                                        className="absolute top-1 right-1 bg-red-500 text-black rounded-full p-1 text-xs"
+                                    >
+                                        <Close />
+                                    </button>
+                                </div>
+                            ))}
                         </div>
                     </form>
                 </div>
 
-                <div className='hello bg-white w-full flex flex-row pt-40'>
+                <div className="hello bg-white w-full flex flex-row pt-36">
                     <div className="relative w-[75%]">
                         <input
                             placeholder="Dites quelque chose..."
@@ -87,8 +127,6 @@ const SlidePublication = ({ setShowModalNewPublication }) => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 

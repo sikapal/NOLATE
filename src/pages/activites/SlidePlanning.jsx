@@ -3,11 +3,16 @@ import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AttachFile, Mic, Save, Search, Sync } from '@mui/icons-material';
 import logo from '../../assets/logo.svg'
+import SlideActiviteList from './SlideActiviteList';
+import SlideActivite from './SlideActivite';
+
 
 
 const SlidePlanning = ({ setShowModalNewPlanning }) => {
 
     const [activite, setActivite] = useState('');
+    const [showModalNewActiviteList, setShowModalNewActiviteList] = useState(false);
+    const [showModalNewActivite, setShowModalNewActivite] = useState(false);
 
     const handleSetActivite = (event) => {
         setActivite(event.target.value);
@@ -27,8 +32,8 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
         setModePointage(event.target.value);
     };
     return (
-        <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end">
-            <div className="bg-white w-full sm:w-96 h-screen mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
+        <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end ">
+            <div className="bg-white w-full sm:w-96 h-screen mt-[50px] px-4 py-4 transform translate-x-0 transition-transform duration-300 ease-out">
                 <div className='flex flex-row justify-between items-center'>
                     <h2 className="text-xl font-semibold mb-6 text-violet">Nouveau planning</h2>
                     <button onClick={() => setShowModalNewPlanning(false)} className="text-black font-bold text-2xl mb-6">
@@ -58,7 +63,21 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
                                     </label>
 
                                     <div className='text-[14px]'>
-                                        <span className=' text-[#0996FF] cursor-pointer'>Créer</span> | <span className='text-[#0996FF] cursor-pointer'>Modifier</span>
+                                        <span className=' text-[#0996FF] cursor-pointer' onClick={() => {
+
+                                            setShowModalNewActivite(true);
+                                           
+
+                                        }}>Créer</span> | <span className='text-[#0996FF] cursor-pointer'
+                                        
+                                        
+                                        onClick={() => {
+
+                                            setShowModalNewActiviteList(true);
+                                           
+                                        
+
+                                        }}>Modifier</span>
                                     </div>
                                 </div>
                                 <select
@@ -230,6 +249,8 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
 
                 </form>
             </div>
+            {showModalNewActiviteList && <SlideActiviteList setShowModalNewActiviteList={setShowModalNewActiviteList} />}
+            {showModalNewActivite && <SlideActivite setShowModalNewActivite={setShowModalNewActivite} />}
         </div>
     );
 };

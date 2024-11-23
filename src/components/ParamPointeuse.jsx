@@ -8,6 +8,7 @@ import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import user from "../assets/user.jpg"
 import SlidePointeuse from '../pages/parametres/SlidePointeuse';
+import { Divider } from '@mui/material';
 
 const columnHelper = createColumnHelper();
 
@@ -177,10 +178,14 @@ const ParamPointeuse = () => {
     setFilter(event.target.value);
   };
   return (
-    <div className=" bg-white w-full rounded-xl h-auto pt-4 pb-2 -mx-1 flex flex-col">
-      <h1 className="font-bold p-3">Pointeuses et Appareils</h1>
+    <div className=" bg-white w-full rounded-2xl h-auto pt-4 pb-2  flex flex-col shadow-xl">
 
-      <div className="flex flex-wrap  p-3 justify-between">
+
+      <h1 className="font-bold px-3 py-1 mb-2">Pointeuses et Appareils</h1>
+
+      <Divider/>
+
+      <div className="flex flex-wrap  p-3 justify-between mt-2">
         <div className="left">
           <div className="mb-4 relative">
             <input
@@ -229,10 +234,10 @@ const ParamPointeuse = () => {
         </div>
       </div>
 
-      <div className="flex-grow  p-4 ">
+      <div className="flex-grow  px-4 py-2">
         <div className=" bg-white shadow-md rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-[#EEEEEE]">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (

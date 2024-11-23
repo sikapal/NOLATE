@@ -16,10 +16,10 @@ import About from './pages/parametres/About';
 import Parametres from './pages/parametres/parametres';
 import UserProfile from './pages/parametres/UserProfile';
 import AdminProfile from './pages/utilisateurs/AdminProfile';
-import Test from './components/test';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import EmploiTemps from './pages/activites/EmploiTemps';
+import AudioRecorde from './components/AudioRecorde';
 
 
 const MyContext = createContext();
@@ -56,6 +56,7 @@ function App() {
             <Route path="/emploi-de-temps" element={<EmploiTemps/>}/>
             <Route path="/user-profile" element={<UserProfile/>} />
             <Route path="/admin-profile" element={<AdminProfile/>} />
+            <Route path="/test" element={<AudioRecorde/>} />
          
             
           </Routes>

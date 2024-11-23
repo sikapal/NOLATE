@@ -7,6 +7,7 @@ import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { Link } from 'react-router-dom';
+import { Copyright } from '@mui/icons-material';
 
 const Sidebar = ({ open, setOpen }) => {
 
@@ -16,7 +17,7 @@ const Sidebar = ({ open, setOpen }) => {
   const Menu = [
     {
       title: "Tableau de bord",
-      icon: <WidgetsOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}}/>,
+      icon: <WidgetsOutlinedIcon style={{ width: "18px", height: "18px", paddingBottom: "4px" }} />,
 
       submenu: true,
       submenuItems: [
@@ -26,25 +27,25 @@ const Sidebar = ({ open, setOpen }) => {
     },
     {
       title: "Activités",
-      icon: <AutoStoriesOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} />,
+      icon: <AutoStoriesOutlinedIcon style={{ width: "18px", height: "18px", paddingBottom: "4px" }} />,
       submenu: true,
       submenuItems: [
-        { title: "Emploi de temps", to:"/emploi-de-temps" },
+        { title: "Emploi de temps", to: "/emploi-de-temps" },
         { title: "Fiche de présence", to: "/fichepresence" },
         { title: "Babillard", to: "/barbillard" },
       ],
     },
     {
       title: "Utilisateurs",
-      icon: <PeopleAltOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} />,
+      icon: <PeopleAltOutlinedIcon style={{ width: "18px", height: "18px", paddingBottom: "4px" }} />,
       submenu: true,
       submenuItems: [
         { title: "Membres", to: "/members", },
-        { title: "Admin et rôles", to:"/admintable" },
+        { title: "Admin et rôles", to: "/admintable" },
         { title: "Messages" },
       ],
     },
-    { title: "Paramètres de la page", to: "/parametres", icon: <SettingsOutlinedIcon  style={{width:"18px", height:"18px", paddingBottom:"4px"}} /> },
+    { title: "Paramètres de la page", to: "/parametres", icon: <SettingsOutlinedIcon style={{ width: "18px", height: "18px", paddingBottom: "4px" }} /> },
   ];
 
 
@@ -89,7 +90,7 @@ const Sidebar = ({ open, setOpen }) => {
                   <span className='text-2xl hover:text-white block float-left'>{menu.icon || <BsKeyboard />}</span>
                   <span className={`text-[14px] hover:text-white font-bold flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
                   {menu.submenu && open && (
-                    <BsChevronDown style={{width:"12px", height:"12px"}}
+                    <BsChevronDown style={{ width: "12px", height: "12px" }}
                       className={`${submenuOpen[index] ? 'rotate-180' : ''}`}
                     />
                   )}
@@ -118,7 +119,19 @@ const Sidebar = ({ open, setOpen }) => {
             </div>
           ))}
         </ul>
+        <div className='flex flex-row justify-between text-[13px] mb-6 text-titre  items-center text-center fixed bottom-0'>
+          <div className='flex flex-row items-center '>
+            <Copyright style={{width:"13px", height:"13px"}} />
+            <p className='pl-1'>Nolate </p>
+
+          </div>
+
+          <p className='pl-4'>A propos</p>
+          <p className='px-4'><Link to="/">Contactez-nous</Link></p>
+
+        </div>
       </div>
+
     </div>
   );
 };

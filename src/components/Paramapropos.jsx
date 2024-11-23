@@ -52,10 +52,18 @@ const Paramapropos = () => {
     return (
         <div className='bg-white w-full h-full p-4 rounded-2xl '>
 
-            <h1 className="font-bold text-lg mb-1">Présentation Générale</h1>
+            <div className='flex flex-row justify-between'>
+                <h1 className="font-bold text-lg mb-1">Présentation Générale</h1>
+                <button
+                    className="bg-lightblue text-white py-1 px-2 rounded-lg  top-0"
+                    type="button"
+                >
+                    Enregistrer
+                </button>
+            </div>
             <form action=" ">
                 {/* Nom de l'entreprise */}
-                <div className="mb-1">
+                <div className="mb-1 mt-3">
                     <label htmlFor="nom" className="block mb-2 text-gray-400 text-[14px]">
                         Nom de l'entreprise
                     </label>
@@ -120,7 +128,7 @@ const Paramapropos = () => {
                 {/* Description */}
                 <div className="mb-1">
                     <label htmlFor="description" className="block mb-2 text-gray-400 text-[14px]">
-                        Description
+                        Description de la structure
                     </label>
                     <textarea
                         id="description"

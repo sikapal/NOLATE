@@ -25,7 +25,7 @@ const Barbillard = () => {
         { id: 1, title: "Direction des ressources humaines", author: "NGN. Boris" },
         { id: 2, title: "Gestion financière", author: "Benoit S." },
         { id: 3, title: "Développement durable", author: "Marie K." },
-     
+        { id: 3, title: "Développement durable", author: "Marie K." },
     ];
 
     // Filtered publications based on the search term
@@ -51,7 +51,8 @@ const Barbillard = () => {
 
                     <div className="mt-3 bg-white w-full rounded h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3 mt-2">Publications ({filteredPublications.length})</h1>
-
+                          
+                        <Divider/>
                        
                         <div className="flex flex-wrap  p-3 justify-between">
                             <div className="left">
@@ -97,6 +98,8 @@ const Barbillard = () => {
                                 </button>
                             </div>
                         </div>
+
+                      
 
                         <div className="flex-grow overflow-y-auto px-4 py-2 scrollbar-custom">
                             <div className="flex flex-wrap items-center justify-between gap-1">

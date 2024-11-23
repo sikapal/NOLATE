@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import BreadcrumbsP from '../../components/BreadcrumbsP';
 import Member from '../../components/Member';
-import { AddCircleOutline, ArrowDropDown} from '@mui/icons-material';
+import { AddCircleOutline, ArrowDropDown } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SlideMembre from '../activites/SlideMembre';
@@ -22,7 +22,7 @@ const Membres = () => {
     const handleSetFilter = (event) => {
         setFilter(event.target.value);
     };
-    
+
 
     return (
         <div className="flex w-full h-screen bg-gray-100">
@@ -37,8 +37,9 @@ const Membres = () => {
                     <div className="mt-3 bg-white w-full rounded-xl h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3">Membres (25)</h1>
 
-                    
-                        <div className="flex flex-wrap  px-3 py-4 justify-between">
+                        <Divider />
+
+                      <div className='flex flex-col py-2'>  <div className="flex flex-wrap  px-3 py-4 justify-between">
                             <div className="left">
                                 <input
                                     type="text"
@@ -79,11 +80,11 @@ const Membres = () => {
                                     </div>
                                 </button>
                             </div>
-                        </div>
+                        </div></div>
 
                         <div className="flex-grow overflow-y-auto p-4 scrollbar-custom">
                             <div className="flex flex-wrap pt-3 items-center justify-between gap-4">
-                              
+
                                 <Member />
                                 <Member />
                                 <Member />

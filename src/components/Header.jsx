@@ -8,7 +8,7 @@ import SlideActivite from '../pages/activites/SlideActivite';
 import SlideLieu from '../pages/activites/SlideLieu';
 import SlidePublication from '../pages/activites/SlidePublication';
 import SlideMembre from '../pages/activites/SlideMembre';
-import { ArrowDropDown, DeleteForeverOutlined, EmailOutlined, Help, Logout, LogoutOutlined, ManageAccounts, PersonAddAlt1Outlined, Search, Settings, SettingsOutlined } from '@mui/icons-material';
+import { ArrowDropDown, DarkModeSharp, EmailOutlined, Help, Logout, LogoutOutlined, LogoutSharp, ManageAccounts, PersonAddAlt1Outlined, Search, Settings, SettingsOutlined, Translate } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import user from '../assets/user.jpg'
 import Dots from './Dots'
@@ -377,22 +377,32 @@ const Header = ({ setOpen, menuItems }) => {
                     <ManageAccounts className='text-violet mr-4' />
                     <li className='mt-1'><a href="">Mon profil</a></li>
                   </div>
+
+                  <div className='flex flex-row mb-4'>
+                    <Translate className='text-violet mr-4' />
+                    <li className='mt-1'><a href="">Langue</a></li>
+                  </div>
                   < div className='flex flex-row mb-4'>
                     <Settings className='text-violet mr-4' />
                     <li className='mt-1'><a href="">Paramètre de la page</a></li>
                   </div>
-                  < div className='flex flex-row '>
+                  < div className='flex flex-row  mb-4'>
                     <Help className='text-violet mr-4' />
                     <li className='mt-1'><a href="">Aide</a></li>
+                  </div>
+
+                  <div className='flex flex-row'>
+                    <DarkModeSharp className='text-violet mr-4' />
+                    <li className='mt-1'><a href="">Mode sombre</a></li>
                   </div>
                 </ul>
 
                 <Divider className='pt-3' />
 
                 < div className='flex flex-row mb-4 mx-4 text-red mt-2 text-sm'>
-                  <LogoutOutlined className='text-red mr-4' />
+                  <LogoutSharp className='text-red mr-4' />
                   <Link to="/login">
-                    <li className='mt-1'><a href=""> Se déconnecter</a></li>
+                    <li className='mt-1 list-none'><a href=""> Se déconnecter</a></li>
                   </Link>
 
                 </div>

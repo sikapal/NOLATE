@@ -34,21 +34,7 @@ const UserApropos = () => {
             .catch(error => console.error('Error fetching countries:', error));
     }, []);
 
-    // // Fetch cities based on selected country
-    // useEffect(() => {
-    //     if (selectedCountry) {
-    //         axios.get(`https://wft-geo-db.p.rapidapi.com/v1/geo/countries/${selectedCountry}/regions`, {
-    //             headers: {
-    //                 'X-RapidAPI-Key': 'f0ad5a4421msh4a461c9ecfe295fp1917c9jsnb2b3804386bf',
-    //                 'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
-    //             },
-    //         })
-    //             .then(response => setCities(response.data.data || []))
-    //             .catch(error => console.error('Error fetching cities:', error));
-    //     } else {
-    //         setCities([]); 
-    //     }
-    // }, [selectedCountry]);
+  
     return (
         <div >
             <div className='first bg-white p-4 mx-2 rounded-2xl w-full mb-4'>

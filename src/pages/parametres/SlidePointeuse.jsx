@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AttachFile, DriveFileRenameOutline, Mic, Save, Search, Sync } from '@mui/icons-material';
+import {  DriveFileRenameOutline,  Search } from '@mui/icons-material';
 import user from "../../assets/user.jpg"
 
 const SlidePointeuse = ({ setShowModalNewPointeuse }) => {
@@ -9,7 +9,7 @@ const SlidePointeuse = ({ setShowModalNewPointeuse }) => {
 
 
 
-    const [data, setData] = useState([]); // Stocke les données JSON
+    const [data, setData] = useState([]); // On stocke les données JSON ici
     const [search, setSearch] = useState("");
     const [filteredData, setFilteredData] = useState([]);
 
@@ -44,7 +44,6 @@ const SlidePointeuse = ({ setShowModalNewPointeuse }) => {
     }, []);
 
 
-    // Filtrer les données en fonction de la recherche
     useEffect(() => {
         if (search.trim() === "") {
 
@@ -60,7 +59,7 @@ const SlidePointeuse = ({ setShowModalNewPointeuse }) => {
 
     return (
         <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end">
-            <div className="bg-white w-full sm:w-96 h-screen mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
+            <div className="bg-white w-full sm:w-96 h-screen mt-[50px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
                 <div className='flex flex-row justify-between items-center'>
                     <h2 className="text-xl font-semibold mb-6 text-violet">Infos Pointeuse Horaire</h2>
                     <button onClick={() => setShowModalNewPointeuse(false)} className="text-black font-bold text-2xl mb-6">

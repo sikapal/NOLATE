@@ -13,6 +13,7 @@ import SlidePlanning from '../activites/SlidePlanning';
 import user from "../../assets/user.jpg"
 import { ChatBubbleOutline } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { Divider } from '@mui/material';
 
 const columnHelper = createColumnHelper();
 
@@ -290,7 +291,9 @@ const FichePresence = () => {
                     <BreadcrumbsP breadcrumbs={breadcrumbs} />
                     <div className="mt-3 bg-white max-w-full rounded-xl h-[85vh] flex flex-col">
                         <h1 className="font-bold p-3">Fiche de présence</h1>
-                        <div className="flex flex-wrap p-3 justify-between">
+
+                        <Divider/>
+                        <div className="flex flex-wrap p-3 pt-4 justify-between">
                             <div className="left flex flex-wrap">
                                 <div className="mb-4 relative">
                                     <input
@@ -349,10 +352,10 @@ const FichePresence = () => {
 
 
 
-                                <button className=' bg-lightblue text-[14px]  mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
-                                    <div className='flex mr-1 justify-center items-center'>
+                                <button className=' bg-lightblue text-[14px]  ml-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                    <div className='flex justify-center px-2 items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
-                                        <p className='mr-1' onClick={() => {
+                                        <p className='mr-1 ' onClick={() => {
 
                                             setShowModalNewPlanning(true);
 
@@ -362,7 +365,7 @@ const FichePresence = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="flex-wrap py-4 px-4 overflow-y-auto">
+                        <div className="flex-wrap -mt-2 px-4 overflow-y-auto">
                             <div className="bg-white shadow-md rounded-lg">
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-[#E5F4FF] text-[12px]">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import image from '../assets/image.jpg'
 import { FaEye, FaRegBell, FaRegEnvelope } from 'react-icons/fa'
 import Dots from './Dots'
@@ -7,9 +7,9 @@ import SlidePlanning from '../pages/activites/SlidePlanning';
 
 const Member = () => {
 
-    
+
     const [showModalNewPlanning, setShowModalNewPlanning] = useState(false);
-   
+
     return (
         <div className='w-[375px] h-[220px] bg-white border  border-gray-300 rounded-xl'>
             <div className='flex-row my-auto mx-auto'>
@@ -27,10 +27,10 @@ const Member = () => {
                     <div className='absolute right-0 top-2 mr-5'>
                         <Dots
                             menuItems={[
-                                { label: 'Envoyer message', action: () => console.log('Infos clicked') ,color:'gray'},
-                                { label: 'Planifier activité', action: () =>{setShowModalNewPlanning(true)}, color: 'black' },
+                                { label: 'Envoyer message', action: () => console.log('Infos clicked'), color: 'gray' },
+                                { label: 'Planifier activité', action: () => { setShowModalNewPlanning(true) }, color: 'black' },
                                 { label: 'Inspecter présence', action: () => console.log('Supprimer clicked'), color: 'gray' },
-                        ] }
+                            ]}
                         />
                     </div>
                 </div>
@@ -38,24 +38,30 @@ const Member = () => {
                     <div className='flex '>
                         <button className=' bg-[#EEEEEE] text-[16px] hover:bg-[#EEEEEE] hover:text-violet  w-[140px] h-[40px] rounded-xl justify-center text-black  items-center flex'>
                             <div className='flex mr-2 justify-center items-center text-titre'>
-                                <span> <FaEye className='justify-center items-center mx-2' /></span>
+                                <span> <FaEye className='justify-center items-center mx-2 ' /></span>
                                 <Link to="/user-profile" >
-                                    <p >Voir le profil</p>
+                                    <p className='text-[14px]' >Voir le profil</p>
                                 </Link>
                             </div>
                         </button>
                     </div>
 
-                    <div className='flex justify center text-center  '>
-
-                        <div className='border bg-slate-50 w-10 h-10 rounded-xl  cursor-pointer ml-4 text-violet  '>
-                            <FaRegBell className='w-5 h-5 text-center justify-items-center m-2.5 items-center ' />
+                    <div className="flex justify-center text-center">
+                        {/* Bell Icon with Badge */}
+                        <div className="relative border bg-slate-50 w-10 h-10 rounded-xl cursor-pointer ml-4 text-violet">
+                            <FaRegBell className="w-5 h-5 text-center justify-items-center m-2.5 items-center" />
+                            {/* Badge */}
+                            <div className="absolute -top-2 -right-1 w-5 h-5 bg-red-500 text-white bg-red text-[10px] font-bold flex items-center justify-center rounded-full">
+                                2
+                            </div>
                         </div>
 
-                        <div className='border bg-slate-50 w-10 h-10 rounded-xl  cursor-pointer  ml-4 text-violet'>
-                            <FaRegEnvelope className='w-5 h-5 text-center justify-center m-2.5 items-center ' />
+                        {/* Envelope Icon */}
+                        <div className="border bg-slate-50 w-10 h-10 rounded-xl cursor-pointer ml-4 text-violet">
+                            <FaRegEnvelope className="w-5 h-5 text-center justify-center m-2.5 items-center" />
                         </div>
                     </div>
+
                 </div>
             </div>
             {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
