@@ -7,15 +7,9 @@ import step from '../../assets/Step1.png'
 
 const SlideLieu = ({ setShowModalNewLieu }) => {
 
-
-    const [checked, setChecked] = useState(true);
-
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
     return (
         <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end">
-            <div className="bg-white w-full sm:w-96 h-screen mt-[71px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
+            <div className="bg-white w-full sm:w-96 h-screen mt-[50px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
                 <div className='flex flex-row justify-between items-center text-center mb-6'>
                     <div className='flex  flex-wrap'>
                         <div className=''> <button onClick={() => setShowModalNewLieu(false)}><ArrowBack style={{ width: "18px", height: "18px" }} /></button></div>

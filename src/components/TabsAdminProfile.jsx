@@ -39,7 +39,7 @@ const TabsAdminProfile = () => {
         <AdminOrgani />,
         <AdminSecu />,
         <AdminNotif />,
-        <ParamPointeuse />,
+       
     ]
 
     return (

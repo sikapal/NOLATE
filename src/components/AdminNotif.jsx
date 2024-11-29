@@ -11,14 +11,14 @@ const AdminNotif = () => {
   };
   return (
     <>
-      <div className=' w-full bg-white rounded-2xl h-fit  pt-4 flex flex-col  shadow-xl  '>
+      <div className=' mx-2 bg-white rounded-2xl h-fit  pt-4 flex flex-col  shadow-xl  '>
 
 
 
-        <h1 className="font-bold py-2 pl-3">Notifications</h1>
+        <h1 className="font-bold py-2  pl-3">Notifications</h1>
         <p className='text-gray-500  text-sm pl-3'>Choisissez le type de notifications que vous désirez recevoir sur votre compte..</p>
 
-        <div className='bg-[#EEEEEE] items-center justify-between  flex mx-1 my-3 px-2 py-2 font-bold text-[12px] text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+        <div className='bg-[#EEEEEE]  items-center justify-between  flex mx-1 my-4 px-2 py-2 font-bold text-[12px] text-[#727c8e] border-b-2 border-[#D9D9D9]'>
           <p className='w-3/6'>NOTIFICATION</p>
           <p className='w-1/6 text-center mr-6'>EMAIL</p>
           <p className='w-1/6 text-end'>NAVIGATEUR</p>
@@ -127,7 +127,7 @@ const AdminNotif = () => {
 
          
       </div>
-      <p className='mt-2 text-[12px] text-titre'>Nous avons besoin de l'autorisation de votre navigateur pour afficher les notifications. <span className='text-lightblue'> Demander la permission</span></p>
+      <p className='mt-2 mx-2 text-[12px] text-titre'>Nous avons besoin de l'autorisation de votre navigateur pour afficher les notifications. <span className='text-lightblue'> Demander la permission</span></p>
     </>
   )
 }

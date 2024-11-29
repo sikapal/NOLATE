@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Accessibility, Add, DeleteForeverOutlined, DirectionsRun, Timer, TouchAppSharp } from '@mui/icons-material';
+import { Accessibility, Add, CalendarMonth, DeleteForeverOutlined, DirectionsRun, Timer, TouchAppSharp } from '@mui/icons-material';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import mockData9 from "../../assets/constants/data9.json";
 import mockData from "../../assets/constants/data8.json";
@@ -8,9 +8,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from '@mui/material/Checkbox';
 import user from "../../assets/user.jpg"
 
-const columnHelper = createColumnHelper();
-
-const columnHelperpointage = createColumnHelper();
 
 const getphoneImage = (appareil) => {
     switch (appareil) {
@@ -22,6 +19,17 @@ const getphoneImage = (appareil) => {
 
 
 const UserSecu = () => {
+
+
+    const columnHelper = createColumnHelper();
+
+
+
+    const [checked, setChecked] = useState(true);
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+    };
 
     const columns = [
 
@@ -124,65 +132,13 @@ const UserSecu = () => {
         }),
     ];
 
-    const columnspointage = [
 
-
-        columnHelperpointage.accessor("type", {
-            header: (info) => (
-                <span className="flex items-center">
-                    Type de Pointage
-                </span>
-            ),
-            cell: (info) => info.getValue(),
-        }),
-        columnHelperpointage.accessor("securite", {
-
-
-            header: (info) => (
-                <span className="flex items-center">
-                    SECURITE
-                </span>
-            ),
-            cell: (info) => info.getValue(),
-        }),
-        columnHelperpointage.accessor("fiabilite", {
-
-
-            header: (info) => (
-                <span className="flex items-center">
-                    FIABILITE
-                </span>
-            ),
-            cell: (info) => info.getValue(),
-        }),
-        columnHelperpointage.accessor("efficacite", {
-
-
-            header: (info) => (
-                <span className="flex items-center">
-                    EFFICACITE
-                </span>
-            ),
-            cell: (info) => info.getValue(),
-        }),
-        columnHelper.accessor("status", {
-
-
-            header: (info) => (
-                <span className="flex items-center">
-                    STATUS
-                </span>
-            ),
-            cell: (info) => info.getValue(),
-        }),
-    ];
-
-
-    const [data] = useState(() => [...mockData9]);
-    const [dataPointage] = useState(() => [...mockData9]);
+    const [data] = useState(() => [...mockData]);
+   
     const [sorting, setSorting] = useState([]);
+ 
     const [globalFilter, setGlobalFilter] = useState("");
-    const [open, setOpen] = useState(true);
+   
     const [showModalDelete, setShowModalDelete] = useState(false);
     const closeModalDelete = () => setShowModalDelete(false);
 
@@ -213,37 +169,12 @@ const UserSecu = () => {
         getFilteredRowModel: getFilteredRowModel(),
     });
 
-    const tablePointage = useReactTable({
-        dataPointage,
-        columnspointage,
-        state: {
-            sorting,
-            globalFilter,
-        },
-        initialState: {
-            pagination: {
-                pageSize: 5,
-            },
-        },
-        getCoreRowModel: getCoreRowModel(),
-        onSortingChange: setSorting,
-        getSortedRowModel: getSortedRowModel(),
-        onGlobalFilterChange: setGlobalFilter,
-        getFilteredRowModel: getFilteredRowModel(),
-    });
+   
 
-           
-
-    const [checked, setChecked] = useState(true);
-
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
 
     return (
         <div className='pb-2 '>
-
-            <div className=" bg-white w-full rounded-xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
+            <div className=" bg-white  rounded-2xl mb-4 h-auto pt-2 pb-4  mx-2 shadow-lg  flex flex-col">
                 <h1 className="font-bold py-2 px-4 border-b-2">Appareils connectés</h1>
                 <div className="flex flex-wrap  px-3 pt-3  justify-between">
                     <div className="left flex flex-row ">
@@ -343,7 +274,7 @@ const UserSecu = () => {
                 </div>
 
             </div>
-            <div className=' w-full h-auto bg-white rounded-xl  pt-4 flex flex-col shadow-xl '>
+            <div className='  h-auto bg-white rounded-2xl mx-2 pt-4 mb-4 flex flex-col shadow-lg '>
 
                 <h1 className="font-bold py-2 pl-3">Exigences Fonctionnelles</h1>
                 <p className='text-gray-500  text-sm pl-3'>Définissez le niveau d'exigences liées au processus de pointage de tous les membres.</p>
@@ -367,7 +298,7 @@ const UserSecu = () => {
 
                 <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-sm text-[#727c8e] border-b-2 border-[#D9D9D9]'>
                     <div className='flex text-black my-2 flex-row space-x-2 '>
-                        <div className='-rotate-0'> <DirectionsRun style={{ width: "20px", height: "20px" }} /></div>
+                        <div className=''> <DirectionsRun style={{ width: "20px", height: "20px" }} /></div>
                         <p>Retard accordé pour effectuer le pointage de fin</p>
 
                     </div>
@@ -420,57 +351,102 @@ const UserSecu = () => {
 
 
 
-            <div className=" bg-white w-full rounded-xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
+            <div className=" bg-white  rounded-2xl mx-2 mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
 
                 <h1 className="font-bold py-2 pl-3">Mode de pointage</h1>
                 <p className='text-gray-500  text-sm pl-3'>Renseigner le(s) mode(s) d'authentification que cet utilisateur doit utiliser pour pointer sa présence</p>
 
 
                 <div className="flex-grow  px-2 mb-2">
-                    <div className=" bg-white shadow-md rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-[#EEEEEE]">
-                            {table.getHeaderGroups().map((headerGroup) => (
-                                    <tr key={headerGroup.id}>
-                                        {headerGroup.headers.map((header) => (
-                                            <th
-                                                key={header.id}
-                                                className="px-4 py-3 text-left text-[10px]  font-bold text-slate-500 uppercase tracking-wider"
-                                            >
-                                                <div
-                                                    {...{
-                                                        className: header.column.getCanSort()
-                                                            ? "cursor-pointer select-none flex items-center"
-                                                            : "",
-                                                        onClick: header.column.getToggleSortingHandler(),
-                                                    }}
-                                                >
-                                                    {flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
+                    <div className=" bg-white shadow-md rounded-2xl">
 
-                                                </div>
-                                            </th>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                {table.getRowModel().rows.slice(0, table.getState().pagination.pageSize).map((row) => (
-                                    <tr key={row.id} className="hover:bg-gray-50">
-                                        {row.getVisibleCells().map((cell) => (
-                                            <td
-                                                key={cell.id}
-                                                className="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                            >
-                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <div className='bg-[#EEEEEE] items-center justtext-startify-center  flex mx-1 my-3 px-2 py-2 font-bold text-[14px] text-titre border-b-2 border-[#D9D9D9]'>
+                            <p className='w-2/6'>TYPE DE POINTAGE</p>
+                            <p className='w-1/6 text-start'>SECURITE</p>
+                            <p className='w-1/6 text-start' >FIABILITE</p>
+                            <p className='w-1/6 text-start' >EFFICACITE</p>
+                            <p className='w-1/6 text-start' >STATUS</p>
+                        </div>
+                        <div className='bg-white items-center justify-between flex -my-1 px-2 mx-1  font-bold text-[14px] text-[#a5adbc] border-b-2 border-[#D9D9D9]'>
+                            <div className='flex my-2 w-2/6 text-titre flex-row space-x-2 '>
+                                <input
+                                    type='checkbox'
+                                    className='text-center -mt-1  h-5 text-lightblue  items-center justify-center accent-lightblue '
+                                />
+                                <p className='-mt-1'>Code QR</p>
+
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>Très elevé</p>
+
+                            </div>
+
+                            <div className='text-start w-1/6 '>
+                                <p className='text-titre'>Très elevé</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>90%</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+
+                                <p className='text-titre'>Autoriser</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-[14px] text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                            <div className='flex my-2 w-1/3 text-titre flex-row space-x-2 '>
+                                <input
+                                    type='checkbox'
+                                    className='text-center -mt-1 h-5 text-[14px] text-lightblue  items-center justify-center accent-lightblue '
+                                />
+                                <p className='-mt-1'>Signature numérique</p>
+
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>Moyen</p>
+
+                            </div>
+
+                            <div className='text-start w-1/6 '>
+                                <p className='text-titre'>Moyen</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>75%</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+
+                                <p className='text-titre'>Autoriser</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-white items-center justify-between flex mt-2 -my-1 px-2 mx-1  font-bold text-[14px] text-[#727c8e] border-b-2 border-[#D9D9D9]'>
+                            <div className='flex my-2 w-1/3 text-titre flex-row space-x-2 '>
+                                <input
+                                    type='checkbox'
+                                    className='text-center -mt-1 text-[14px] text-lightblue h-5 items-center justify-center accent-lightblue '
+                                />
+                                <p className='-mt-1'>Analyse faciale</p>
+
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>Indisponible</p>
+
+                            </div>
+
+                            <div className='text-start w-1/6 '>
+                                <p className='text-titre'>Indisponible</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+                                <p className='text-titre'>Indisponible</p>
+                            </div>
+                            <div className='text-start w-1/6'>
+
+                                <p className='text-titre'>-</p>
+                            </div>
+                        </div>
+
+
+
                     </div>
 
 

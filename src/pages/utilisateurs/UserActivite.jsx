@@ -21,131 +21,131 @@ const getProfileImage = (assignee) => {
 
 const UserActivite = () => {
 
-    
-    
-const columns = [
 
-    columnHelper.accessor("date", {
-        cell: (info) => info.getValue(),
-        header: () => (
-            <span className="flex items-center ">
-                DATE
-            </span>
-        ),
-    }),
-    columnHelper.accessor("activite", {
-        cell: (info) => {
-            const activite = info.getValue();
-            const lieu = info.row.original.lieu;
-            return (
-                <span className=''>
-                    {activite}
-                    {lieu && <> <br/> {lieu}</>}
+
+    const columns = [
+
+        columnHelper.accessor("date", {
+            cell: (info) => info.getValue(),
+            header: () => (
+                <span className="flex items-center ">
+                    DATE
                 </span>
-            );
-        },
-        header: (info) => (
-            <span className="flex items-center">
-                ACTIVITE/ <br />LIEU
-            </span>
-        ),
-    }),
-    columnHelper.accessor("heureDebut", {
-        header: (info) => (
-            <span className="flex items-center">
-                HEURE DEBUT
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("heureFin", {
-        header: (info) => (
-            <span className="flex items-center">
-                HEURE FIN
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("duree", {
-        header: (info) => (
-            <span className="flex items-center">
-                DUREE
-            </span>
-        ),
-        cell: (info) => info.getValue(),
-    }),
+            ),
+        }),
+        columnHelper.accessor("activite", {
+            cell: (info) => {
+                const activite = info.getValue();
+                const lieu = info.row.original.lieu;
+                return (
+                    <span className=''>
+                        {activite}
+                        {lieu && <> <br /> {lieu}</>}
+                    </span>
+                );
+            },
+            header: (info) => (
+                <span className="flex items-center">
+                    ACTIVITE/ <br />LIEU
+                </span>
+            ),
+        }),
+        columnHelper.accessor("heureDebut", {
+            header: (info) => (
+                <span className="flex items-center">
+                    HEURE DEBUT
+                </span>
+            ),
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("heureFin", {
+            header: (info) => (
+                <span className="flex items-center">
+                    HEURE FIN
+                </span>
+            ),
+            cell: (info) => info.getValue(),
+        }),
+        columnHelper.accessor("duree", {
+            header: (info) => (
+                <span className="flex items-center">
+                    DUREE
+                </span>
+            ),
+            cell: (info) => info.getValue(),
+        }),
 
-    columnHelper.accessor("assigne", {
-        header: () => (
-            <span className="flex items-center">
-                ASSIGNÉE A
-            </span>
-        ),
-        cell: (info) => (
-            <div className="flex items-center">
-                {getProfileImage(info.getValue()) && (
-                    <img
-                        src={getProfileImage(info.getValue())}
-                        alt={`${info.getValue()} profile`}
-                        className="m-2 w-8 h-8 rounded-full"
-                    />
-                )}
-                {info.getValue()}
+        columnHelper.accessor("assigne", {
+            header: () => (
+                <span className="flex items-center">
+                    ASSIGNÉE A
+                </span>
+            ),
+            cell: (info) => (
+                <div className="flex items-center">
+                    {getProfileImage(info.getValue()) && (
+                        <img
+                            src={getProfileImage(info.getValue())}
+                            alt={`${info.getValue()} profile`}
+                            className="m-2 w-8 h-8 rounded-full"
+                        />
+                    )}
+                    {info.getValue()}
 
-            </div>
-        ),
-    }),
-
-    columnHelper.accessor("pointage", {
-        header: (info) => (
-            <span className="flex items-center">
-                MODE DE <br /> POINTAGE
-            </span>
-        ),
-        cell: (info) => {
-            const [start, end] = info.getValue().split(" ");
-            return (
-                <div>
-                    <div>{start}</div>
-                    <div>{end}</div>
                 </div>
-            );
-        },
-    }),
+            ),
+        }),
 
-    columnHelper.accessor("info", {
-        header: (info) => (
-            <span className="flex items-center ">
-                NOTE <br /> D'INFO
-            </span>
-        ),
-        cell: (info) => (
-            <div className="flex items-center text-center justify-center">
-                <ChatBubbleOutline className="mr-2 text-blue-500" style={{
-                    width: "20px", height: "20px", color: "blue"
+        columnHelper.accessor("pointage", {
+            header: (info) => (
+                <span className="flex items-center">
+                    MODE DE <br /> POINTAGE
+                </span>
+            ),
+            cell: (info) => {
+                const [start, end] = info.getValue().split(" ");
+                return (
+                    <div>
+                        <div>{start}</div>
+                        <div>{end}</div>
+                    </div>
+                );
+            },
+        }),
 
-                }} />
+        columnHelper.accessor("info", {
+            header: (info) => (
+                <span className="flex items-center ">
+                    NOTE <br /> D'INFO
+                </span>
+            ),
+            cell: (info) => (
+                <div className="flex items-center text-center justify-center">
+                    <ChatBubbleOutline className="mr-2 text-blue-500" style={{
+                        width: "20px", height: "20px", color: "blue"
 
-            </div>
-        ),
-    }),
-    columnHelper.accessor("ACTION", {
-        header: "Actions",
-        cell: (info) => (
-            <Dots
-            menuItems={[
-                {
-                    label: "Modifier", action: () => {
-                        setShowModalNewPlanning(true);
-                    }
-                },
-              
-                { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
-            ]}
-            />
-        ),
-    }),
-];
+                    }} />
+
+                </div>
+            ),
+        }),
+        columnHelper.accessor("ACTION", {
+            header: "Actions",
+            cell: (info) => (
+                <Dots
+                    menuItems={[
+                        {
+                            label: "Modifier", action: () => {
+                                setShowModalNewPlanning(true);
+                            }
+                        },
+
+                        { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+                    ]}
+                />
+            ),
+        }),
+    ];
 
 
     const [presence, setPresence] = useState('');
@@ -167,7 +167,7 @@ const columns = [
     const [sorting, setSorting] = useState([]);
     const [globalFilter, setGlobalFilter] = useState("");
     const [open, setOpen] = useState(true);
-   
+
 
 
     const table = useReactTable({
@@ -223,14 +223,14 @@ const columns = [
                         </div>
                     </div>
 
-                    <div className='left flex flex-row relative text-titre'>
+                    <div className='left flex flex-row relative mb-2 text-titre'>
                         <select
                             id="presence"
                             className="h-[40px] w-100 bg-gray-200 px-8 pr-10 mb-2 border text-sm border-gray-300 rounded-md appearance-none"
                             value={presence}
                             onChange={handleSetPresence}
                         >
-                            <option value="" className="font-semibold">
+                            <option value="" className="font-semibold cursor-pointer">
                                 Exporter
                             </option>
                             <option value="Pdf">Pdf</option>
@@ -243,11 +243,15 @@ const columns = [
                         <div className="absolute top-1 mt-1 right-52 transform -translate-y-1/5 pointer-events-none text-titre">
                             <ArrowDropDown />
                         </div>
-                        <button className='w-auto bg-lightblue text-[14px] hover:text-[16px]  ml-3   h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                        <button className='w-auto bg-lightblue text-[14px]   ml-3   h-[40px] rounded-xl justify-center text-white  items-center flex'>
                             <div className='flex mr-2 justify-center items-center '>
 
                                 <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-2' /></span>
-                                <p>Ajouter une présence</p>
+                                <p className='mr-1' onClick={() => {
+
+                                    setShowModalNewPlanning(true);
+
+                                }}>Ajouter une présence</p>
                             </div>
                         </button>
                     </div>
@@ -255,9 +259,9 @@ const columns = [
 
                 </div>
 
-                <Divider />
 
-                <div className='w-full h-96 bg-black flex justify-center rounded-lg'>
+
+                <div className='w-full h-96 bg-black flex  justify-center rounded-lg'>
                     <p className='text-white text-center my-auto justify-center'> Tableau de bord(graphiques) sur les assiduités et la ponctualité</p>
                 </div>
             </div>
@@ -288,12 +292,12 @@ const columns = [
 
 
                     </div>
-                    <div className=' w-[870px] '> <Divider /></div>
+                    <div className=' w-[870px] mt-2'> <Divider /></div>
 
 
-                    <div className=" bg-white w-[870px]  rounded-xl h-auto pt-2 pb-2 mx-2 flex flex-col">
+                    <div className=" bg-white  rounded-xl h-auto pt-2 pb-2 mx-2 flex flex-col">
 
-                        <div className="flex flex-wrap  p-3 justify-between">
+                        <div className="flex flex-wrap  py-3 px-2 justify-between">
                             <div className="left ">
                                 <div className="mb-4 relative">
                                     <input
@@ -308,7 +312,7 @@ const columns = [
                                     />
                                 </div>
                             </div>
-                            <div className="right  ml-2 flex flex-row ">
+                            <div className="right  ml-2 -mr-4 flex flex-row ">
                                 <FilterAltIcon className='mt-2' />
                                 <div className='mr-3 relative'>
 
@@ -336,7 +340,7 @@ const columns = [
                                         value={presence}
                                         onChange={handleSetPresence}
                                     >
-                                        <option value="" className="font-semibold">
+                                        <option value="" className="font-semibold cursor-pointer">
                                             Exporter
                                         </option>
                                         <option value="Pdf">Pdf</option>
@@ -353,7 +357,7 @@ const columns = [
 
 
 
-                                <button className=' bg-lightblue text-[12px] hover:text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
+                                <button className=' bg-lightblue text-[14px] mx-4 w-auto h-[40px] rounded-xl justify-center text-white  items-center flex'>
                                     <div className='flex mr-1 justify-center items-center'>
                                         <span> <AddCircleOutline style={{ width: "20px", height: "20px" }} className='justify-center items-center mx-1' /></span>
                                         <p className='mr-1' onClick={() => {
@@ -491,33 +495,33 @@ const columns = [
 
 
                 {showModalDelete && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
-                        <h2 className="text-lg font-semibold mb-2">Suppression</h2>
-                        <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                        <div className="bg-white py-4 rounded-lg shadow-lg max-w-sm w-[283px] h-[283] text-center">
+                            <h2 className="text-lg font-semibold mb-2">Suppression</h2>
+                            <div className='text-red mb-2'> <DeleteForeverOutlined /></div>
 
-                        <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
-                            Cette action est irréversible</p>
-                        <div className="flex justify-center gap-4">
-                            <button
-                                onClick={() => { handleDelete }}
-                                className="bg-red-500 text-white px-4 py-2 rounded bg-red"
+                            <p className="text-black mb-6">Êtes-vous de vouloir continuer ?<br />
+                                Cette action est irréversible</p>
+                            <div className="flex justify-center gap-4">
+                                <button
+                                    onClick={() => { handleDelete }}
+                                    className="bg-red-500 text-white px-4 py-2 rounded bg-red"
 
-                            >
-                                Supprimer
-                            </button>
-                            <button
-                                onClick={closeModalDelete}
-                                className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
-                            >
-                                Annuler
-                            </button>
+                                >
+                                    Supprimer
+                                </button>
+                                <button
+                                    onClick={closeModalDelete}
+                                    className="bg-white text-black px-4 py-2 border-2 rounded hover:bg-gray-400"
+                                >
+                                    Annuler
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-            {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
-           
+                )}
+                {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
+
 
             </div>
 

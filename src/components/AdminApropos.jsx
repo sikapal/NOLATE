@@ -8,7 +8,7 @@ const AdminApropos = () => {
     return (
 
         <>
-            <div className='bg-white w-full h-auto p-4 rounded-2xl '>
+            <div className='bg-white  h-auto p-4 mx-2 rounded-2xl  shadow-2xl'>
 
                 <h1 className="font-bold text-lg mb-3">Informations Générales</h1>
                 <div>
@@ -110,12 +110,12 @@ const AdminApropos = () => {
 
             </div>
 
-            <div className=' w-full h-auto p-4 rounded-2xl mt-3 bg-white  '>
+            <div className=' h-auto p-4 mx-2 rounded-2xl mt-4 bg-white  '>
             <h1 className="font-bold text-lg mb-1">Coordonnées</h1>
                 <form action=" ">
 
                     {/* email */}
-                    <div className='flex flex-wrap  relative '>
+                    <div className='flex flex-wrap mt-2 relative '>
                         <div className="mb-1  w-1/2 ">
                             <label htmlFor="email" className="block mb-2 text-[14px] text-titre">
                                Email
@@ -151,7 +151,7 @@ const AdminApropos = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-wrap '>
+                    <div className='flex flex-wrap mt-4'>
                             <div className="mb-1  w-1/2">
                                 <label htmlFor="pay" className="block mb-2 text-[14px] text-titre">
                                    Pays de résidence

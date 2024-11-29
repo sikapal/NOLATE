@@ -164,7 +164,7 @@ const AdminSecu = () => {
     return (
         <div className='pb-2 '>
 
-            <div className=" bg-white w-full rounded-xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
+            <div className=" bg-white mx-2 rounded-2xl mb-4 h-auto pt-2 pb-2 shadow-lg  flex flex-col">
                 <h1 className="font-bold py-2 px-4 border-b-2">Appareils connectés</h1>
                 <div className="flex flex-wrap  px-3 pt-3  justify-between">
                     <div className="left flex flex-row ">
@@ -213,7 +213,7 @@ const AdminSecu = () => {
                     </div>
                 </div>
 
-                <div className="flex-grow  px-2 mb-2">
+                <div className="flex-grow mt-2 px-2 mb-2">
                     <div className=" bg-white shadow-md rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-[#EEEEEE]">
@@ -265,7 +265,7 @@ const AdminSecu = () => {
 
             </div>
 
-            <div className=" bg-white w-full rounded-xl h-auto pt-4  mt-4 pb-4 flex flex-col shadow-2xl">
+            <div className=" bg-white mx-2 rounded-2xl h-auto pt-4  mt-4 pb-4 flex flex-col shadow-2xl">
                 <div className='flex flex-row justify-between mx-3'>
                     <h1 className="font-bold  ">Mot de passe</h1>
                     <p className='text-blue2 text-[12px] cursor-pointer'>Mot de passe oublié ?</p>
@@ -301,7 +301,7 @@ const AdminSecu = () => {
                 </div>
             </div>
 
-            <div className=" bg-white w-full rounded-xl h-auto pt-4  mt-4 pb-4 flex flex-col shadow-2xl">
+            <div className=" bg-white mx-2 rounded-2xl h-auto pt-4  mt-4 pb-4 flex flex-col shadow-2xl">
                 <div className='flex flex-row justify-between mx-3 '>
                     <h1 className="font-bold  ">Authentification à double facteurs</h1>
                     <button className='bg-lightblue mx-3 py-1 px-3 text-[12px] text-white rounded  '> <span>

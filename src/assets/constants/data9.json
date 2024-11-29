@@ -5,7 +5,6 @@
     "fiabilite": "Très élévé",
     "efficacite": "90%",
     "statut": "Autoriser"
-   
   },
   {
     "type": "Signature numérique",
@@ -13,7 +12,6 @@
     "fiabilite": "Moyen",
     "efficacite": "75%",
     "statut": "Autoriser"
-   
   },
   {
     "type": "Analyse faciale",
@@ -21,7 +19,6 @@
     "fiabilite": "Indisponible",
     "efficacite": "Indisponible",
     "statut": "-"
-   
   }
  
 ]

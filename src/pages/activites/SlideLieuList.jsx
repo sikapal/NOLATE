@@ -1,18 +1,17 @@
 
 import React, { useState } from 'react';
 
-import { ArrowBack, DeleteForeverOutlined, Search } from '@mui/icons-material';
+import { ArrowBack, DeleteForeverOutlined, LocationOnOutlined, Search } from '@mui/icons-material';
 import Dots from '../../components/Dots';
 import SlidePlanning from './SlidePlanning';
-import SlideActivite from './SlideActivite';
+import SlideLieu from './SlideLieu';
 
 
-const SlideActiviteList = ({ setShowModalNewActiviteList }) => {
 
+const SlideLieuList = ({ setShowModalNewLieuList }) => {
 
-    const [checked, setChecked] = useState(true);
     const [showModalNewPlanning, setShowModalNewPlanning] = useState(false);
-    const [showModalNewActivite, setShowModalNewActivite] = useState(false);
+    const [showModalNewLieu, setShowModalNewLieu] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
     const closeModalDelete = () => setShowModalDelete(false);
 
@@ -23,16 +22,14 @@ const SlideActiviteList = ({ setShowModalNewActiviteList }) => {
     };
 
 
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
+   
     return (
         <div className="fixed z-50 inset-0 bg-gray-900 bg-opacity-50 flex justify-end">
             <div className="bg-white w-full sm:w-96 h-screen mt-[50px] p-4 transform translate-x-0 transition-transform duration-300 ease-out">
                 <div className='flex flex-row justify-between items-center text-center mb-5'>
                     <div className='flex  flex-wrap'>
-                        <div className=''> <button onClick={() => { setShowModalNewActiviteList(false); setShowModalNewPlanning(true) }}><ArrowBack style={{ width: "18px", height: "18px" }} /></button></div>
-                        <h2 className="text-xl font-semibold ml-4 text-violet">Activités</h2>
+                        <div className=''> <button onClick={() => { setShowModalNewLieuList(false); setShowModalNewPlanning(true) }}><ArrowBack style={{ width: "18px", height: "18px" }} /></button></div>
+                        <h2 className="text-xl font-semibold ml-4 text-violet">Lieu</h2>
                     </div>
 
 
@@ -57,25 +54,37 @@ const SlideActiviteList = ({ setShowModalNewActiviteList }) => {
                 <div className='flex flex-col'>
 
                     <div className="flex flex-row justify-between items-center mt-4 group">
-                        <p className='mb-4 cursor-pointer' onClick={setShowModalNewActivite}>Présence régulière</p>
+                        <div className='flex flex-row '>
+                            <div className='text-violet text-center -mt-1'>
+                                <LocationOnOutlined />
+                            </div>
+                            <p className='mb-4 ml-4 font-bold text-[14px] cursor-pointer' onClick={setShowModalNewLieu}>ADM</p>
+                        </div>
+
                         <div className='-mt-5 dots-container opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                             <Dots
+                            
                                 menuItems={[
-                                    { label: "Modifier", action: () => { setShowModalNewActivite(true); }, },
+                                    { label: "Modifier", action: () => { setShowModalNewLieu(true); }, },
                                     { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
                                 ]}
                             />
                         </div>
 
                     </div>
-                     
+
                     <div className="flex flex-row justify-between items-center mt-4 group">
-                        <p className='mb-4 cursor-pointer' onClick={setShowModalNewActivite}>Anglais</p>
+                        <div className='flex flex-row '>
+                            <div className='text-violet text-center -mt-1'>
+                                <LocationOnOutlined />
+                            </div>
+                            <p className='mb-4 ml-4 font-bold text-[14px] cursor-pointer' onClick={setShowModalNewLieu}>ADM</p>
+                        </div>
 
                         <div className='-mt-5 dots-container opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                             <Dots
                                 menuItems={[
-                                    { label: "Modifier", action: () => { setShowModalNewActivite(true); }, },
+                                    { label: "Modifier", action: () => {  setShowModalNewLieu(true); }, },
                                     { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
                                 ]}
                             />
@@ -83,20 +92,27 @@ const SlideActiviteList = ({ setShowModalNewActiviteList }) => {
 
                     </div>
 
-                    
-                    <div className="flex flex-row justify-between items-center mt-4 group">
-                        <p className='mb-4 cursor-pointer' onClick={setShowModalNewActivite}>Macro economie</p>
+
+
+                    <div className="glad flex flex-row justify-between items-center mt-4 group ">
+                        <div className='flex flex-row '>
+                            <div className='text-violet text-center -mt-1'>
+                                <LocationOnOutlined />
+                            </div>
+                            <p className='mb-4 ml-4 font-bold text-[14px] cursor-pointer' onClick={setShowModalNewLieu}>ADM</p>
+                        </div>
 
                         <div className='-mt-5 dots-container opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                             <Dots
                                 menuItems={[
-                                    { label: "Modifier", action: () => { setShowModalNewActivite(true); }, },
-                                    { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+                                    { label: "Modifier", action: () => { setShowModalNewLieu(true); }, },
+                                    { label: "Supprimer", action: () => { setShowModalDelete(true); }, color: "red" },
                                 ]}
                             />
                         </div>
 
                     </div>
+
                 </div>
 
 
@@ -128,10 +144,13 @@ const SlideActiviteList = ({ setShowModalNewActiviteList }) => {
                     </div>
                 </div>
             )}
+
+
             {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
-            {showModalNewActivite && <SlideActivite setShowModalNewActivite={setShowModalNewActivite} />}
+            {showModalNewLieu && <SlideLieu setShowModalNewLieu={setShowModalNewLieu} />}
+           
         </div>
     );
 };
 
-export default SlideActiviteList;
+export default SlideLieuList;

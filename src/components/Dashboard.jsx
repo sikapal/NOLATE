@@ -5,10 +5,10 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpwardOutlined';
 import Chart from 'chart.js/auto';
 
 
-// Card component with chart
+
 const PerformanceChart = ({ label, data, color }) => {
   const chartRef = useRef(null);
-  const chartInstanceRef = useRef(null); // Ref to store the Chart instance
+  const chartInstanceRef = useRef(null); 
 
   useEffect(() => {
     // Destroy the previous chart instance if it exists
@@ -69,13 +69,13 @@ const PerformanceChart = ({ label, data, color }) => {
       },
     });
 
-    // Cleanup function to destroy the chart when the component unmounts or re-renders
+   
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
       }
     };
-  }, [label, data, color]); // Rerun the effect if any of these dependencies change
+  }, [label, data, color]); 
 
   return <canvas ref={chartRef} className="w-full h-40"></canvas>;
 };
@@ -99,39 +99,39 @@ const Dashboard = () => {
                 {/* Card 1 */}
                 <div className="flex-1 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-semibold text-gray-700">Ventes</h2>
+                    <h2 className="text-xl font-semibold text-gray-700">Utilisateurs</h2>
                     <div className="flex items-center text-green-500">
                       <ArrowUpwardIcon style={{ fontSize: '24px' }} />
                       <span className="ml-2 font-bold">+12%</span>
                     </div>
                   </div>
-                  <p className="text-gray-500 mt-4">Augmentation des ventes ce mois-ci par rapport au mois précédent.</p>
+                  <p className="text-gray-500 mt-4">Vous avez gagné 150 nouveaux clients cette semaine.</p>
                   <PerformanceChart label="Ventes" data={salesData} color="#34D399" />
                 </div>
 
                 {/* Card 2 */}
                 <div className="flex-1 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-semibold text-gray-700">Clients</h2>
+                    <h2 className="text-xl font-semibold text-gray-700">Sessions</h2>
                     <div className="flex items-center text-blue-500">
                       <ArrowUpwardIcon style={{ fontSize: '24px' }} />
                       <span className="ml-2 font-bold">+150</span>
                     </div>
                   </div>
-                  <p className="text-gray-500 mt-4">Vous avez gagné 150 nouveaux clients cette semaine.</p>
+                  <p className="text-gray-500 mt-4">Vous avez 150 sessions actives .</p>
                   <PerformanceChart label="Clients" data={clientsData} color="#60A5FA" />
                 </div>
 
                 {/* Card 3 */}
                 <div className="flex-1 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-semibold text-gray-700">Revenu</h2>
+                    <h2 className="text-xl font-semibold text-gray-700">Test</h2>
                     <div className="flex items-center text-purple-500">
                       <ArrowUpwardIcon style={{ fontSize: '24px' }} />
-                      <span className="ml-2 font-bold">2 450 000 FCFA</span>
+                      <span className="ml-2 font-bold">2 450 </span>
                     </div>
                   </div>
-                  <p className="text-gray-500 mt-4">Votre revenu total ce mois-ci est en hausse.</p>
+                  <p className="text-gray-500 mt-4">Votre total ce mois-ci est en hausse.</p>
                   <PerformanceChart label="Revenu" data={revenueData} color="#9333EA" />
                 </div>
               </div>
@@ -139,11 +139,11 @@ const Dashboard = () => {
               {/* Row with 2 divs with graphics */}
               <div className="flex gap-4 mb-8">
                 <div className="w-3/5 bg-white shadow-lg rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700">Graphique des Ventes</h3>
+                  <h3 className="text-lg font-semibold text-gray-700">Graphique des utilisateurs</h3>
                   <PerformanceChart label="Ventes" data={salesData} color="#34D399" />
                 </div>
                 <div className="w-2/5 bg-white shadow-lg rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700">Graphique des Clients</h3>
+                  <h3 className="text-lg font-semibold text-gray-700">Graphique des sessions</h3>
                   <PerformanceChart label="Clients" data={clientsData} color="#60A5FA" />
                 </div>
               </div>

@@ -1,10 +1,13 @@
 
 import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AttachFile, Mic, Save, Search, Sync } from '@mui/icons-material';
-import logo from '../../assets/logo.svg'
+import { AccessTimeFilled, AttachFile,  Mic, Save, Search, Sync } from '@mui/icons-material';
+
 import SlideActiviteList from './SlideActiviteList';
 import SlideActivite from './SlideActivite';
+import SlideLieu from './SlideLieu';
+import SlideLieuList from './SlideLieuList';
+
 
 
 
@@ -13,6 +16,9 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
     const [activite, setActivite] = useState('');
     const [showModalNewActiviteList, setShowModalNewActiviteList] = useState(false);
     const [showModalNewActivite, setShowModalNewActivite] = useState(false);
+    const [showModalNewLieu, setShowModalNewLieu] = useState(false);
+    const [showModalNewLieuList, setShowModalNewLieuList] = useState(false);
+
 
     const handleSetActivite = (event) => {
         setActivite(event.target.value);
@@ -107,7 +113,21 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
                                     </label>
 
                                     <div className='text-[14px]'>
-                                        <span className=' text-[#0996FF] cursor-pointer'>Créer</span> | <span className='text-[#0996FF] cursor-pointer'>Modifier</span>
+                                        <span className=' text-[#0996FF] cursor-pointer' onClick={() => {
+
+                                            setShowModalNewLieu(true);
+                                           
+
+                                        }}>Créer</span> | <span className='text-[#0996FF] cursor-pointer'
+                                        
+                                        
+                                        onClick={() => {
+
+                                            setShowModalNewLieuList(true);
+                                           
+                                        
+
+                                        }}>Modifier</span>
                                     </div>
                                 </div>
                                 <select
@@ -148,7 +168,8 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
                                     </div>
 
                                     <div className='w-2/4 mt-6 space-x-8 flex flex-row justify-center items-center text-center'>
-                                        <img src={logo} alt="logo" className='w-4 h-4 text-black text-center ' />
+                                       
+                                        <AccessTimeFilled/>
                                         <Save />
                                         <Sync />
                                     </div>
@@ -251,6 +272,8 @@ const SlidePlanning = ({ setShowModalNewPlanning }) => {
             </div>
             {showModalNewActiviteList && <SlideActiviteList setShowModalNewActiviteList={setShowModalNewActiviteList} />}
             {showModalNewActivite && <SlideActivite setShowModalNewActivite={setShowModalNewActivite} />}
+            {showModalNewLieu && <SlideLieu setShowModalNewLieu={setShowModalNewLieu} />}
+            {showModalNewLieuList && <SlideLieuList setShowModalNewLieuList={setShowModalNewLieuList} />}
         </div>
     );
 };
