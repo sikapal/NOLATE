@@ -3,8 +3,8 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import BreadcrumbsP from '../../components/BreadcrumbsP';
 import { AddCircleOutline, ArrowDropDown, Cancel, DeleteForeverOutlined, FileUpload } from '@mui/icons-material';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, CircleCheck, CrossIcon, Search } from "lucide-react";
+import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, CircleCheck,  Search } from "lucide-react";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import mockData from "../../assets/constants/data3.json";
 import Dots from '../../components/Dots';
@@ -261,11 +261,13 @@ const FichePresence = () => {
             sorting,
             globalFilter,
         },
+    
         initialState: {
             pagination: {
                 pageSize: 5,
             },
         },
+        getPaginationRowModel: getPaginationRowModel(),
         getCoreRowModel: getCoreRowModel(),
         onSortingChange: setSorting,
         getSortedRowModel: getSortedRowModel(),
@@ -390,7 +392,7 @@ const FichePresence = () => {
                                         ))}
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {table.getRowModel().rows.slice(0, table.getState().pagination.pageSize).map((row) => (
+                                    {table.getRowModel().rows.map((row) => (
                                             <tr key={row.id} className="hover:bg-gray-100">
                                                 {row.getVisibleCells().map((cell) => (
                                                     <td key={cell.id} className="px-1 py-2 text-[12px] text-gray-500">
@@ -403,73 +405,76 @@ const FichePresence = () => {
                                 </table>
                             </div>
                         </div>
-                        <div className='flex flex-row justify-between mx-4'>
-                            <div className="flex items-center mb-4 sm:mb-0">
-                                <span className="mr-2">Afficher</span>
-                                <select
-                                    className="border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
-                                    value={table.getState().pagination.pageSize}
-                                    onChange={(e) => {
-                                        table.setPageSize(Number(e.target.value));
-                                    }}
-                                >
-                                    {[5, 10, 20, 30].map((pageSize) => (
-                                        <option key={pageSize} value={pageSize}>
-                                            {pageSize}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-700">
+                                                <div className="flex items-center mb-4 sm:mb-0">
+                                                    <span className="mr-2">Afficher</span>
+                                                    <select
+                                                        className="border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                                                        value={table.getState().pagination.pageSize}
+                                                        onChange={(e) => {
+                                                            table.setPageSize(Number(e.target.value));
+                                                        }}
+                                                    >
+                                                        {[5, 10, 20, 30].map((pageSize) => (
+                                                            <option key={pageSize} value={pageSize}>
+                                                                {pageSize}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
 
-                            <div className="flex items-center space-x-2">
-                                <button
-                                    className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                    onClick={() => table.setPageIndex(0)}
-                                    disabled={!table.getCanPreviousPage()}
-                                >
-                                    <ChevronsLeft size={20} />
-                                </button>
+                                                <div className="flex items-center space-x-2">
+                                                    <button
+                                                        className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                                                        onClick={() => table.setPageIndex(0)}
+                                                        disabled={!table.getCanPreviousPage()}
+                                                    >
+                                                        <ChevronsLeft size={20} />
+                                                    </button>
 
-                                <button
-                                    className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                    onClick={() => table.previousPage()}
-                                    disabled={!table.getCanPreviousPage()}
-                                >
-                                    <ChevronLeft size={20} />
-                                </button>
+                                                    <button
+                                                        className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                                                        onClick={() => table.previousPage()}
+                                                        disabled={!table.getCanPreviousPage()}
+                                                    >
+                                                        <ChevronLeft size={20} />
+                                                    </button>
 
-                                <span className="flex items-center">
-                                    <input
-                                        min={1}
-                                        max={table.getPageCount()}
-                                        type="number"
-                                        value={table.getState().pagination.pageIndex + 1}
-                                        onChange={(e) => {
-                                            const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                                            table.setPageIndex(page);
-                                        }}
-                                        className="w-16 p-2 rounded-md border border-gray-300 text-center"
-                                    />
-                                    <span className="ml-1">sur {table.getPageCount()}</span>
-                                </span>
+                                                    <span className="flex items-center">
+                                                        <input
+                                                            min={1}
+                                                            max={table.getPageCount()}
+                                                            type="number"
+                                                            value={table.getState().pagination.pageIndex + 1}
+                                                            onChange={(e) => {
+                                                                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                                                                table.setPageIndex(page);
+                                                            }}
+                                                            className="w-16 p-2 rounded-md border border-gray-300 text-center"
+                                                        />
+                                                        <span className="ml-1">sur {table.getPageCount()}</span>
+                                                    </span>
 
-                                <button
-                                    className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                    onClick={() => table.nextPage()}
-                                    disabled={!table.getCanNextPage()}
-                                >
-                                    <ChevronRight size={20} />
-                                </button>
+                                                    <button
+                                                        className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                                                        onClick={() => table.nextPage()}
+                                                        disabled={!table.getCanNextPage()}
+                                                    >
+                                                        <ChevronRight size={20} />
+                                                    </button>
 
-                                <button
-                                    className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                    onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                                    disabled={!table.getCanNextPage()}
-                                >
-                                    <ChevronsRight size={20} />
-                                </button>
-                            </div>
-                        </div>
+                                                    <button
+                                                        className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                                                        onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                                                        disabled={!table.getCanNextPage()}
+                                                    >
+
+
+                                                        <ChevronsRight size={20} />
+                                                    </button>
+                                                </div>
+                                            </div>
+
                     </div>
                     {detailData && (
                         <DetailPresence data={detailData} onClose={() => setDetailData(null)} />

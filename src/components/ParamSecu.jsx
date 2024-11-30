@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Accessibility, Add, DirectionsRun, Timer, TouchAppSharp } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Mail, Phone, Search, User, } from "lucide-react";
+import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search } from "lucide-react";
 import mockData from "../assets/constants/data11.json";
 import Dots from './Dots';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -158,6 +158,7 @@ const ParamSecu = () => {
                 pageSize: 5,
             },
         },
+        getPaginationRowModel:getPaginationRowModel(),
         getCoreRowModel: getCoreRowModel(),
         onSortingChange: setSorting,
         getSortedRowModel: getSortedRowModel(),
@@ -331,7 +332,7 @@ const ParamSecu = () => {
                                 ))}
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {table.getRowModel().rows.slice(0, table.getState().pagination.pageSize).map((row) => (
+                                {table.getRowModel().rows.map((row) => (
                                     <tr key={row.id} className="hover:bg-gray-50">
                                         {row.getVisibleCells().map((cell) => (
                                             <td

@@ -19,7 +19,7 @@ import AdminProfile from './pages/utilisateurs/AdminProfile';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import EmploiTemps from './pages/activites/EmploiTemps';
-import AudioRecorde from './components/AudioRecorde';
+import Testable from './pages/Testable';
 
 
 const MyContext = createContext();
@@ -56,7 +56,7 @@ function App() {
             <Route path="/emploi-de-temps" element={<EmploiTemps/>}/>
             <Route path="/user-profile" element={<UserProfile/>} />
             <Route path="/admin-profile" element={<AdminProfile/>} />
-            <Route path="/test" element={<AudioRecorde/>} />
+            <Route path="/test" element={<Testable/>} />
          
             
           </Routes>

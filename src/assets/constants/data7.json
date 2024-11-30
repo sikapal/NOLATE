@@ -13,7 +13,7 @@
   
   {
     "date": "02/02/2024",
-    "activite": "Macroeconomie",
+    "activite": "Macro",
     "lieu":"ADM1",
     "heureDebut": "22:00",
     "heureFin": "20:07",
@@ -24,7 +24,7 @@
   },
   {
     "date": "02/02/2024",
-   "activite": "Macroeconomie",
+   "activite": "economie",
     "lieu":"ADM1",
     "heureDebut": "22:00",
     "heureFin": "20:07",
@@ -35,7 +35,7 @@
   }, 
   {
     "date": "02/02/2024",
-    "activite": "Macroeconomie",
+    "activite": "evonometir",
     "lieu":"ADM1",
     "heureDebut": "22:00",
     "heureFin": "20:07",
@@ -46,7 +46,7 @@
   },
   {
     "date": "02/02/2024",
-    "activite": "Macroeconomie",
+    "activite": "test2",
     "lieu":"ADM1",
     "heureDebut": "22:00",
     "heureFin": "20:07",
@@ -56,7 +56,7 @@
     "info": "0"
   }, {
     "date": "02/02/2024",
-    "activite": "Macroeconomie",
+    "activite": "test",
     "lieu":"ADM1",
     "heureDebut": "22:00",
     "heureFin": "20:07",

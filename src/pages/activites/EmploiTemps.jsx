@@ -7,7 +7,7 @@ import SlidePlanning from '../activites/SlidePlanning';
 import { AddCircleOutline, ArrowDropDown, ChatBubbleOutline, DeleteForeverOutlined, FileUpload } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search, } from "lucide-react";
 import mockData from "../../assets/constants/data7.json";
 import user from "../../assets/user.jpg"
@@ -17,7 +17,7 @@ const columnHelper = createColumnHelper();
 
 const getProfileImage = (assignee) => {
     switch (assignee) {
-     
+
         default:
             return user;
     }
@@ -34,15 +34,15 @@ const EmploiTemps = () => {
     const closeModalDelete = () => setShowModalDelete(false);
 
     const handleDelete = () => {
-  
-      console.log('Item deleted');
-      closeModalDelete();
+
+        console.log('Item deleted');
+        closeModalDelete();
     };
 
 
     const [showModalNewPlanning, setShowModalNewPlanning] = useState(false);
 
-   
+
 
     const [data] = useState(() => [...mockData]);
     const [sorting, setSorting] = useState([]);
@@ -108,7 +108,7 @@ const EmploiTemps = () => {
             ),
             cell: (info) => info.getValue(),
         }),
-    
+
         columnHelper.accessor("assigne", {
             header: () => (
                 <span className="flex items-center">
@@ -116,7 +116,7 @@ const EmploiTemps = () => {
                 </span>
             ),
             cell: (info) => (
-                <div className="flex items-center cursor-pointer"  onClick={() => navigate(`/user-profile`)}>
+                <div className="flex items-center cursor-pointer" onClick={() => navigate(`/user-profile`)}>
                     {getProfileImage(info.getValue()) && (
                         <img
                             src={getProfileImage(info.getValue())}
@@ -125,11 +125,11 @@ const EmploiTemps = () => {
                         />
                     )}
                     {info.getValue()}
-    
+
                 </div>
             ),
         }),
-    
+
         columnHelper.accessor("pointage", {
             header: (info) => (
                 <span className="flex items-center">
@@ -146,7 +146,7 @@ const EmploiTemps = () => {
                 );
             },
         }),
-    
+
         columnHelper.accessor("info", {
             header: (info) => (
                 <span className="flex items-center ">
@@ -157,9 +157,9 @@ const EmploiTemps = () => {
                 <div className="flex items-center text-center justify-center">
                     <ChatBubbleOutline className="mr-2 text-blue-500" style={{
                         width: "20px", height: "20px", color: "blue"
-    
+
                     }} />
-    
+
                 </div>
             ),
         }),
@@ -167,20 +167,20 @@ const EmploiTemps = () => {
             header: "Actions",
             cell: (info) => (
                 <Dots
-                menuItems={[
-                    {
-                        label: "Modifier", action: () => {
-                            setShowModalNewPlanning(true);
-                        }
-                    },
-                  
-                    { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
-                ]}
+                    menuItems={[
+                        {
+                            label: "Modifier", action: () => {
+                                setShowModalNewPlanning(true);
+                            }
+                        },
+
+                        { label: "Supprimer", action: () => { { setShowModalDelete(true) } }, color: "red" },
+                    ]}
                 />
             ),
         }),
     ];
-    
+
 
 
     const table = useReactTable({
@@ -190,6 +190,7 @@ const EmploiTemps = () => {
             sorting,
             globalFilter,
         },
+        getPaginationRowModel: getPaginationRowModel(),
         initialState: {
             pagination: {
                 pageSize: 5,
@@ -330,7 +331,7 @@ const EmploiTemps = () => {
                                                     <p className='mr-1' onClick={() => {
 
                                                         setShowModalNewPlanning(true);
-                                                       
+
                                                     }}>Ajouter un planning</p>
                                                 </div>
                                             </button>
@@ -342,6 +343,7 @@ const EmploiTemps = () => {
                                             <div className=" bg-white  shadow-md rounded-lg ">
                                                 <table className=" divide-y w-full  divide-gray-200">
                                                     <thead className="bg-[#E5F4FF] overflow-x-auto">
+
                                                         {table.getHeaderGroups().map((headerGroup) => (
                                                             <tr key={headerGroup.id}>
                                                                 {headerGroup.headers.map((header) => (
@@ -369,7 +371,7 @@ const EmploiTemps = () => {
                                                         ))}
                                                     </thead>
                                                     <tbody className="bg-white divide-y  divide-gray-200">
-                                                        {table.getRowModel().rows.slice(0, table.getState().pagination.pageSize).map((row) => (
+                                                    {table.getRowModel().rows.map((row) => (
                                                             <tr key={row.id} className="hover:bg-gray-50">
                                                                 {row.getVisibleCells().map((cell) => (
                                                                     <td
@@ -447,6 +449,8 @@ const EmploiTemps = () => {
                                                         onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                                                         disabled={!table.getCanNextPage()}
                                                     >
+
+
                                                         <ChevronsRight size={20} />
                                                     </button>
                                                 </div>
@@ -493,7 +497,7 @@ const EmploiTemps = () => {
                 </div>
             )}
             {showModalNewPlanning && <SlidePlanning setShowModalNewPlanning={setShowModalNewPlanning} />}
-           
+
         </div>
     )
 }
